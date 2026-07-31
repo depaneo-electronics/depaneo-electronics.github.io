@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Presses — Dépannage électronique | Depaneo Electronics</title>
+<meta name="description" content="Dépannage et réparation de presses pour le machinisme agricole et le TP. Réparation de boîtiers électroniques de presses à balles rondes et carrées, toutes marques." />
+<script src="vendor/tailwind.js"></script>
+<link href="fonts/fonts.css" rel="stylesheet">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Inter', 'sans-serif'],
+          display: ['Space Grotesk', 'sans-serif'],
+          mono: ['JetBrains Mono', 'monospace'],
+        },
+        colors: {
+          brand: {
+            50:'#f4f9e8',100:'#e5f2c8',200:'#cde496',300:'#b0d363',400:'#98c53d',
+            500:'#83bd1d',600:'#699917',700:'#527811',800:'#3f5c0f',900:'#334c10',
+          },
+          paper: '#fafaf7',
+          inkl: {
+            950:'#101408', 800:'#232a1c', 600:'#3f4839', 500:'#5b6455', 400:'#6b7563',
+          }
+        }
+      }
+    }
+  }
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { background:#fafaf7; color:#101408; }
+  ::selection { background:#83bd1d; color:#101408; }
+  ::-webkit-scrollbar { width:10px; }
+  ::-webkit-scrollbar-track { background:#f1f2ec; }
+  ::-webkit-scrollbar-thumb { background:#d6dbc9; border-radius:99px; }
+  ::-webkit-scrollbar-thumb:hover { background:#b0d363; }
+  a:focus-visible, button:focus-visible { outline:2px solid #527811; outline-offset:3px; border-radius:4px; }
+  .font-display { letter-spacing:-0.035em; }
+  .tech-label { font-family:'JetBrains Mono',monospace; font-size:.72rem; letter-spacing:.14em; color:#6b7563; }
+  .card-hover { transition:border-color .5s, box-shadow .5s, transform .5s cubic-bezier(.16,1,.3,1); }
+  .card-hover:hover { border-color:#b0d363; box-shadow:0 2px 4px rgba(20,26,12,.04), 0 26px 70px -24px rgba(94,140,28,.22); transform:translateY(-4px); }
+  .btn-primary { color:#101408;
+    background:linear-gradient(135deg, rgba(143,197,42,.94), rgba(131,189,29,.78) 55%, rgba(112,166,22,.88));
+    border:1px solid rgba(255,255,255,.45);
+    backdrop-filter:url(#dep-glass) blur(2px) saturate(1.5);
+    -webkit-backdrop-filter:blur(6px) saturate(1.5);
+    box-shadow:inset 0 1px 1px rgba(255,255,255,.55), inset 0 -6px 12px rgba(255,255,255,.10), 0 10px 26px -10px rgba(105,153,23,.55);
+    transition:box-shadow .3s, background .3s, transform .3s; }
+  .btn-primary:hover { background:linear-gradient(135deg, rgba(163,208,74,.98), rgba(142,200,40,.85) 55%, rgba(131,189,29,.94));
+    box-shadow:inset 0 1px 1px rgba(255,255,255,.7), inset 0 -6px 14px rgba(255,255,255,.14), 0 14px 34px -10px rgba(105,153,23,.65); transform:translateY(-1px); }
+  .btn-ghost { color:#101408;
+    background:linear-gradient(135deg, rgba(255,255,255,.55), rgba(255,255,255,.3) 60%, rgba(255,255,255,.45));
+    border:1px solid rgba(255,255,255,.8);
+    backdrop-filter:url(#dep-glass) blur(2px) saturate(1.4);
+    -webkit-backdrop-filter:blur(6px) saturate(1.4);
+    box-shadow:inset 0 1px 1px rgba(255,255,255,.8), 0 8px 22px -10px rgba(20,26,12,.25);
+    transition:box-shadow .3s, background .3s, transform .3s; }
+  .btn-ghost:hover { background:linear-gradient(135deg, rgba(255,255,255,.85), rgba(244,249,232,.6) 60%, rgba(255,255,255,.75)); transform:translateY(-1px); }
+  .btn-ghost-dark { color:#fff; text-shadow:0 1px 2px rgba(0,0,0,.3);
+    background:linear-gradient(135deg, rgba(255,255,255,.20), rgba(255,255,255,.06) 55%, rgba(255,255,255,.14));
+    border:1px solid rgba(255,255,255,.45);
+    backdrop-filter:url(#dep-glass) blur(2px) saturate(1.5);
+    -webkit-backdrop-filter:blur(6px) saturate(1.5);
+    box-shadow:inset 0 1px 1px rgba(255,255,255,.5), inset 0 -6px 12px rgba(255,255,255,.08), 0 8px 24px -10px rgba(0,0,0,.4);
+    transition:box-shadow .3s, background .3s, transform .3s; }
+  .btn-ghost-dark:hover { background:linear-gradient(135deg, rgba(255,255,255,.3), rgba(255,255,255,.12) 55%, rgba(255,255,255,.22));
+    border-color:rgba(255,255,255,.65); transform:translateY(-1px); }
+  .dep-search-btn { backdrop-filter:url(#dep-glass) blur(1.5px) saturate(1.4); -webkit-backdrop-filter:blur(5px) saturate(1.4);
+    box-shadow:inset 0 1px 1px rgba(255,255,255,.55); }
+  .dep-glass-plate {
+    background:linear-gradient(120deg, rgba(255,255,255,.88), rgba(255,255,255,.64) 55%, rgba(255,255,255,.78));
+    border:1px solid rgba(255,255,255,.78);
+    backdrop-filter:url(#dep-glass) blur(2px) saturate(1.5);
+    -webkit-backdrop-filter:blur(7px) saturate(1.5);
+    box-shadow:inset 0 1px 1px rgba(255,255,255,.9), 0 8px 24px -10px rgba(0,0,0,.35);
+  }
+  .glass-dark-block {
+    background:linear-gradient(135deg, rgba(16,20,8,.94), rgba(24,30,14,.88) 60%, rgba(16,20,8,.93)) !important;
+    border:1px solid rgba(255,255,255,.10);
+    box-shadow:inset 0 1px 1px rgba(255,255,255,.14), inset 0 0 0 .5px rgba(255,255,255,.05), 0 30px 80px -30px rgba(0,0,0,.5);
+  }
+  .dep-watermark { pointer-events:none; user-select:none; }
+  /* ── verre sur couche séparée : textes nets ── */
+  .btn-primary, .btn-ghost, .btn-ghost-dark, .btn-liquid, .dep-glass-plate, .dep-search-btn, .nav-glass {
+    position:relative; isolation:isolate;
+    background:none !important;
+    backdrop-filter:none !important; -webkit-backdrop-filter:none !important;
+    text-shadow:none !important;
+  }
+  .btn-primary::before, .btn-ghost::before, .btn-ghost-dark::before, .btn-liquid::before,
+  .dep-glass-plate::before, .dep-search-btn::before, .nav-glass::before {
+    content:""; position:absolute; inset:0; border-radius:inherit; z-index:-1;
+    backdrop-filter:url(#dep-glass) blur(2px) saturate(1.5);
+    -webkit-backdrop-filter:blur(6px) saturate(1.5);
+    transition:background .3s;
+  }
+  .btn-primary::before { background:linear-gradient(135deg, rgba(143,197,42,.94), rgba(131,189,29,.78) 55%, rgba(112,166,22,.88)); }
+  .btn-primary:hover::before { background:linear-gradient(135deg, rgba(163,208,74,.98), rgba(142,200,40,.85) 55%, rgba(131,189,29,.94)); }
+  .btn-ghost::before { background:linear-gradient(135deg, rgba(255,255,255,.55), rgba(255,255,255,.3) 60%, rgba(255,255,255,.45)); }
+  .btn-ghost:hover::before { background:linear-gradient(135deg, rgba(255,255,255,.7), rgba(244,249,232,.45) 60%, rgba(255,255,255,.6)); }
+  .btn-ghost-dark::before { background:linear-gradient(135deg, rgba(255,255,255,.20), rgba(255,255,255,.06) 55%, rgba(255,255,255,.14)); }
+  .btn-ghost-dark:hover::before { background:linear-gradient(135deg, rgba(255,255,255,.3), rgba(255,255,255,.12) 55%, rgba(255,255,255,.22)); }
+  .btn-liquid::before { background:linear-gradient(120deg, rgba(255,255,255,.28), rgba(255,255,255,.10) 55%, rgba(255,255,255,.18)); }
+  .btn-liquid:hover::before { background:linear-gradient(120deg, rgba(255,255,255,.38), rgba(255,255,255,.14) 55%, rgba(255,255,255,.26)); }
+  .dep-glass-plate::before { background:linear-gradient(120deg, rgba(255,255,255,.88), rgba(255,255,255,.64) 55%, rgba(255,255,255,.78)); }
+  .dep-search-btn::before { background:rgba(255,255,255,.38); backdrop-filter:url(#dep-glass) blur(1.5px) saturate(1.4); -webkit-backdrop-filter:blur(5px) saturate(1.4); }
+  .dep-search-btn:hover::before { background:rgba(255,255,255,.72); }
+  .nav-glass { border:1px solid rgba(255,255,255,.18); box-shadow:inset 0 1px 1px rgba(255,255,255,.22), 0 8px 24px -12px rgba(0,0,0,.5); }
+  .nav-glass::before { background:linear-gradient(135deg, rgba(16,20,8,.55), rgba(16,20,8,.38) 60%, rgba(16,20,8,.5)); backdrop-filter:url(#dep-glass) blur(2px) saturate(1.4); -webkit-backdrop-filter:blur(8px) saturate(1.4); }
+</style>
+</head>
+<body class="font-sans text-inkl-950 antialiased overflow-x-hidden">
+
+  <!-- Emblème Dépanéo (cercle + sinusoïde du logo), réutilisé en filigrane -->
+  <svg style="display:none" aria-hidden="true">
+    <filter id="dep-glass" x="0%" y="0%" width="100%" height="100%">
+      <feImage href="images/glass-map.png" preserveAspectRatio="none" result="map"/>
+      <feDisplacementMap in="SourceGraphic" in2="map" scale="140" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <symbol id="dep-mark" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="37" fill="none" stroke="currentColor" stroke-width="5.5"/>
+      <path d="M6 50 C 20 50, 24 27, 35 27 C 47 27, 45 73, 57 73 C 68 73, 68 50, 94 50"
+            fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round"/>
+    </symbol>
+  </svg>
+
+  <!-- Bandeau info -->
+  <div class="relative z-40 text-inkl-950" style="background:#83bd1d">
+    <div class="max-w-7xl mx-auto px-6 py-1.5 flex items-center justify-center sm:justify-between gap-3">
+      <p class="hidden sm:flex items-center gap-2 text-xs font-semibold">
+        <span class="inline-block w-2 h-2 rounded-full bg-inkl-950 animate-pulse"></span>
+        Étiquettes prépayées — expédition gratuite de vos boîtiers vers nos ateliers
+      </p>
+      <div class="flex items-center gap-3">
+        <button type="button" class="dep-search-btn flex items-center gap-2 rounded-full border border-black/25 bg-white/35 hover:bg-white/70 transition px-4 py-1.5 text-[13px] font-semibold text-inkl-950" aria-label="Rechercher sur le site" title="Rechercher (Ctrl+K)">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Recherche<span class="opacity-60">…</span>
+        </button>
+        <a href="https://www.facebook.com/depannageelectronique" target="_blank" rel="noopener" aria-label="Page Facebook Dépanéo Electronics (nouvel onglet)"
+           class="w-8 h-8 rounded-full bg-[#1877F2] flex items-center justify-center text-white hover:bg-[#0e63cf] hover:scale-105 transition"><svg viewBox="0 0 24 24" fill="currentColor" class="w-[18px] h-[18px] translate-y-[1px]" aria-hidden="true"><path d="M13.4 21v-7.2h2.42l.36-2.81h-2.78V9.2c0-.81.23-1.37 1.39-1.37h1.49V5.32c-.26-.03-1.14-.11-2.16-.11-2.14 0-3.6 1.3-3.6 3.7v2.08H8.1v2.81h2.42V21h2.88z"/></svg></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 backdrop-blur-md border-b border-white/10" style="background:linear-gradient(rgba(16,20,8,.48),rgba(16,20,8,.60)), url('images/bandeau-ble.jpg') center 62%/cover">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="index.html" class="flex items-center shrink-0 dep-glass-plate rounded-2xl px-4 py-2">
+        <img src="images/logo-tr.png" alt="Depaneo Electronics" class="h-16 w-auto shrink-0" style="max-width:none" />
+      </a>
+      <nav class="hidden md:flex items-center gap-0.5 text-[15px] font-semibold text-white rounded-full px-1.5 py-1.5 mx-2 nav-glass">
+        <div class="relative group">
+          <a href="index.html#services" class="px-3.5 py-2 rounded-full hover:text-white hover:bg-white/10 transition whitespace-nowrap inline-flex items-center gap-1.5">Domaines
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <div class="absolute left-0 top-full pt-2 hidden group-hover:block z-50">
+            <div class="rounded-2xl py-2 min-w-[15rem] shadow-2xl border border-white/10" style="background:rgba(16,20,8,.97)">
+              <a href="index.html#services" class="block px-5 py-2.5 text-[14px] text-[#dde3d2] hover:bg-white/10 hover:text-white transition">Tous nos domaines</a>
+              <a href="capteur-vitesse-gps.html" class="block px-5 py-2.5 text-[14px] text-[#dde3d2] hover:bg-white/10 hover:text-white transition">Capteur de vitesse GPS</a>
+              <a href="index.html#volets-roulants" class="block px-5 py-2.5 text-[14px] text-[#dde3d2] hover:bg-white/10 hover:text-white transition">Volets roulants</a>
+            </div>
+          </div>
+        </div>
+        <a href="index.html#process" class="px-3.5 py-2 rounded-full hover:text-white hover:bg-white/10 transition whitespace-nowrap">Procédure</a>
+        <a href="rachat-boitiers.html" class="relative px-3.5 py-2 rounded-full btn-primary font-bold whitespace-nowrap">Rachat de boîtiers<span class="absolute -top-1.5 -right-2 text-[9px] font-bold text-white rounded px-1 py-0.5 leading-none" style="background:#e63946">NOUVEAU</span></a>
+        <a href="index.html#apropos" class="px-3.5 py-2 rounded-full hover:text-white hover:bg-white/10 transition whitespace-nowrap">Qui sommes-nous</a>
+      </nav>
+      <div class="flex items-center gap-3">
+        <a href="index.html#demande" class="hidden sm:inline-flex items-center bg-white text-inkl-950 hover:bg-brand-100 shadow-lg font-semibold px-5 py-2.5 rounded-full text-sm whitespace-nowrap transition"> Demande de dépannage </a>
+        <button id="menu-btn" class="md:hidden w-10 h-10 flex items-center justify-center rounded-lg cursor-pointer text-white" aria-label="Menu"> <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg> </button>
+      </div>
+    </div>
+    <nav id="mobile-menu" class="hidden md:hidden border-t border-white/10 px-6 py-4 space-y-3 text-sm font-medium text-[#c9d0bd]" style="background:#101408">
+      <a href="index.html#services" class="block">Domaines</a>
+      <a href="index.html#process" class="block">Procédure</a>
+      <a href="capteur-vitesse-gps.html" class="block">Capteur GPS</a>
+      <a href="index.html#volets-roulants" class="block">Volets roulants</a>
+      <a href="rachat-boitiers.html" class="block text-brand-400 font-semibold">Rachat de boîtiers</a>
+      <a href="index.html#apropos" class="block">Qui sommes-nous</a>
+      <a href="index.html#demande" class="block btn-primary font-semibold px-4 py-2.5 rounded-full text-center">Demande de dépannage</a>
+    </nav>
+  </header>
+  <script>
+    document.getElementById('menu-btn').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+  </script>
+
+  <section class="relative z-10 overflow-hidden border-b border-[#e9ecdf] bg-[#f3f5ee]">
+    <div class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true"><svg class="dep-watermark absolute right-0 top-0 w-[26rem] h-[26rem] text-brand-600" style="opacity:.06;transform:translate(4rem,-6rem)" aria-hidden="true"><use href="#dep-mark"/></svg></div>
+    <div class="max-w-7xl mx-auto px-6 pt-14 sm:pt-20 pb-12 sm:pb-16 relative">
+      <p class="tech-label mb-6"><a href="index.html" class="hover:text-brand-700 transition">ACCUEIL</a> / <a href="services.html" class="hover:text-brand-700 transition">NOS SERVICES</a> / PRESSES</p>
+      <h1 class="font-display font-bold text-4xl sm:text-6xl leading-[1.05] mb-6">Presses<span class="text-brand-500">.</span></h1>
+      <p class="text-inkl-500 text-base sm:text-lg max-w-2xl leading-relaxed">Réparation de boîtiers électroniques de presses à balles rondes et carrées, toutes marques.</p>
+      <div class="mt-9 flex flex-wrap gap-3">
+        <a href="#demande-cta" class="btn-primary font-semibold text-sm px-6 py-3 rounded-full inline-flex">Demander un devis gratuit</a>
+        <a href="tel:0299008500" class="btn-ghost font-semibold text-sm px-6 py-3 rounded-full inline-flex">02 99 00 85 00</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-[#f3f5ee] border-y border-[#e9ecdf]">
+    <div class="max-w-7xl mx-auto px-6 py-16">
+      <h2 class="font-display text-xl font-bold text-inkl-950 mb-6">Exemples de réparations</h2>
+
+      <p class="text-sm text-inkl-500 mb-6">Exemples réels de réparations effectuées dans nos ateliers.</p>
+      <div class="lg:flex lg:gap-10 lg:items-start">
+        <aside class="hidden lg:block w-56 shrink-0">
+          <div class="sticky top-32 max-h-[calc(100vh-9rem)] overflow-y-auto pr-2">
+            <p class="font-display font-bold text-lg text-inkl-950 mb-2">Presses</p>
+            <ul class="mb-7">
+            <li><a href="#" data-marque="Case IH" class="flex items-center gap-2 py-1 text-sm text-inkl-600 hover:text-brand-700 transition"><span class="text-brand-500 font-bold">›</span>Case IH</a></li>
+            <li><a href="#" data-marque="Claas" class="flex items-center gap-2 py-1 text-sm text-inkl-600 hover:text-brand-700 transition"><span class="text-brand-500 font-bold">›</span>Claas</a></li>
+            <li><a href="#" data-marque="Deutz Fahr" class="flex items-center gap-2 py-1 text-sm text-inkl-600 hover:text-brand-700 transition"><span class="text-brand-500 font-bold">›</span>Deutz Fahr</a></li>
+            <li><a href="#" data-marque="Feraboli" class="flex items-center gap-2 py-1 text-sm text-inkl-600 hover:text-brand-700 transition"><span class="text-brand-500 font-bold">›</span>Feraboli</a></li>
+            <li><a href="#" data-marque="Fiatagri" class="flex items-center gap-2 py-1 text-sm text-inkl-600 hover:text-brand-700 transition"><span class="text-brand-500 font-bold">›</span>Fiatagri</a></li>
+            <li><a href="#" data-marque="Gallignani" class="flex items-center gap-2 py-1 text-sm text-inkl-600 hover:text-brand-700 transition"><span class="text-brand-500 font-bold">›</span>Gallignani</a></li>
+            <li><a href="#" data-marque="Greenland" class="flex items-center gap-2 py-1 text-sm text-inkl-600 hover:text-brand-700 transition"><span class="text-brand-500 font-bold">›</span>Greenland</a></li>
+            <li><a href="#" data-marque="Hesston" class="flex items-center gap-2 py-1 text-sm text-inkl-600 hover:text-brand-700 transition"><span class="text-brand-500 font-bold">›</span>Hesston</a></li>
+            <li><a href="#" data-marque="John Deere" class="flex items-center gap-2 py-1 text-sm text-inkl-600 hover:text-brand-700 transition"><span class="text-brand-500 font-bold">›</span>John Deere</a></li>
+            <li><a href="#" data-marque="Krone" class="flex items-center gap-2 py-1 text-sm text-inkl-600 hover:text-brand-700 transition"><span class="text-brand-500 font-bold">›</span>Krone</a></li>
+            <li><a href="#" data-marque="Laverda" class="flex items-center gap-2 py-1 text-sm text-inkl-600 hover:text-brand-700 transition"><span class="text-brand-500 font-bold">›</span>Laverda</a></li>
+            <li><a href="#" data-marque="Massey Ferguson" class="flex items-center gap-2 py-1 text-sm text-inkl-600 hover:text-brand-700 transition"><span class="text-brand-500 font-bold">›</span>Massey Ferguson</a></li>
+            <li><a href="#" data-marque="New Holland" class="flex items-center gap-2 py-1 text-sm text-inkl-600 hover:text-brand-700 transition"><span class="text-brand-500 font-bold">›</span>New Holland</a></li>
+            <li><a href="#" data-marque="Rivierre" class="flex items-center gap-2 py-1 text-sm text-inkl-600 hover:text-brand-700 transition"><span class="text-brand-500 font-bold">›</span>Rivierre</a></li>
+            <li><a href="#" data-marque="Rivierre Casalis" class="flex items-center gap-2 py-1 text-sm text-inkl-600 hover:text-brand-700 transition"><span class="text-brand-500 font-bold">›</span>Rivierre Casalis</a></li>
+            <li><a href="#" data-marque="Vicon" class="flex items-center gap-2 py-1 text-sm text-inkl-600 hover:text-brand-700 transition"><span class="text-brand-500 font-bold">›</span>Vicon</a></li>
+            <li><a href="#" data-marque="Toute marque" class="flex items-center gap-2 py-1 text-sm text-inkl-600 hover:text-brand-700 transition"><span class="text-brand-500 font-bold">›</span>Toute marque</a></li>
+            <li><a href="#" data-marque="Welger" class="flex items-center gap-2 py-1 text-sm text-inkl-600 hover:text-brand-700 transition"><span class="text-brand-500 font-bold">›</span>Welger</a></li>
+            </ul>
+            <p class="tech-label mb-2">AUTRES CATÉGORIES</p>
+            <ul>
+            <li><a href="boitiers-de-gestion.html" class="block py-1 text-sm font-semibold text-inkl-800 hover:text-brand-700 transition">Boîtiers de gestion</a></li>
+            <li><a href="boitiers-de-pesee.html" class="block py-1 text-sm font-semibold text-inkl-800 hover:text-brand-700 transition">Boîtiers de pesée</a></li>
+            <li><a href="boitiers-de-relevage.html" class="block py-1 text-sm font-semibold text-inkl-800 hover:text-brand-700 transition">Boîtiers de relevage</a></li>
+            <li><a href="compteurs-et-compte-tours.html" class="block py-1 text-sm font-semibold text-inkl-800 hover:text-brand-700 transition">Compteurs et compte-tours</a></li>
+            <li><a href="enrubanneuses.html" class="block py-1 text-sm font-semibold text-inkl-800 hover:text-brand-700 transition">Enrubanneuses</a></li>
+            <li><a href="epandeurs.html" class="block py-1 text-sm font-semibold text-inkl-800 hover:text-brand-700 transition">Épandeurs</a></li>
+            <li><a href="irrigation.html" class="block py-1 text-sm font-semibold text-inkl-800 hover:text-brand-700 transition">Irrigation</a></li>
+            <li><a href="moissonneuses.html" class="block py-1 text-sm font-semibold text-inkl-800 hover:text-brand-700 transition">Moissonneuses</a></li>
+            <li><a href="pailleuses.html" class="block py-1 text-sm font-semibold text-inkl-800 hover:text-brand-700 transition">Pailleuses</a></li>
+            <li><a href="pulverisateurs.html" class="block py-1 text-sm font-semibold text-inkl-800 hover:text-brand-700 transition">Pulvérisateurs</a></li>
+            <li><a href="semoirs.html" class="block py-1 text-sm font-semibold text-inkl-800 hover:text-brand-700 transition">Semoirs</a></li>
+            <li><a href="tableaux-de-bord.html" class="block py-1 text-sm font-semibold text-inkl-800 hover:text-brand-700 transition">Tableaux de bord</a></li>
+            <li><a href="travaux-publics.html" class="block py-1 text-sm font-semibold text-inkl-800 hover:text-brand-700 transition">Travaux publics</a></li>
+            <li><a href="verins-moteurs-poignees.html" class="block py-1 text-sm font-semibold text-inkl-800 hover:text-brand-700 transition">Vérins, moteurs et poignées</a></li>
+                        <li><a href="autres-equipements.html" class="block py-1 text-sm font-semibold text-inkl-800 hover:text-brand-700 transition">Autres équipements</a></li>
+          </ul>
+          </div>
+        </aside>
+        <div class="flex-1 min-w-0">
+      <div id="marques-nav" class="lg:hidden flex flex-wrap gap-2 mb-8">
+        <span class="px-1 py-1.5 text-sm font-semibold text-inkl-950">Nos marques&nbsp;:</span>
+        <a href="#" data-marque="Case IH" class="px-4 py-1.5 rounded-full border border-[#dfe4d2] bg-white text-sm font-medium text-inkl-600 hover:border-brand-500 hover:text-brand-700 hover:bg-brand-50 transition">Case IH</a>
+        <a href="#" data-marque="Claas" class="px-4 py-1.5 rounded-full border border-[#dfe4d2] bg-white text-sm font-medium text-inkl-600 hover:border-brand-500 hover:text-brand-700 hover:bg-brand-50 transition">Claas</a>
+        <a href="#" data-marque="Deutz Fahr" class="px-4 py-1.5 rounded-full border border-[#dfe4d2] bg-white text-sm font-medium text-inkl-600 hover:border-brand-500 hover:text-brand-700 hover:bg-brand-50 transition">Deutz Fahr</a>
+        <a href="#" data-marque="Feraboli" class="px-4 py-1.5 rounded-full border border-[#dfe4d2] bg-white text-sm font-medium text-inkl-600 hover:border-brand-500 hover:text-brand-700 hover:bg-brand-50 transition">Feraboli</a>
+        <a href="#" data-marque="Fiatagri" class="px-4 py-1.5 rounded-full border border-[#dfe4d2] bg-white text-sm font-medium text-inkl-600 hover:border-brand-500 hover:text-brand-700 hover:bg-brand-50 transition">Fiatagri</a>
+        <a href="#" data-marque="Gallignani" class="px-4 py-1.5 rounded-full border border-[#dfe4d2] bg-white text-sm font-medium text-inkl-600 hover:border-brand-500 hover:text-brand-700 hover:bg-brand-50 transition">Gallignani</a>
+        <a href="#" data-marque="Greenland" class="px-4 py-1.5 rounded-full border border-[#dfe4d2] bg-white text-sm font-medium text-inkl-600 hover:border-brand-500 hover:text-brand-700 hover:bg-brand-50 transition">Greenland</a>
+        <a href="#" data-marque="Hesston" class="px-4 py-1.5 rounded-full border border-[#dfe4d2] bg-white text-sm font-medium text-inkl-600 hover:border-brand-500 hover:text-brand-700 hover:bg-brand-50 transition">Hesston</a>
+        <a href="#" data-marque="John Deere" class="px-4 py-1.5 rounded-full border border-[#dfe4d2] bg-white text-sm font-medium text-inkl-600 hover:border-brand-500 hover:text-brand-700 hover:bg-brand-50 transition">John Deere</a>
+        <a href="#" data-marque="Krone" class="px-4 py-1.5 rounded-full border border-[#dfe4d2] bg-white text-sm font-medium text-inkl-600 hover:border-brand-500 hover:text-brand-700 hover:bg-brand-50 transition">Krone</a>
+        <a href="#" data-marque="Laverda" class="px-4 py-1.5 rounded-full border border-[#dfe4d2] bg-white text-sm font-medium text-inkl-600 hover:border-brand-500 hover:text-brand-700 hover:bg-brand-50 transition">Laverda</a>
+        <a href="#" data-marque="Massey Ferguson" class="px-4 py-1.5 rounded-full border border-[#dfe4d2] bg-white text-sm font-medium text-inkl-600 hover:border-brand-500 hover:text-brand-700 hover:bg-brand-50 transition">Massey Ferguson</a>
+        <a href="#" data-marque="New Holland" class="px-4 py-1.5 rounded-full border border-[#dfe4d2] bg-white text-sm font-medium text-inkl-600 hover:border-brand-500 hover:text-brand-700 hover:bg-brand-50 transition">New Holland</a>
+        <a href="#" data-marque="Rivierre" class="px-4 py-1.5 rounded-full border border-[#dfe4d2] bg-white text-sm font-medium text-inkl-600 hover:border-brand-500 hover:text-brand-700 hover:bg-brand-50 transition">Rivierre</a>
+        <a href="#" data-marque="Rivierre Casalis" class="px-4 py-1.5 rounded-full border border-[#dfe4d2] bg-white text-sm font-medium text-inkl-600 hover:border-brand-500 hover:text-brand-700 hover:bg-brand-50 transition">Rivierre Casalis</a>
+        <a href="#" data-marque="Toute marque" class="px-4 py-1.5 rounded-full border border-[#dfe4d2] bg-white text-sm font-medium text-inkl-600 hover:border-brand-500 hover:text-brand-700 hover:bg-brand-50 transition">Toute marque</a>
+        <a href="#" data-marque="Vicon" class="px-4 py-1.5 rounded-full border border-[#dfe4d2] bg-white text-sm font-medium text-inkl-600 hover:border-brand-500 hover:text-brand-700 hover:bg-brand-50 transition">Vicon</a>
+        <a href="#" data-marque="Welger" class="px-4 py-1.5 rounded-full border border-[#dfe4d2] bg-white text-sm font-medium text-inkl-600 hover:border-brand-500 hover:text-brand-700 hover:bg-brand-50 transition">Welger</a>
+      </div>
+      <button id="marques-reset" type="button" style="display:none" class="mb-5 inline-flex items-center gap-2 px-4 py-2 rounded-full border border-brand-500 text-brand-700 text-sm font-semibold hover:bg-brand-50 transition">✕ Afficher toutes les marques</button>
+          <div class="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
+        <div class="bg-white rounded-2xl sm:rounded-3xl border border-[#e9ecdf] overflow-hidden card-hover">
+          <div class="aspect-[4/3] bg-gradient-to-br from-[#f4f6ef] to-[#e9ecdf] flex items-center justify-center">
+            <img data-maxw="772" src="images/examples/presses/vicon-commande-5-90.jpg" alt="Commande boitier de presse Vicon 5.90" class="w-full h-full object-contain p-1.5 sm:p-5" loading="lazy" />
+          </div>
+          <div class="p-2.5 sm:p-5">
+            <p class="text-[10px] sm:text-xs text-brand-600 font-semibold uppercase tracking-wide mb-0.5 sm:mb-1">Vicon</p>
+            <h3 class="text-xs sm:text-base font-semibold text-inkl-950 leading-snug">Commande boitier de presse Vicon 5.90</h3>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl sm:rounded-3xl border border-[#e9ecdf] overflow-hidden card-hover">
+          <div class="aspect-[4/3] bg-gradient-to-br from-[#f4f6ef] to-[#e9ecdf] flex items-center justify-center">
+            <img src="images/examples/presses/feraboli-boitier-de-presse-2.jpg" alt="Boîtier de presse Feraboli" class="w-full h-full object-contain p-1.5 sm:p-5" loading="lazy" />
+          </div>
+          <div class="p-2.5 sm:p-5">
+            <p class="text-[10px] sm:text-xs text-brand-600 font-semibold uppercase tracking-wide mb-0.5 sm:mb-1">Feraboli</p>
+            <h3 class="text-xs sm:text-base font-semibold text-inkl-950 leading-snug">Boîtier de presse Feraboli</h3>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl sm:rounded-3xl border border-[#e9ecdf] overflow-hidden card-hover">
+          <div class="aspect-[4/3] bg-gradient-to-br from-[#f4f6ef] to-[#e9ecdf] flex items-center justify-center">
+            <img data-maxw="630" src="images/examples/presses/welger-boitier-de-presse.jpg" alt="Boîtier de presse Welger" class="w-full h-full object-contain p-1.5 sm:p-5" loading="lazy" />
+          </div>
+          <div class="p-2.5 sm:p-5">
+            <p class="text-[10px] sm:text-xs text-brand-600 font-semibold uppercase tracking-wide mb-0.5 sm:mb-1">Welger</p>
+            <h3 class="text-xs sm:text-base font-semibold text-inkl-950 leading-snug">Boîtier de presse Welger</h3>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl sm:rounded-3xl border border-[#e9ecdf] overflow-hidden card-hover">
+          <div class="aspect-[4/3] bg-gradient-to-br from-[#f4f6ef] to-[#e9ecdf] flex items-center justify-center">
+            <img data-maxw="528" src="images/examples/presses/rivierre-casalis-boitier-de-presse.jpg" alt="Boîtier de presse Rivierre Casalis" class="w-full h-full object-contain p-1.5 sm:p-5" loading="lazy" />
+          </div>
+          <div class="p-2.5 sm:p-5">
+            <p class="text-[10px] sm:text-xs text-brand-600 font-semibold uppercase tracking-wide mb-0.5 sm:mb-1">Rivierre-Casalis</p>
+            <h3 class="text-xs sm:text-base font-semibold text-inkl-950 leading-snug">Boîtier de presse Rivierre Casalis</h3>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl sm:rounded-3xl border border-[#e9ecdf] overflow-hidden card-hover">
+          <div class="aspect-[4/3] bg-gradient-to-br from-[#f4f6ef] to-[#e9ecdf] flex items-center justify-center">
+            <img data-maxw="461" src="images/examples/presses/john-deere-bale-master.jpg" alt="Boîtier de presse John Deere Bale Master" class="w-full h-full object-contain p-1.5 sm:p-5" loading="lazy" />
+          </div>
+          <div class="p-2.5 sm:p-5">
+            <p class="text-[10px] sm:text-xs text-brand-600 font-semibold uppercase tracking-wide mb-0.5 sm:mb-1">John Deere</p>
+            <h3 class="text-xs sm:text-base font-semibold text-inkl-950 leading-snug">Boîtier de presse John Deere Bale Master</h3>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl sm:rounded-3xl border border-[#e9ecdf] overflow-hidden card-hover">
+          <div class="aspect-[4/3] bg-gradient-to-br from-[#f4f6ef] to-[#e9ecdf] flex items-center justify-center">
+            <img data-maxw="450" src="images/examples/presses/boitier-de-presse-vicon-autoform.jpg" alt="Boîtier de presse Vicon Autoform" class="w-full h-full object-contain p-1.5 sm:p-5" loading="lazy" />
+          </div>
+          <div class="p-2.5 sm:p-5">
+            <p class="text-[10px] sm:text-xs text-brand-600 font-semibold uppercase tracking-wide mb-0.5 sm:mb-1">Vicon</p>
+            <h3 class="text-xs sm:text-base font-semibold text-inkl-950 leading-snug">Boîtier de presse Vicon Autoform</h3>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl sm:rounded-3xl border border-[#e9ecdf] overflow-hidden card-hover">
+          <div class="aspect-[4/3] bg-gradient-to-br from-[#f4f6ef] to-[#e9ecdf] flex items-center justify-center">
+            <img data-maxw="488" src="images/examples/presses/rivierre-casalis-boitier-de-presse-2.jpg" alt="Boîtier de presse Rivierre" class="w-full h-full object-contain p-1.5 sm:p-5" loading="lazy" />
+          </div>
+          <div class="p-2.5 sm:p-5">
+            <p class="text-[10px] sm:text-xs text-brand-600 font-semibold uppercase tracking-wide mb-0.5 sm:mb-1">Rivierre-Casalis</p>
+            <h3 class="text-xs sm:text-base font-semibold text-inkl-950 leading-snug">Boîtier de presse Rivierre</h3>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl sm:rounded-3xl border border-[#e9ecdf] overflow-hidden card-hover">
+          <div class="aspect-[4/3] bg-gradient-to-br from-[#f4f6ef] to-[#e9ecdf] flex items-center justify-center">
+            <img data-maxw="528" src="images/examples/presses/new-holland-boitier-de-presse.jpg" alt="Boîtier de presse New Holland" class="w-full h-full object-contain p-1.5 sm:p-5" loading="lazy" />
+          </div>
+          <div class="p-2.5 sm:p-5">
+            <p class="text-[10px] sm:text-xs text-brand-600 font-semibold uppercase tracking-wide mb-0.5 sm:mb-1">New Holland</p>
+            <h3 class="text-xs sm:text-base font-semibold text-inkl-950 leading-snug">Boîtier de presse New Holland</h3>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl sm:rounded-3xl border border-[#e9ecdf] overflow-hidden card-hover">
+          <div class="aspect-[4/3] bg-gradient-to-br from-[#f4f6ef] to-[#e9ecdf] flex items-center justify-center">
+            <img data-maxw="488" src="images/examples/presses/krone-boitier-de-presse.jpg" alt="Boîtier de presse Krone" class="w-full h-full object-contain p-1.5 sm:p-5" loading="lazy" />
+          </div>
+          <div class="p-2.5 sm:p-5">
+            <p class="text-[10px] sm:text-xs text-brand-600 font-semibold uppercase tracking-wide mb-0.5 sm:mb-1">Krone</p>
+            <h3 class="text-xs sm:text-base font-semibold text-inkl-950 leading-snug">Boîtier de presse Krone</h3>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl sm:rounded-3xl border border-[#e9ecdf] overflow-hidden card-hover">
+          <div class="aspect-[4/3] bg-gradient-to-br from-[#f4f6ef] to-[#e9ecdf] flex items-center justify-center">
+            <img data-maxw="522" src="images/examples/presses/hesston-boitier-de-presse.jpg" alt="Boîtier de presse Hesston" class="w-full h-full object-contain p-1.5 sm:p-5" loading="lazy" />
+          </div>
+          <div class="p-2.5 sm:p-5">
+            <p class="text-[10px] sm:text-xs text-brand-600 font-semibold uppercase tracking-wide mb-0.5 sm:mb-1">Hesston</p>
+            <h3 class="text-xs sm:text-base font-semibold text-inkl-950 leading-snug">Boîtier de presse Hesston</h3>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl sm:rounded-3xl border border-[#e9ecdf] overflow-hidden card-hover">
+          <div class="aspect-[4/3] bg-gradient-to-br from-[#f4f6ef] to-[#e9ecdf] flex items-center justify-center">
+            <img data-maxw="543" src="images/examples/presses/boitier-de-presse-feraboli.jpg" alt="Boîtier de presse Feraboli Sprinter 165" class="w-full h-full object-contain p-1.5 sm:p-5" loading="lazy" />
+          </div>
+          <div class="p-2.5 sm:p-5">
+            <p class="text-[10px] sm:text-xs text-brand-600 font-semibold uppercase tracking-wide mb-0.5 sm:mb-1">Feraboli</p>
+            <h3 class="text-xs sm:text-base font-semibold text-inkl-950 leading-snug">Boîtier de presse Feraboli Sprinter 165</h3>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl sm:rounded-3xl border border-[#e9ecdf] overflow-hidden card-hover">
+          <div class="aspect-[4/3] bg-gradient-to-br from-[#f4f6ef] to-[#e9ecdf] flex items-center justify-center">
+            <img data-maxw="377" src="images/examples/presses/feraboli-easytronic.jpg" alt="Boîtier de presse Feraboli Easytronic" class="w-full h-full object-contain p-1.5 sm:p-5" loading="lazy" />
+          </div>
+          <div class="p-2.5 sm:p-5">
+            <p class="text-[10px] sm:text-xs text-brand-600 font-semibold uppercase tracking-wide mb-0.5 sm:mb-1">Feraboli</p>
+            <h3 class="text-xs sm:text-base font-semibold text-inkl-950 leading-snug">Boîtier de presse Feraboli Easytronic</h3>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl sm:rounded-3xl border border-[#e9ecdf] overflow-hidden card-hover">
+          <div class="aspect-[4/3] bg-gradient-to-br from-[#f4f6ef] to-[#e9ecdf] flex items-center justify-center">
+            <img data-maxw="501" src="images/examples/presses/new-holland-bale-command-2.jpg" alt="Boîtier de presse New Holland Bale Command" class="w-full h-full object-contain p-1.5 sm:p-5" loading="lazy" />
+          </div>
+          <div class="p-2.5 sm:p-5">
+            <p class="text-[10px] sm:text-xs text-brand-600 font-semibold uppercase tracking-wide mb-0.5 sm:mb-1">New Holland</p>
+            <h3 class="text-xs sm:text-base font-semibold text-inkl-950 leading-snug">Boîtier de presse New Holland Bale Command</h3>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl sm:rounded-3xl border border-[#e9ecdf] overflow-hidden card-hover">
+          <div class="aspect-[4/3] bg-gradient-to-br from-[#f4f6ef] to-[#e9ecdf] flex items-center justify-center">
+            <img data-maxw="435" src="images/examples/presses/case-ih-boitier-de-presse.jpg" alt="Boîtier de presse Case IH" class="w-full h-full object-contain p-1.5 sm:p-5" loading="lazy" />
+          </div>
+          <div class="p-2.5 sm:p-5">
+            <p class="text-[10px] sm:text-xs text-brand-600 font-semibold uppercase tracking-wide mb-0.5 sm:mb-1">Case IH</p>
+            <h3 class="text-xs sm:text-base font-semibold text-inkl-950 leading-snug">Boîtier de presse Case IH</h3>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl sm:rounded-3xl border border-[#e9ecdf] overflow-hidden card-hover">
+          <div class="aspect-[4/3] bg-gradient-to-br from-[#f4f6ef] to-[#e9ecdf] flex items-center justify-center">
+            <img data-maxw="346" src="images/examples/presses/variant-280-big-baller-2.jpg" alt="Variant 280 Big Baller" class="w-full h-full object-contain p-1.5 sm:p-5" loading="lazy" />
+          </div>
+          <div class="p-2.5 sm:p-5">
+            <p class="text-[10px] sm:text-xs text-brand-600 font-semibold uppercase tracking-wide mb-0.5 sm:mb-1">Claas</p>
+            <h3 class="text-xs sm:text-base font-semibold text-inkl-950 leading-snug">Variant 280 Big Baller</h3>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl sm:rounded-3xl border border-[#e9ecdf] overflow-hidden card-hover">
+          <div class="aspect-[4/3] bg-gradient-to-br from-[#f4f6ef] to-[#e9ecdf] flex items-center justify-center">
+            <img src="images/examples/presses/new-holland-bale-command.jpg" alt="Boîtier de presse New Holland Bale Command Plus" class="w-full h-full object-contain p-1.5 sm:p-5" loading="lazy" />
+          </div>
+          <div class="p-2.5 sm:p-5">
+            <p class="text-[10px] sm:text-xs text-brand-600 font-semibold uppercase tracking-wide mb-0.5 sm:mb-1">New Holland</p>
+            <h3 class="text-xs sm:text-base font-semibold text-inkl-950 leading-snug">Boîtier de presse New Holland Bale Command Plus</h3>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl sm:rounded-3xl border border-[#e9ecdf] overflow-hidden card-hover">
+          <div class="aspect-[4/3] bg-gradient-to-br from-[#f4f6ef] to-[#e9ecdf] flex items-center justify-center">
+            <img data-maxw="453" src="images/examples/presses/vicon-boitier-de-roundballer.jpg" alt="Boîtier de Round Baller" class="w-full h-full object-contain p-1.5 sm:p-5" loading="lazy" />
+          </div>
+          <div class="p-2.5 sm:p-5">
+            <p class="text-[10px] sm:text-xs text-brand-600 font-semibold uppercase tracking-wide mb-0.5 sm:mb-1">Vicon</p>
+            <h3 class="text-xs sm:text-base font-semibold text-inkl-950 leading-snug">Boîtier de Round Baller</h3>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl sm:rounded-3xl border border-[#e9ecdf] overflow-hidden card-hover">
+          <div class="aspect-[4/3] bg-gradient-to-br from-[#f4f6ef] to-[#e9ecdf] flex items-center justify-center">
+            <img data-maxw="423" src="images/examples/presses/boitier-ball-master.jpg" alt="Boîtier Bale Master" class="w-full h-full object-contain p-1.5 sm:p-5" loading="lazy" />
+          </div>
+          <div class="p-2.5 sm:p-5">
+            <p class="text-[10px] sm:text-xs text-brand-600 font-semibold uppercase tracking-wide mb-0.5 sm:mb-1">John Deere</p>
+            <h3 class="text-xs sm:text-base font-semibold text-inkl-950 leading-snug">Boîtier Bale Master</h3>
+          </div>
+        </div>
+        <div class="rounded-2xl sm:rounded-3xl border-2 border-dashed border-brand-300 bg-brand-50/60 flex flex-col items-center justify-center text-center p-4 sm:p-6 gap-2 sm:gap-3">
+          <svg class="w-7 h-7 sm:w-9 sm:h-9 text-brand-500" aria-hidden="true"><use href="#dep-mark"/></svg>
+          <p class="text-xs sm:text-base font-semibold text-inkl-950 leading-snug">Vous ne trouvez pas votre modèle&nbsp;?</p>
+          <p class="text-[10px] sm:text-sm text-inkl-500 leading-relaxed hidden sm:block">Cette liste n'est qu'un aperçu&nbsp;: nous intervenons sur tous les boîtiers, toutes les marques — même les plus anciens.</p>
+          <a href="#demande-cta" class="btn-primary font-semibold text-[11px] sm:text-sm px-5 py-2 rounded-full mt-1">Contactez-nous</a>
+        </div>
+      </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA / Demande de dépannage -->
+  <section id="demande-cta" class="relative z-10 px-4 sm:px-6 py-16 sm:py-24">
+    <div class="max-w-7xl mx-auto rounded-[2.5rem] overflow-hidden relative glass-dark-block">
+      <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse 60% 80% at 50% 100%, rgba(131,189,29,.22) 0%, transparent 70%)"></div>
+      <div class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true"><svg class="dep-watermark absolute right-0 bottom-0 w-[30rem] h-[30rem] text-brand-500" style="opacity:.15;transform:translate(6rem,8rem)" aria-hidden="true"><use href="#dep-mark"/></svg></div>
+      <div class="max-w-4xl mx-auto px-6 py-16 sm:py-24 text-center relative text-white">
+        <p class="tech-label !text-[#9aa68e] mb-5">DEVIS GRATUIT SOUS 48H</p>
+        <h2 class="font-display font-bold text-3xl sm:text-5xl leading-[1.05]">Une panne électronique<br/><span class="text-brand-400">à traiter ?</span></h2>
+        <p class="text-[#b9c0ac] sm:text-lg mt-6 max-w-xl mx-auto leading-relaxed">Envoyez-nous votre équipement, nous vous établissons un devis gratuit sous 48h. Étiquettes prépayées disponibles sur simple demande.</p>
+        <div class="flex flex-wrap justify-center gap-4 mt-9">
+          <a href="tel:0299008500" class="btn-primary font-semibold px-8 py-4 rounded-full">Appeler le 02 99 00 85 00</a>
+          <a href="index.html#contact" class="btn-ghost-dark font-semibold px-8 py-4 rounded-full">Nous écrire</a>
+        </div>
+        <a href="documents/bordereau-de-depannage.pdf" target="_blank"
+           class="mt-8 mx-auto max-w-lg flex items-center gap-4 sm:gap-5 rounded-2xl border border-white/15 bg-white/[.06] hover:bg-white/[.1] hover:border-brand-400/60 transition p-4 text-left group">
+          <img src="images/bordereau-apercu.jpg?v=2" alt="Aperçu du bordereau de dépannage (PDF, 1 page)"
+               class="w-16 sm:w-20 shrink-0 rounded-md border border-white/25 shadow-xl group-hover:scale-[1.06] transition-transform duration-300" />
+          <span class="min-w-0">
+            <span class="block font-semibold text-white text-sm sm:text-base">Bordereau de dépannage <span class="text-[#9aa68e] font-normal">(PDF, 1 page)</span></span>
+            <span class="block text-[#b9c0ac] text-xs sm:text-sm mt-1 leading-relaxed">Vous nous envoyez un colis&nbsp;? Imprimez-le, remplissez-le et glissez-le directement dans le colis avec votre matériel.</span>
+            <span class="inline-flex items-center gap-1.5 text-brand-400 font-semibold text-xs sm:text-sm mt-2">Voir et télécharger <span aria-hidden="true">↓</span></span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="relative z-10 border-t border-[#e9ecdf] bg-white/70 text-inkl-500 text-sm">
+    <div class="max-w-7xl mx-auto px-6 py-10 flex flex-wrap items-center justify-between gap-4">
+      <div class="flex items-center gap-4">
+        <img src="images/logo.png" alt="Depaneo Electronics" class="h-8 w-auto" />
+        <p>© 2026 DEPANEO Electronics — AMC CONCEPT INDUSTRIE.</p>
+      </div>
+            <a href="https://www.facebook.com/depannageelectronique" target="_blank" rel="noopener" aria-label="Page Facebook Dépanéo Electronics (nouvel onglet)"
+         class="w-9 h-9 rounded-full bg-[#1877F2] flex items-center justify-center text-white hover:bg-[#0e63cf] hover:scale-105 transition shrink-0"><svg viewBox="0 0 24 24" fill="currentColor" class="w-[21px] h-[21px] translate-y-[1px]" aria-hidden="true"><path d="M13.4 21v-7.2h2.42l.36-2.81h-2.78V9.2c0-.81.23-1.37 1.39-1.37h1.49V5.32c-.26-.03-1.14-.11-2.16-.11-2.14 0-3.6 1.3-3.6 3.7v2.08H8.1v2.81h2.42V21h2.88z"/></svg></a>
+      <p class="text-xs"><a href="mentions-legales.html" class="hover:text-brand-700 underline-offset-2 hover:underline">Mentions légales</a><span class="mx-2">·</span><a href="confidentialite.html" class="hover:text-brand-700 underline-offset-2 hover:underline">Confidentialité</a><span class="mx-2">·</span><span class="font-mono">SIRET 531 527 257 00012</span></p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      function easeInOutQuad(t) { return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t; }
+      function smoothScrollTo(targetY, duration) {
+        var startY = window.scrollY;
+        var diff = targetY - startY;
+        var startTime = performance.now();
+        var html = document.documentElement;
+        var previousBehavior = html.style.scrollBehavior;
+        html.style.scrollBehavior = 'auto';
+        function step(now) {
+          var progress = Math.min((now - startTime) / duration, 1);
+          window.scrollTo(0, startY + diff * easeInOutQuad(progress));
+          if (progress < 1) {
+            requestAnimationFrame(step);
+          } else {
+            html.style.scrollBehavior = previousBehavior;
+          }
+        }
+        requestAnimationFrame(step);
+      }
+      document.querySelectorAll('[data-smooth-scroll]').forEach(function (link) {
+        link.addEventListener('click', function (e) {
+          var target = document.querySelector(link.getAttribute('href'));
+          if (!target) return;
+          e.preventDefault();
+          target.style.transition = 'opacity 1.6s ease';
+          target.style.opacity = '0.15';
+          var y = target.getBoundingClientRect().top + window.scrollY - 20;
+          smoothScrollTo(y, 1600);
+          setTimeout(function () { target.style.opacity = '1'; }, 300);
+        });
+      });
+    })();
+  </script>
+
+  <!-- ═══════════ Lightbox produits (zoom animé au clic) ═══════════ -->
+  <script src="scripts/search-index.js" defer></script>
+  <script src="scripts/search.js" defer></script>
+  <script>
+    (function(){
+      function norm(s){ return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]/g,''); }
+      var ALIAS = { 'mcelectronica':'mcelettronica', 'toutemarque':'toutesmarques', 'elhosideliner':'elho', 'sulkyburel':'sulky' };
+      var style = document.createElement('style');
+      style.textContent = '.marque-active{color:#527811 !important;font-weight:700 !important}';
+      document.head.appendChild(style);
+      var cards = Array.prototype.slice.call(document.querySelectorAll('.card-hover'));
+      var grid = cards.length ? cards[0].parentElement : null;
+      var reset = document.getElementById('marques-reset');
+      function flash(list){
+        list.forEach(function(c){
+          c.classList.remove('dep-flash'); void c.offsetWidth;
+          c.classList.add('dep-flash');
+          setTimeout(function(){ c.classList.remove('dep-flash'); }, 2400);
+        });
+      }
+      function scrollToGrid(el){
+        window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 150, behavior:'smooth' });
+      }
+      function clearFilter(){
+        cards.forEach(function(c){ c.style.display = ''; });
+        if (reset) reset.style.display = 'none';
+        document.querySelectorAll('[data-marque]').forEach(function(a){ a.classList.remove('marque-active'); });
+      }
+      function go(m, el){
+        var n = norm(m); n = ALIAS[n] || n;
+        var hits = cards.filter(function(c){
+          var p = c.querySelector('p'); if (!p) return false;
+          var cn = norm(p.textContent);
+          return cn === n || cn.indexOf(n) === 0 || n.indexOf(cn) === 0;
+        });
+        if (!hits.length){
+          clearFilter();
+          var d = document.querySelector('.border-dashed.border-brand-300');
+          if (d){ d.scrollIntoView({ block:'center', behavior:'smooth' }); flash([d]); }
+          return;
+        }
+        cards.forEach(function(c){ c.style.display = hits.indexOf(c) >= 0 ? '' : 'none'; });
+        if (reset) reset.style.display = '';
+        document.querySelectorAll('[data-marque]').forEach(function(a){ a.classList.remove('marque-active'); });
+        if (el) el.classList.add('marque-active');
+        scrollToGrid(grid);
+        flash(hits);
+      }
+      document.querySelectorAll('[data-marque]').forEach(function(el){
+        el.addEventListener('click', function(e){ e.preventDefault(); go(el.getAttribute('data-marque'), el); });
+      });
+      if (reset) reset.addEventListener('click', function(){ clearFilter(); scrollToGrid(grid); });
+    })();
+  </script>
+</body>
+</html>

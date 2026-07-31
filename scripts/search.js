@@ -1,0 +1,142 @@
+/* Recherche instantanée Dépanéo — 100 % locale, aucun cookie, aucune requête externe */
+(function () {
+  'use strict';
+  var IDX = window.DEP_INDEX || [];
+
+  function norm(s) {
+    return (s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+  }
+  IDX.forEach(function (e) { e._n = norm(e.t + ' ' + e.b + ' ' + e.c); });
+
+  function search(q) {
+    var toks = norm(q).split(/\s+/).filter(Boolean);
+    if (!toks.length) return [];
+    var out = [];
+    for (var i = 0; i < IDX.length; i++) {
+      var e = IDX[i], score = 0, ok = true;
+      for (var j = 0; j < toks.length; j++) {
+        var p = e._n.indexOf(toks[j]);
+        if (p < 0) { ok = false; break; }
+        score += (p === 0 || e._n[p - 1] === ' ' ? 2 : 1);
+      }
+      if (ok) { out.push([score + (e.i ? 0 : .5), e]); }
+    }
+    out.sort(function (a, b) { return b[0] - a[0]; });
+    return out.slice(0, 8).map(function (x) { return x[1]; });
+  }
+
+  /* ——— styles ——— */
+  var css = document.createElement('style');
+  css.textContent =
+    '#dep-search-ov{position:fixed;inset:0;z-index:120;background:rgba(16,20,8,.45);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);opacity:0;transition:opacity .25s;display:flex;align-items:flex-start;justify-content:center;padding:12vh 1rem 1rem}' +
+    '#dep-search-ov.on{opacity:1}' +
+    '#dep-search-panel{width:100%;max-width:34rem;background:#fafaf7;border-radius:1.25rem;box-shadow:0 40px 120px -30px rgba(0,0,0,.5);overflow:hidden;transform:translateY(14px) scale(.98);transition:transform .3s cubic-bezier(.16,1,.3,1)}' +
+    '#dep-search-ov.on #dep-search-panel{transform:none}' +
+    '#dep-search-in{width:100%;border:0;outline:0;background:transparent;font:500 1.05rem/1 Inter,sans-serif;color:#101408;padding:1.1rem .5rem}' +
+    '#dep-search-in::placeholder{color:#a8b09b}' +
+    '.dep-sr{display:flex;align-items:center;gap:.8rem;padding:.55rem .9rem;border-radius:.8rem;cursor:pointer;text-decoration:none}' +
+    '.dep-sr.sel,.dep-sr:hover{background:rgba(131,189,29,.12)}' +
+    '.dep-sr img{width:44px;height:34px;object-fit:contain;background:#fff;border:1px solid #e9ecdf;border-radius:.45rem;flex:none}' +
+    '.dep-sr .ph{width:44px;height:34px;border-radius:.45rem;flex:none;background:#eef0e6;display:flex;align-items:center;justify-content:center;color:#699917}' +
+    '.dep-flash{animation:depFlash 2.2s ease}' +
+    '@keyframes depFlash{0%,60%{box-shadow:0 0 0 3px #83bd1d, 0 18px 50px -18px rgba(20,26,12,.3)}100%{box-shadow:none}}';
+  document.head.appendChild(css);
+
+  /* ——— panneau ——— */
+  var ov = null, input = null, list = null, sel = 0, results = [];
+
+  function build() {
+    ov = document.createElement('div');
+    ov.id = 'dep-search-ov';
+    ov.innerHTML =
+      '<div id="dep-search-panel">' +
+      '<div style="display:flex;align-items:center;gap:.3rem;padding:0 1rem;border-bottom:1px solid #e9ecdf">' +
+      '<svg width="19" height="19" viewBox="0 0 24 24" fill="none" style="flex:none;color:#699917"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>' +
+      '<input id="dep-search-in" type="text" placeholder="Boîtier, marque, page…" autocomplete="off" spellcheck="false"/>' +
+      '<kbd style="flex:none;font:600 .62rem/1 JetBrains Mono,monospace;color:#6b7563;border:1px solid #dfe4d2;border-radius:.35rem;padding:.28rem .45rem;background:#fff">ESC</kbd></div>' +
+      '<div id="dep-search-list" style="max-height:22rem;overflow-y:auto;padding:.5rem"></div>' +
+      '<a id="dep-search-foot" href="index.html#demande" style="display:flex;align-items:center;justify-content:space-between;gap:.8rem;padding:.8rem 1rem;border-top:1px dashed #b0d363;background:rgba(131,189,29,.07);text-decoration:none">' +
+      '<span style="min-width:0"><span style="display:block;font:600 .85rem/1.3 Inter,sans-serif;color:#101408">Vous ne trouvez pas votre modèle&nbsp;?</span>' +
+      '<span style="display:block;font:500 .72rem/1.4 Inter,sans-serif;color:#5b6455">Nous intervenons sur tous les boîtiers, toutes les marques — même les plus anciens.</span></span>' +
+      '<span style="flex:none;background:#83bd1d;color:#101408;font:600 .78rem/1 Inter,sans-serif;padding:.55rem .9rem;border-radius:99px">Contactez-nous</span></a></div>';
+    document.body.appendChild(ov);
+    input = ov.querySelector('#dep-search-in');
+    list = ov.querySelector('#dep-search-list');
+    ov.addEventListener('click', function (e) { if (e.target === ov) close(); });
+    var foot = ov.querySelector('#dep-search-foot');
+    var tgt = ['#demande-cta', '#demande', '#devis'].filter(function (id) { return document.querySelector(id); })[0];
+    if (tgt) foot.setAttribute('href', tgt);
+    foot.addEventListener('click', function () { close(); });
+    input.addEventListener('input', function () { render(input.value); });
+    input.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowDown') { sel = Math.min(sel + 1, results.length - 1); paint(); e.preventDefault(); }
+      else if (e.key === 'ArrowUp') { sel = Math.max(sel - 1, 0); paint(); e.preventDefault(); }
+      else if (e.key === 'Enter' && results[sel]) { window.location.href = results[sel].u; close(); }
+    });
+  }
+
+  function hint(msg) {
+    list.innerHTML = '<p style="padding:1.4rem .9rem;color:#6b7563;font-size:.88rem;text-align:center">' + msg + '</p>';
+  }
+
+  function render(q) {
+    sel = 0;
+    results = search(q);
+    if (!norm(q)) { hint('Tapez un nom de produit, une marque (Claas, Amazone…) ou une page.'); return; }
+    if (!results.length) { hint('Aucun résultat pour « ' + q.replace(/</g, '&lt;') + ' » — essayez la marque seule, ou <a href="index.html#demande" style="color:#699917;font-weight:600">contactez-nous</a>, on s’adapte à tout.'); return; }
+    list.innerHTML = results.map(function (e, i) {
+      var img = e.i ? '<img src="' + e.i + '" alt="" loading="lazy"/>' :
+        '<span class="ph"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h4l2-5 3 9 2-4h3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>';
+      var meta = [e.b, e.c].filter(Boolean).join(' · ');
+      return '<a class="dep-sr' + (i === sel ? ' sel' : '') + '" data-i="' + i + '" href="' + e.u + '">' + img +
+        '<span style="min-width:0"><span style="display:block;font:600 .92rem/1.3 Inter,sans-serif;color:#101408;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">' + e.t + '</span>' +
+        (meta ? '<span style="display:block;font:500 .72rem/1.4 Inter,sans-serif;color:#6b7563">' + meta + '</span>' : '') +
+        '</span></a>';
+    }).join('');
+  }
+
+  function paint() {
+    [].forEach.call(list.children, function (el, i) { el.classList.toggle('sel', i === sel); });
+    var s = list.children[sel]; if (s && s.scrollIntoView) s.scrollIntoView({ block: 'nearest' });
+  }
+
+  function open() {
+    if (!ov) build();
+    ov.style.display = 'flex';
+    requestAnimationFrame(function () { ov.classList.add('on'); });
+    document.documentElement.style.overflow = 'hidden';
+    input.value = ''; render('');
+    setTimeout(function () { input.focus(); }, 60);
+  }
+  function close() {
+    if (!ov) return;
+    ov.classList.remove('on');
+    document.documentElement.style.overflow = '';
+    setTimeout(function () { ov.style.display = 'none'; }, 250);
+  }
+
+  document.addEventListener('click', function (e) {
+    if (e.target.closest && e.target.closest('.dep-search-btn')) { open(); }
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') close();
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); open(); }
+  });
+
+  /* ——— arrivée via #find=<fichier> : scroll + surbrillance du produit ——— */
+  function landing() {
+    var m = window.location.hash.match(/^#find=(.+)$/);
+    if (!m) return;
+    var file = decodeURIComponent(m[1]);
+    var img = document.querySelector('img[src*="' + file.replace(/"/g, '') + '"]');
+    if (!img) return;
+    var card = img.closest('.card-hover') || img;
+    setTimeout(function () {
+      card.scrollIntoView({ block: 'center', behavior: 'smooth' });
+      card.classList.add('dep-flash');
+      setTimeout(function () { card.classList.remove('dep-flash'); }, 2400);
+    }, 350);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', landing);
+  else landing();
+})();
