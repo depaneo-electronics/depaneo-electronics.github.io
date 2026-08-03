@@ -166,6 +166,8 @@
   .nav-glass::before { background:linear-gradient(135deg, rgba(16,20,8,.55), rgba(16,20,8,.38) 60%, rgba(16,20,8,.5)); backdrop-filter:url(#dep-glass) blur(2px) saturate(1.4); -webkit-backdrop-filter:blur(8px) saturate(1.4); }
 /* Safari iPhone/iPad ne supporte pas background-attachment:fixed → repli défilant sur mobile/tablette (desktop intact) */
 @media (max-width: 1023px) {
+  /* cartes blanches derrière les textes du héro : le capteur 3D passe juste derrière, le texte reste lisible */
+  .hero-carte, #hero-stats { background: rgba(255,255,255,.88); border-radius: 1.25rem; padding: 1rem 1.1rem; box-shadow: 0 16px 44px -24px rgba(20,26,12,.2); }
   #site-header { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; transform: translateZ(0); }
   /* photo recadrée sous la ligne d'horizon (30 % haut = ciel blanc) */
   #caracteristiques { background: linear-gradient(rgba(16,20,8,.66), rgba(16,20,8,.72)), url('images/bandeau-ble-hd.jpg') center 97% / auto 145% no-repeat scroll !important; }
@@ -252,6 +254,7 @@
     <div class="max-w-7xl mx-auto px-6 w-full flex-1 flex flex-col justify-center pt-[36vh] md:pt-10 pb-24 relative">
       <div class="grid lg:grid-cols-12 gap-10 items-center">
         <div class="lg:col-span-7 relative z-10">
+          <div class="hero-carte">
           <p id="hero-kicker" class="tech-label mb-6" style="opacity:0">( NOTRE PRODUIT — CONÇU &amp; FABRIQUÉ EN BRETAGNE )</p>
           <h1 class="font-display font-bold leading-[0.95] text-[13.5vw] sm:text-7xl lg:text-[88px]">
             <span class="line-mask"><span>CAPTEUR</span></span>
@@ -262,6 +265,7 @@
             Un capteur de vitesse universel par GPS pour vos équipements agricoles — semoir, pulvérisateur,
             épandeur… Antenne intégrée au boîtier, signal compatible avec tous les boîtiers, même les plus anciens.
           </p>
+          </div>
           <div id="hero-ctas" class="flex flex-wrap gap-3 sm:gap-4 mt-9" style="opacity:0">
             <a href="#devis" data-magnetic class="btn-primary font-semibold text-sm sm:text-base px-7 py-3.5 rounded-full">
               Demander un devis
