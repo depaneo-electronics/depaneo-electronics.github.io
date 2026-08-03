@@ -156,12 +156,25 @@
     var stH = document.createElement('style');
     stH.textContent = '@media (max-width: 1023px){header.sticky, header#site-header{background-position:center 35% !important}body.noise::after{display:none !important}}';
     document.head.appendChild(stH);
-    /* fermer automatiquement le menu burger après un clic sur un de ses liens */
+    /* fermer automatiquement le menu burger après un clic sur un de ses liens.
+       Pour les ancres (#...), on pilote nous-mêmes le défilement APRÈS la fermeture :
+       la fermeture change la hauteur de page et le rafraîchissement de ScrollTrigger
+       annulerait le défilement natif (page qui n'atterrit pas au bon endroit). */
     document.addEventListener('click', function (e) {
       var lien = e.target.closest && e.target.closest('#mobile-menu a');
-      if (lien) {
-        var menu = document.getElementById('mobile-menu');
-        if (menu) menu.classList.add('hidden');
+      if (!lien) return;
+      var menu = document.getElementById('mobile-menu');
+      if (menu) menu.classList.add('hidden');
+      var href = lien.getAttribute('href') || '';
+      if (href.charAt(0) === '#') {
+        e.preventDefault();
+        var cible = document.querySelector(href);
+        if (cible) {
+          setTimeout(function () {
+            cible.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            if (window.history && history.replaceState) history.replaceState(null, '', href);
+          }, 420);
+        }
       }
     });
     var cap = document.createElement('div');
