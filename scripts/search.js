@@ -150,19 +150,19 @@
     if (!window.matchMedia('(max-width: 1023px)').matches) return;
     var hdr = document.querySelector('header.sticky, header#site-header');
     if (!hdr) return;
+    /* Bandeau : photo descendue pour montrer la ligne d'arbres (mobile uniquement) */
+    var stH = document.createElement('style');
+    stH.textContent = '@media (max-width: 1023px){header.sticky, header#site-header{background-position:center 35% !important}}';
+    document.head.appendChild(stH);
     var cap = document.createElement('div');
     cap.setAttribute('aria-hidden', 'true');
     cap.style.cssText = 'position:absolute;left:0;width:100%;height:240px;z-index:49;pointer-events:none;display:none';
     document.body.appendChild(cap);
-    /* Le cache affiche la CONTINUITÉ exacte de la photo du bandeau vers le haut (= le ciel,
-       zone uniforme : le léger décalage pendant le défilement devient invisible), calée sur
-       le même cadrage cover/position que le bandeau de la page. */
+    /* Le cache est un APLAT de ciel (couleur du ciel de la photo sous le voile sombre) :
+       une surface unie ne peut trahir aucun mouvement, et elle prolonge naturellement le
+       haut du bandeau (qui montre désormais ciel + arbres). */
     function dress() {
-      var W = document.documentElement.clientWidth;
-      var imgH = W * 1200 / 1800;                       /* cover d'un bandeau large = pleine largeur */
-      var posY = parseFloat(getComputedStyle(hdr).backgroundPositionY) || 50;
-      var off = 180 + (hdr.offsetHeight - imgH) * posY / 100;  /* haut de la photo dans le cache */
-      cap.style.background = 'linear-gradient(rgba(16,20,8,.58),rgba(16,20,8,.58)), url("images/bandeau-ble.jpg") center ' + off.toFixed(1) + 'px / 100% auto no-repeat rgb(116,119,112)';
+      cap.style.background = 'linear-gradient(rgb(120,122,115), rgb(114,117,109))';
     }
     /* Suivi du défilement. Deux modes :
        — moderne (Safari 26+/Chrome) : animation pilotée par le défilement, exécutée par le
