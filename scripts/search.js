@@ -150,10 +150,20 @@
     if (!window.matchMedia('(max-width: 1023px)').matches) return;
     var hdr = document.querySelector('header.sticky, header#site-header');
     if (!hdr) return;
-    /* Bandeau : photo descendue pour montrer la ligne d'arbres (mobile uniquement) */
+    /* Bandeau : photo descendue pour montrer la ligne d'arbres (mobile uniquement).
+       + suppression du grain plein écran sur mobile (couche de composition coûteuse,
+       source probable des tuiles grises lors des défilements très rapides). */
     var stH = document.createElement('style');
-    stH.textContent = '@media (max-width: 1023px){header.sticky, header#site-header{background-position:center 35% !important}}';
+    stH.textContent = '@media (max-width: 1023px){header.sticky, header#site-header{background-position:center 35% !important}body.noise::after{display:none !important}}';
     document.head.appendChild(stH);
+    /* fermer automatiquement le menu burger après un clic sur un de ses liens */
+    document.addEventListener('click', function (e) {
+      var lien = e.target.closest && e.target.closest('#mobile-menu a');
+      if (lien) {
+        var menu = document.getElementById('mobile-menu');
+        if (menu) menu.classList.add('hidden');
+      }
+    });
     var cap = document.createElement('div');
     cap.setAttribute('aria-hidden', 'true');
     cap.style.cssText = 'position:absolute;left:0;width:100%;height:240px;z-index:49;pointer-events:none;display:none';

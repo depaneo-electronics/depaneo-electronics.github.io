@@ -682,7 +682,7 @@
   </section>
 
   <!-- ═══════════ QUI SOMMES-NOUS ═══════════ -->
-  <section id="apropos" class="relative z-10">
+  <section id="apropos" class="relative z-10 scroll-mt-24">
     <div class="max-w-7xl mx-auto px-6 py-16 sm:py-24 grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
       <div>
         <p class="sm:hidden font-mono font-bold text-xl tracking-[.16em] text-brand-600 mb-4" data-reveal>QUI SOMMES-NOUS&nbsp;?</p>
@@ -878,10 +878,11 @@
 
     // Reveals au scroll
     gsap.utils.toArray('[data-reveal]').forEach(function(el, i){
+      var MOB_R = window.matchMedia('(max-width: 1023px)').matches;
       gsap.to(el, {
-        opacity:1, y:0, duration: REDUCED ? 0 : 1, ease:'power3.out',
-        scrollTrigger:{ trigger:el, start:'top 88%' },
-        delay: REDUCED ? 0 : (i % 4) * 0.07
+        opacity:1, y:0, duration: REDUCED ? 0 : (MOB_R ? .5 : 1), ease:'power3.out',
+        scrollTrigger:{ trigger:el, start: MOB_R ? 'top 98%' : 'top 88%' },
+        delay: (REDUCED || MOB_R) ? 0 : (i % 4) * 0.07
       });
     });
 
@@ -986,7 +987,7 @@
     });
   </script>
   <script src="scripts/search-index.js" defer></script>
-  <script src="scripts/search.js?v=13" defer></script>
+  <script src="scripts/search.js?v=14" defer></script>
   <script>
     function depInitSlider(boxId, capId){
       var box = document.getElementById(boxId); if (!box) return;

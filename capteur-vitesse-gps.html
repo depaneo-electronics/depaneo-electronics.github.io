@@ -553,10 +553,11 @@
     }
 
     gsap.utils.toArray('[data-reveal]').forEach(function(el, i){
+      var MOB_R = window.matchMedia('(max-width: 1023px)').matches;
       gsap.to(el, {
-        opacity:1, y:0, duration: REDUCED ? 0 : 1, ease:'power3.out',
-        scrollTrigger:{ trigger:el, start:'top 88%' },
-        delay: REDUCED ? 0 : (i % 4) * 0.07
+        opacity:1, y:0, duration: REDUCED ? 0 : (MOB_R ? .5 : 1), ease:'power3.out',
+        scrollTrigger:{ trigger:el, start: MOB_R ? 'top 98%' : 'top 88%' },
+        delay: (REDUCED || MOB_R) ? 0 : (i % 4) * 0.07
       });
     });
 
@@ -815,7 +816,7 @@
   }
   </script>
   <script src="scripts/search-index.js" defer></script>
-  <script src="scripts/search.js?v=13" defer></script>
+  <script src="scripts/search.js?v=14" defer></script>
   <script>
     function depInitSlider(boxId, capId){
       var box = document.getElementById(boxId); if (!box) return;
