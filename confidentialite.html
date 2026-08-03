@@ -112,6 +112,10 @@
   .dep-search-btn:hover::before { background:rgba(255,255,255,.72); }
   .nav-glass { border:1px solid rgba(255,255,255,.18); box-shadow:inset 0 1px 1px rgba(255,255,255,.22), 0 8px 24px -12px rgba(0,0,0,.5); }
   .nav-glass::before { background:linear-gradient(135deg, rgba(16,20,8,.55), rgba(16,20,8,.38) 60%, rgba(16,20,8,.5)); backdrop-filter:url(#dep-glass) blur(2px) saturate(1.4); -webkit-backdrop-filter:blur(8px) saturate(1.4); }
+/* iOS : backdrop-filter sur bandeau sticky casse l'empilement au défilement (fond opaque sur mobile, flou inutile) */
+@media (max-width: 1023px) {
+  header.sticky { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; transform: translateZ(0); }
+}
 </style>
 </head>
 <body class="font-sans text-inkl-950 antialiased overflow-x-hidden">
