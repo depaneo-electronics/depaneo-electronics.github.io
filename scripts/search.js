@@ -169,12 +169,6 @@
          compositeur graphique → le cache est RÉELLEMENT fixe à l'écran, zéro retard ;
        — secours : repositionnement à chaque événement scroll (léger retard possible). */
     var animOK = window.CSS && CSS.supports && CSS.supports('animation-timeline: scroll()');
-    var kf = null;
-    function ride() {
-      var sc = document.scrollingElement || document.documentElement;
-      var max = Math.max(0, sc.scrollHeight - window.innerHeight);
-      kf.textContent = '@keyframes depCapRide{from{transform:translateY(-180px)}to{transform:translateY(' + (max - 180).toFixed(0) + 'px)}}';
-    }
     var shown = false;
     function place() {
       if (hdr.getBoundingClientRect().top <= 0) {
@@ -185,7 +179,11 @@
       }
     }
     if (animOK) {
-      kf = document.createElement('style');
+      /* Règle exacte : 1px de défilement = 1px de déplacement, via animation-range fixe de
+         100 000px — indépendante de la hauteur de page ET de la barre Safari qui se replie
+         (l'ancien calcul sur scrollHeight dérivait quand Safari redimensionnait sa barre). */
+      var kf = document.createElement('style');
+      kf.textContent = '@keyframes depCapRide{from{transform:translateY(-180px)}to{transform:translateY(99820px)}}';
       document.head.appendChild(kf);
       cap.style.top = '0';
       cap.style.animationName = 'depCapRide';
@@ -193,12 +191,10 @@
       cap.style.animationTimingFunction = 'linear';
       cap.style.animationFillMode = 'both';
       cap.style.animationTimeline = 'scroll(root)';
-      ride();
-      if (window.ResizeObserver) new ResizeObserver(ride).observe(document.body);
-      window.addEventListener('load', ride);
+      cap.style.animationRange = '0px 100000px';
     }
     window.addEventListener('scroll', place, { passive: true });
-    window.addEventListener('resize', function () { dress(); if (animOK) ride(); place(); }, { passive: true });
+    window.addEventListener('resize', function () { dress(); place(); }, { passive: true });
     dress();
     place();
   }
