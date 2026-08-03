@@ -168,7 +168,12 @@
        — moderne (Safari 26+/Chrome) : animation pilotée par le défilement, exécutée par le
          compositeur graphique → le cache est RÉELLEMENT fixe à l'écran, zéro retard ;
        — secours : repositionnement à chaque événement scroll (léger retard possible). */
-    var animOK = window.CSS && CSS.supports && CSS.supports('animation-timeline: scroll()');
+    /* Détection stricte : certains Safari acceptent animation-timeline mais IGNORENT
+       animation-range → l'animation filerait 16× trop vite. On exige les deux, et on
+       vérifie que le style est réellement retenu, sinon bascule sur le mode servo JS. */
+    var animOK = window.CSS && CSS.supports &&
+      CSS.supports('animation-timeline: scroll()') &&
+      CSS.supports('animation-range: 0px 100000px');
     var shown = false;
     /* theme-color : Safari peint LUI-MÊME la zone status-bar/caméra avec cette couleur
        (opaque et parfaitement fixe, hors de portée du défilement de la page).
@@ -182,7 +187,13 @@
     }
     function place() {
       if (hdr.getBoundingClientRect().top <= 0) {
-        if (!animOK) cap.style.top = (window.scrollY - 180) + 'px';
+        if (animOK) {
+          /* servo : corrige tout résidu (barre Safari, arrondi) — converge au pixel au repos */
+          var ecart = cap.getBoundingClientRect().top + 180;
+          if (ecart > 1 || ecart < -1) cap.style.top = ((parseFloat(cap.style.top) || 0) - ecart) + 'px';
+        } else {
+          cap.style.top = (window.scrollY - 180) + 'px';
+        }
         if (!shown) { cap.style.display = 'block'; shown = true; themeMeta.setAttribute('content', '#747770'); }
       } else if (shown) {
         cap.style.display = 'none'; shown = false; themeMeta.setAttribute('content', '#83bd1d');
@@ -202,6 +213,29 @@
       cap.style.animationFillMode = 'both';
       cap.style.animationTimeline = 'scroll(root)';
       cap.style.animationRange = '0px 100000px';
+      /* le style doit être réellement retenu, sinon on annule et on repasse en mode servo */
+      if (!cap.style.animationRange && !cap.style.getPropertyValue('animation-range')) {
+        animOK = false;
+        cap.style.animationName = '';
+        cap.style.animationTimeline = '';
+      }
+    }
+    /* Panneau de diagnostic (uniquement si l'adresse contient "debug") */
+    if (/debug/.test(window.location.search + window.location.hash)) {
+      var hud = document.createElement('div');
+      hud.style.cssText = 'position:fixed;top:130px;left:8px;z-index:500;background:rgba(0,0,0,.85);color:#7dff5e;font:700 13px/1.5 monospace;padding:8px 10px;border-radius:8px;pointer-events:none;white-space:pre';
+      document.body.appendChild(hud);
+      var os = (navigator.userAgent.match(/OS (\d+[_\d]*)/) || [])[1] || '?';
+      var sT = CSS.supports('animation-timeline: scroll()');
+      var sR = CSS.supports('animation-range: 0px 100000px');
+      (function boucle() {
+        hud.textContent = 'iOS ' + os.replace(/_/g, '.') +
+          '\ntimeline:' + (sT ? 'OUI' : 'non') + ' range:' + (sR ? 'OUI' : 'non') +
+          '\nmode:' + (animOK ? 'ANIM' : 'SERVO') +
+          '\nscrollY:' + Math.round(window.scrollY) +
+          '\ncapTop:' + Math.round(cap.getBoundingClientRect().top) + ' (cible -180)';
+        requestAnimationFrame(boucle);
+      })();
     }
     window.addEventListener('scroll', place, { passive: true });
     window.addEventListener('resize', function () { dress(); place(); }, { passive: true });
