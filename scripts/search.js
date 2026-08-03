@@ -164,17 +164,41 @@
       var off = 180 + (hdr.offsetHeight - imgH) * posY / 100;  /* haut de la photo dans le cache */
       cap.style.background = 'linear-gradient(rgba(16,20,8,.58),rgba(16,20,8,.58)), url("images/bandeau-ble.jpg") center ' + off.toFixed(1) + 'px / 100% auto no-repeat rgb(116,119,112)';
     }
+    /* Suivi du défilement. Deux modes :
+       — moderne (Safari 26+/Chrome) : animation pilotée par le défilement, exécutée par le
+         compositeur graphique → le cache est RÉELLEMENT fixe à l'écran, zéro retard ;
+       — secours : repositionnement à chaque événement scroll (léger retard possible). */
+    var animOK = window.CSS && CSS.supports && CSS.supports('animation-timeline: scroll()');
+    var kf = null;
+    function ride() {
+      var sc = document.scrollingElement || document.documentElement;
+      var max = Math.max(0, sc.scrollHeight - window.innerHeight);
+      kf.textContent = '@keyframes depCapRide{from{transform:translateY(-180px)}to{transform:translateY(' + (max - 180).toFixed(0) + 'px)}}';
+    }
     var shown = false;
     function place() {
       if (hdr.getBoundingClientRect().top <= 0) {
-        cap.style.top = (window.scrollY - 180) + 'px';
+        if (!animOK) cap.style.top = (window.scrollY - 180) + 'px';
         if (!shown) { cap.style.display = 'block'; shown = true; }
       } else if (shown) {
         cap.style.display = 'none'; shown = false;
       }
     }
+    if (animOK) {
+      kf = document.createElement('style');
+      document.head.appendChild(kf);
+      cap.style.top = '0';
+      cap.style.animationName = 'depCapRide';
+      cap.style.animationDuration = 'auto';
+      cap.style.animationTimingFunction = 'linear';
+      cap.style.animationFillMode = 'both';
+      cap.style.animationTimeline = 'scroll(root)';
+      ride();
+      if (window.ResizeObserver) new ResizeObserver(ride).observe(document.body);
+      window.addEventListener('load', ride);
+    }
     window.addEventListener('scroll', place, { passive: true });
-    window.addEventListener('resize', function () { dress(); place(); }, { passive: true });
+    window.addEventListener('resize', function () { dress(); if (animOK) ride(); place(); }, { passive: true });
     dress();
     place();
   }
