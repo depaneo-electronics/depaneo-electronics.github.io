@@ -170,12 +170,22 @@
        — secours : repositionnement à chaque événement scroll (léger retard possible). */
     var animOK = window.CSS && CSS.supports && CSS.supports('animation-timeline: scroll()');
     var shown = false;
+    /* theme-color : Safari peint LUI-MÊME la zone status-bar/caméra avec cette couleur
+       (opaque et parfaitement fixe, hors de portée du défilement de la page).
+       Vert bandeau recherche en haut de page → gris-ciel du bandeau une fois collé. */
+    var themeMeta = document.querySelector('meta[name="theme-color"]');
+    if (!themeMeta) {
+      themeMeta = document.createElement('meta');
+      themeMeta.setAttribute('name', 'theme-color');
+      themeMeta.setAttribute('content', '#83bd1d');
+      document.head.appendChild(themeMeta);
+    }
     function place() {
       if (hdr.getBoundingClientRect().top <= 0) {
         if (!animOK) cap.style.top = (window.scrollY - 180) + 'px';
-        if (!shown) { cap.style.display = 'block'; shown = true; }
+        if (!shown) { cap.style.display = 'block'; shown = true; themeMeta.setAttribute('content', '#747770'); }
       } else if (shown) {
-        cap.style.display = 'none'; shown = false;
+        cap.style.display = 'none'; shown = false; themeMeta.setAttribute('content', '#83bd1d');
       }
     }
     if (animOK) {
