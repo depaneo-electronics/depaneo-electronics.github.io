@@ -244,4 +244,93 @@
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', stickyCap);
   else stickyCap();
+
+  /* ——— Mobile : CHAMP DE BLÉ FIXE (équivalent du background-attachment:fixed du desktop,
+     que Safari iOS ne supporte pas). La photo devient un calque verrouillé sur l'écran
+     (scroll-driven animation + servo, mécanisme éprouvé du cache caméra) placé DERRIÈRE
+     le contenu de chaque bloc (z-index:-1, rogné par le bloc). Le voile sombre et le fondu
+     restent ancrés au document, dans un second calque. Desktop inchangé. ——— */
+  function bleFixe() {
+    if (!window.matchMedia('(max-width: 1023px)').matches) return;
+    var VOILES = {
+      'hero-wrap': 'linear-gradient(to bottom, rgba(250,250,247,0) 500px, #fafaf7 680px), linear-gradient(rgba(16,20,8,.58), rgba(16,20,8,.58))',
+      'process': 'linear-gradient(rgba(16,20,8,.66), rgba(16,20,8,.72))',
+      'realisations': 'linear-gradient(rgba(16,20,8,.62), rgba(16,20,8,.66))',
+      'caracteristiques': 'linear-gradient(rgba(16,20,8,.66), rgba(16,20,8,.72))'
+    };
+    var animOK2 = window.CSS && CSS.supports &&
+      CSS.supports('animation-timeline: scroll()') &&
+      CSS.supports('animation-range: 0px 100000px');
+    var entries = [], css = '';
+    Object.keys(VOILES).forEach(function (id) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      el.style.overflow = 'hidden';
+      css += '#' + id + '{background:none !important}';
+      var layer = document.createElement('div');
+      layer.setAttribute('aria-hidden', 'true');
+      layer.style.cssText = 'position:absolute;left:0;top:0;width:100%;z-index:-1;pointer-events:none;will-change:transform';
+      var voile = document.createElement('div');
+      voile.setAttribute('aria-hidden', 'true');
+      voile.style.cssText = 'position:absolute;left:0;top:0;right:0;bottom:0;z-index:-1;pointer-events:none;background:' + VOILES[id];
+      el.insertBefore(voile, el.firstChild);
+      el.insertBefore(layer, voile);
+      entries.push({ el: el, layer: layer });
+    });
+    if (!entries.length) return;
+    var st = document.createElement('style');
+    st.textContent = '@media (max-width: 1023px){' + css + '}';
+    document.head.appendChild(st);
+    var kfSt = document.createElement('style');
+    document.head.appendChild(kfSt);
+
+    /* cadrage : l'horizon de la photo arrive vers 100px d'écran (caché par le bandeau collé),
+       le champ remplit tout le reste de l'écran, net grâce à la version HD */
+    function dress() {
+      var H = window.innerHeight;
+      var hImg = Math.max(Math.round(H / 0.7), 900);
+      var off = Math.round(300 - 0.3 * hImg);
+      entries.forEach(function (e) {
+        e.layer.style.height = (H + 300) + 'px';
+        e.layer.style.background = 'url("images/bandeau-ble-hd.jpg") center ' + off + 'px / auto ' + hImg + 'px no-repeat';
+      });
+    }
+    function rebuildKf() {
+      if (!animOK2) return;
+      var txt = '';
+      entries.forEach(function (e, i) {
+        var cTop = e.el.getBoundingClientRect().top + window.scrollY;
+        var c = Math.round(-200 - cTop);
+        txt += '@keyframes depBleFixe' + i + '{from{transform:translateY(' + c + 'px)}to{transform:translateY(' + (c + 100000) + 'px)}}';
+        var s = e.layer.style;
+        s.animationName = 'depBleFixe' + i;
+        s.animationDuration = 'auto';
+        s.animationTimingFunction = 'linear';
+        s.animationFillMode = 'both';
+        s.animationTimeline = 'scroll(root)';
+        s.animationRange = '0px 100000px';
+      });
+      kfSt.textContent = txt;
+    }
+    function placeAll() {
+      entries.forEach(function (e) {
+        if (animOK2) {
+          var err = e.layer.getBoundingClientRect().top + 200;
+          if (err > 2 || err < -2) e.layer.style.top = ((parseFloat(e.layer.style.top) || 0) - err) + 'px';
+        } else {
+          var cTop = e.el.getBoundingClientRect().top + window.scrollY;
+          e.layer.style.transform = 'translateY(' + Math.round(window.scrollY - 200 - cTop) + 'px)';
+        }
+      });
+    }
+    dress();
+    rebuildKf();
+    placeAll();
+    window.addEventListener('scroll', placeAll, { passive: true });
+    window.addEventListener('resize', function () { dress(); rebuildKf(); placeAll(); }, { passive: true });
+    if (window.ResizeObserver) new ResizeObserver(function () { rebuildKf(); placeAll(); }).observe(document.body);
+    window.addEventListener('load', function () { rebuildKf(); placeAll(); });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', bleFixe);
+  else bleFixe();
 })();
