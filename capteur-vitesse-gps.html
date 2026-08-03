@@ -165,7 +165,8 @@
   .nav-glass::before { background:linear-gradient(135deg, rgba(16,20,8,.55), rgba(16,20,8,.38) 60%, rgba(16,20,8,.5)); backdrop-filter:url(#dep-glass) blur(2px) saturate(1.4); -webkit-backdrop-filter:blur(8px) saturate(1.4); }
 /* Safari iPhone/iPad ne supporte pas background-attachment:fixed → repli défilant sur mobile/tablette (desktop intact) */
 @media (max-width: 1023px) {
-  #caracteristiques { background-attachment: scroll !important; }
+  /* photo recadrée sous la ligne d'horizon (30 % haut = ciel blanc) */
+  #caracteristiques { background: linear-gradient(rgba(16,20,8,.66), rgba(16,20,8,.72)), url('images/bandeau-ble.jpg') center 97% / auto 145% no-repeat scroll !important; }
 }
 </style>
 </head>
