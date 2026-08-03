@@ -168,7 +168,7 @@
 /* Desktop : cartes blanches derrière les textes que le capteur 3D traverse */
 @media (min-width: 640px) {
   #explode-title { background: rgba(255,255,255,.88); border-radius: 1.5rem; padding: 1.6rem 2rem 1.9rem; max-width: 44rem; margin-left: auto; margin-right: auto; box-shadow: 0 16px 44px -24px rgba(20,26,12,.2); }
-  #hero-scroll-hint { background: rgba(255,255,255,.88); border-radius: 9999px; padding: .8rem 1.5rem; box-shadow: 0 10px 30px -18px rgba(20,26,12,.25); }
+  #hero-scroll-hint { display: none !important; }
 }
 @media (max-width: 1023px) {
   /* cartes blanches derrière les textes du héro : le capteur 3D passe juste derrière, le texte reste lisible */
@@ -313,7 +313,7 @@
 
   <!-- ═══════════ DÉMONTAGE 3D (épinglé) ═══════════ -->
   <section id="demontage" class="relative z-10 h-[100svh] overflow-hidden">
-    <div id="explode-title" class="absolute inset-x-0 top-[12%] text-center px-6 pointer-events-none hidden sm:block">
+    <div id="explode-title" class="absolute inset-x-0 top-[5%] text-center px-6 pointer-events-none hidden sm:block">
       <p class="tech-label mb-4">( VUE ÉCLATÉE — PIÈCE PAR PIÈCE )</p>
       <h2 class="font-display font-bold text-3xl sm:text-5xl lg:text-6xl leading-tight">
         Regardez à <span class="text-brand-600">l'intérieur.</span>
