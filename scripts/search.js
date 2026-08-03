@@ -139,4 +139,27 @@
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', landing);
   else landing();
+
+  /* ——— iPhone : quand le bandeau est collé en haut, Safari peint la page dans la zone
+     status-bar/Dynamic Island au-dessus de lui. On prolonge le champ de blé vers le haut
+     pour couvrir cette zone (mobile/tablette uniquement, aucun effet ordinateur). ——— */
+  function stickyCap() {
+    if (!window.matchMedia('(max-width: 1023px)').matches) return;
+    var hdr = document.querySelector('header.sticky, header#site-header');
+    if (!hdr) return;
+    var st = document.createElement('style');
+    st.textContent = 'header.dep-stuck::after{content:"";position:absolute;left:0;right:0;bottom:100%;height:180px;pointer-events:none;background:linear-gradient(rgba(16,20,8,.58),rgba(16,20,8,.58)), url("images/bandeau-ble.jpg") center bottom/cover no-repeat}';
+    document.head.appendChild(st);
+    var tick = false;
+    function refresh() {
+      tick = false;
+      hdr.classList.toggle('dep-stuck', hdr.getBoundingClientRect().top <= 0);
+    }
+    window.addEventListener('scroll', function () {
+      if (!tick) { tick = true; requestAnimationFrame(refresh); }
+    }, { passive: true });
+    refresh();
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', stickyCap);
+  else stickyCap();
 })();
