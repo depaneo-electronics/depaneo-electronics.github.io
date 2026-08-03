@@ -165,6 +165,11 @@
   .nav-glass { border:1px solid rgba(255,255,255,.18); box-shadow:inset 0 1px 1px rgba(255,255,255,.22), 0 8px 24px -12px rgba(0,0,0,.5); }
   .nav-glass::before { background:linear-gradient(135deg, rgba(16,20,8,.55), rgba(16,20,8,.38) 60%, rgba(16,20,8,.5)); backdrop-filter:url(#dep-glass) blur(2px) saturate(1.4); -webkit-backdrop-filter:blur(8px) saturate(1.4); }
 /* Safari iPhone/iPad ne supporte pas background-attachment:fixed → repli défilant sur mobile/tablette (desktop intact) */
+/* Desktop : cartes blanches derrière les textes que le capteur 3D traverse */
+@media (min-width: 640px) {
+  #explode-title { background: rgba(255,255,255,.88); border-radius: 1.5rem; padding: 1.6rem 2rem 1.9rem; max-width: 44rem; margin-left: auto; margin-right: auto; box-shadow: 0 16px 44px -24px rgba(20,26,12,.2); }
+  #hero-scroll-hint { background: rgba(255,255,255,.88); border-radius: 9999px; padding: .8rem 1.5rem; box-shadow: 0 10px 30px -18px rgba(20,26,12,.25); }
+}
 @media (max-width: 1023px) {
   /* cartes blanches derrière les textes du héro : le capteur 3D passe juste derrière, le texte reste lisible */
   .hero-carte, #hero-stats { background: rgba(255,255,255,.88); border-radius: 1.25rem; padding: 1rem 1.1rem; box-shadow: 0 16px 44px -24px rgba(20,26,12,.2); }
