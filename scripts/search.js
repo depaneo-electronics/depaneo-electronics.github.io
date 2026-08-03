@@ -140,25 +140,32 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', landing);
   else landing();
 
-  /* ——— iPhone : quand le bandeau est collé en haut, Safari peint la page dans la zone
-     status-bar/Dynamic Island au-dessus de lui. On prolonge le champ de blé vers le haut
-     pour couvrir cette zone (mobile/tablette uniquement, aucun effet ordinateur). ——— */
+  /* ——— iPhone : quand le bandeau est collé, Safari peint la page qui défile dans la zone
+     status-bar/Dynamic Island au-dessus de lui — et il n'y dessine QUE le contenu du
+     document (les éléments sticky y sont rognés, un ::after sur le bandeau ne marche pas).
+     On place donc un cache de blé DANS le document, repositionné à chaque défilement juste
+     au-dessus du haut de l'écran ; sa tranche basse reste cachée derrière le bandeau
+     (z-index 49 < 50) pour absorber le retard éventuel. Mobile/tablette uniquement. ——— */
   function stickyCap() {
     if (!window.matchMedia('(max-width: 1023px)').matches) return;
     var hdr = document.querySelector('header.sticky, header#site-header');
     if (!hdr) return;
-    var st = document.createElement('style');
-    st.textContent = 'header.dep-stuck::after{content:"";position:absolute;left:0;right:0;bottom:100%;height:180px;pointer-events:none;background:linear-gradient(rgba(16,20,8,.58),rgba(16,20,8,.58)), url("images/bandeau-ble.jpg") center bottom/cover no-repeat}';
-    document.head.appendChild(st);
-    var tick = false;
-    function refresh() {
-      tick = false;
-      hdr.classList.toggle('dep-stuck', hdr.getBoundingClientRect().top <= 0);
+    var cap = document.createElement('div');
+    cap.setAttribute('aria-hidden', 'true');
+    cap.style.cssText = 'position:absolute;left:0;width:100%;height:240px;z-index:49;pointer-events:none;display:none;background:linear-gradient(rgba(16,20,8,.58),rgba(16,20,8,.58)), url("images/bandeau-ble.jpg") center -550px/auto 1550px no-repeat';
+    document.body.appendChild(cap);
+    var shown = false;
+    function place() {
+      if (hdr.getBoundingClientRect().top <= 0) {
+        cap.style.top = (window.scrollY - 180) + 'px';
+        if (!shown) { cap.style.display = 'block'; shown = true; }
+      } else if (shown) {
+        cap.style.display = 'none'; shown = false;
+      }
     }
-    window.addEventListener('scroll', function () {
-      if (!tick) { tick = true; requestAnimationFrame(refresh); }
-    }, { passive: true });
-    refresh();
+    window.addEventListener('scroll', place, { passive: true });
+    window.addEventListener('resize', place, { passive: true });
+    place();
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', stickyCap);
   else stickyCap();
