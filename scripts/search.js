@@ -282,8 +282,10 @@
     document.body.insertBefore(fond, document.body.firstChild);
     function dress2() {
       var H = window.innerHeight;
-      var hImg = Math.round((H + 140) / 0.7);   /* horizon vers 100px d'écran, caché par le bandeau */
-      var off = Math.round(220 - 0.3 * hImg);
+      var hImg = Math.max(Math.round((H - 85) / 0.7), 900);
+      /* horizon vers 205px d'écran → un liseré de ciel apparaît SOUS le bandeau
+         (séparation demandée par Baptiste), puis les arbres et le champ */
+      var off = Math.round(325 - 0.3 * hImg);
       fond.style.height = (H + 240) + 'px';
       fond.style.background = 'url("images/bandeau-ble-hd.jpg") center ' + off + 'px / auto ' + hImg + 'px no-repeat';
     }
