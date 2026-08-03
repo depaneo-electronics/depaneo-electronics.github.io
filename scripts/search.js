@@ -152,8 +152,18 @@
     if (!hdr) return;
     var cap = document.createElement('div');
     cap.setAttribute('aria-hidden', 'true');
-    cap.style.cssText = 'position:absolute;left:0;width:100%;height:240px;z-index:49;pointer-events:none;display:none;background:linear-gradient(rgba(16,20,8,.58),rgba(16,20,8,.58)), url("images/bandeau-ble.jpg") center -550px/auto 1550px no-repeat';
+    cap.style.cssText = 'position:absolute;left:0;width:100%;height:240px;z-index:49;pointer-events:none;display:none';
     document.body.appendChild(cap);
+    /* Le cache affiche la CONTINUITÉ exacte de la photo du bandeau vers le haut (= le ciel,
+       zone uniforme : le léger décalage pendant le défilement devient invisible), calée sur
+       le même cadrage cover/position que le bandeau de la page. */
+    function dress() {
+      var W = document.documentElement.clientWidth;
+      var imgH = W * 1200 / 1800;                       /* cover d'un bandeau large = pleine largeur */
+      var posY = parseFloat(getComputedStyle(hdr).backgroundPositionY) || 50;
+      var off = 180 + (hdr.offsetHeight - imgH) * posY / 100;  /* haut de la photo dans le cache */
+      cap.style.background = 'linear-gradient(rgba(16,20,8,.58),rgba(16,20,8,.58)), url("images/bandeau-ble.jpg") center ' + off.toFixed(1) + 'px / 100% auto no-repeat rgb(116,119,112)';
+    }
     var shown = false;
     function place() {
       if (hdr.getBoundingClientRect().top <= 0) {
@@ -164,7 +174,8 @@
       }
     }
     window.addEventListener('scroll', place, { passive: true });
-    window.addEventListener('resize', place, { passive: true });
+    window.addEventListener('resize', function () { dress(); place(); }, { passive: true });
+    dress();
     place();
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', stickyCap);
