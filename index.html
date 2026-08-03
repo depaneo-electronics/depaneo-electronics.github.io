@@ -193,6 +193,11 @@
   .dep-search-btn:hover::before { background:rgba(255,255,255,.72); }
   .nav-glass { border:1px solid rgba(255,255,255,.18); box-shadow:inset 0 1px 1px rgba(255,255,255,.22), 0 8px 24px -12px rgba(0,0,0,.5); }
   .nav-glass::before { background:linear-gradient(135deg, rgba(16,20,8,.55), rgba(16,20,8,.38) 60%, rgba(16,20,8,.5)); backdrop-filter:url(#dep-glass) blur(2px) saturate(1.4); -webkit-backdrop-filter:blur(8px) saturate(1.4); }
+/* Safari iPhone/iPad ne supporte pas background-attachment:fixed → repli défilant sur mobile/tablette (desktop intact) */
+@media (max-width: 1023px) {
+  #site-header, #realisations { background-attachment: scroll !important; }
+  #hero-wrap { background: linear-gradient(to bottom, rgba(250,250,247,0) 700px, #fafaf7 950px), linear-gradient(rgba(16,20,8,.58), rgba(16,20,8,.58)), url('images/bandeau-ble.jpg') center top / auto 1000px no-repeat scroll #fafaf7 !important; }
+}
 </style>
 </head>
 <body class="font-sans text-inkl-950 antialiased noise overflow-x-hidden">
@@ -266,7 +271,7 @@
   </header>
 
   <!-- ═══════════ HERO ═══════════ -->
-  <div class="relative z-10 overflow-hidden" style="background:linear-gradient(to bottom, rgba(250,250,247,0) 700px, #fafaf7 950px), linear-gradient(rgba(16,20,8,.58),rgba(16,20,8,.58)), url('images/bandeau-ble.jpg') center/cover fixed">
+  <div id="hero-wrap" class="relative z-10 overflow-hidden" style="background:linear-gradient(to bottom, rgba(250,250,247,0) 700px, #fafaf7 950px), linear-gradient(rgba(16,20,8,.58),rgba(16,20,8,.58)), url('images/bandeau-ble.jpg') center/cover fixed">
     <svg class="dep-watermark absolute left-1/2 top-[4rem] -translate-x-1/2 w-[105vmin] h-[105vmin] text-brand-400" style="opacity:.10" aria-hidden="true"><use href="#dep-mark"/></svg>
   <section id="hero" class="relative">
 
