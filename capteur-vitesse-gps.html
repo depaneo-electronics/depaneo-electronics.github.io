@@ -842,5 +842,19 @@
     }
   </script>
   <script>depInitSlider('sf-slider','sf-caption');depInitSlider('photos-slider','photos-caption');</script>
+<script>
+  /* Mobile : à l'arrivée sur la page, on démarre bandeau collé (bandeau vert déjà passé),
+     le capteur se présente plus haut — l'animation de démontage part de cette position. */
+  if (window.matchMedia('(max-width: 1023px)').matches) {
+    window.addEventListener('load', function () {
+      setTimeout(function () {
+        if (window.scrollY < 10) {
+          var hdr = document.getElementById('site-header');
+          if (hdr) window.scrollTo(0, hdr.getBoundingClientRect().top + window.scrollY);
+        }
+      }, 350);
+    });
+  }
+</script>
 </body>
 </html>
