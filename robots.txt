@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://depaneo-electronics.github.io/sitemap.xml
