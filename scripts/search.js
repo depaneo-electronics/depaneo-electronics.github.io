@@ -333,4 +333,33 @@
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', bleFixe);
   else bleFixe();
+
+  /* ——— Pop-up de bienvenue « nouveau site » (une seule fois par visiteur) ——— */
+  function bienvenue() {
+    try { if (localStorage.getItem('dep-nouveau-site-vu')) return; } catch (e) { return; }
+    var ov = document.createElement('div');
+    ov.id = 'dep-bienvenue';
+    ov.style.cssText = 'position:fixed;inset:0;z-index:200;background:rgba(16,20,8,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:1.2rem;opacity:0;transition:opacity .35s';
+    ov.innerHTML =
+      '<div style="max-width:26rem;width:100%;background:#fafaf7;border-radius:1.5rem;padding:2.2rem 1.8rem 1.8rem;text-align:center;box-shadow:0 40px 120px -30px rgba(0,0,0,.55);transform:translateY(16px);transition:transform .4s cubic-bezier(.16,1,.3,1)">' +
+      '<img src="images/logo-hd.png" alt="Dépanéo Electronics" style="height:56px;margin:0 auto 1.1rem;display:block"/>' +
+      '<p style="font:700 .68rem/1 \'JetBrains Mono\',monospace;letter-spacing:.16em;color:#699917;margin-bottom:.8rem">BIENVENUE</p>' +
+      '<h2 style="font:700 1.45rem/1.25 \'Space Grotesk\',sans-serif;color:#101408;margin-bottom:.8rem">Découvrez le nouveau site<br/>Dépanéo Electronics&nbsp;!</h2>' +
+      '<p style="font:400 .92rem/1.55 Inter,sans-serif;color:#5b6455;margin-bottom:1.5rem">Notre site fait peau neuve — mêmes équipes, même savoir-faire&nbsp;: retrouvez tous nos dépannages, nos produits et votre demande de devis en quelques clics.</p>' +
+      '<button type="button" id="dep-bienvenue-ok" class="btn-primary" style="font:600 .95rem/1 Inter,sans-serif;padding:.9rem 2.2rem;border-radius:99px;cursor:pointer;border:0">Découvrir le site</button></div>';
+    document.body.appendChild(ov);
+    function fermer() {
+      try { localStorage.setItem('dep-nouveau-site-vu', '1'); } catch (e) {}
+      ov.style.opacity = '0';
+      setTimeout(function () { ov.remove(); }, 350);
+    }
+    ov.addEventListener('click', function (e) { if (e.target === ov) fermer(); });
+    ov.querySelector('#dep-bienvenue-ok').addEventListener('click', fermer);
+    setTimeout(function () {
+      ov.style.opacity = '1';
+      ov.firstChild.style.transform = 'none';
+    }, 600);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', bienvenue);
+  else bienvenue();
 })();
