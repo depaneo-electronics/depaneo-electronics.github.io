@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="keywords" content="réparation carte électronique, réparation cartes électroniques, réparation électronique agricole, réparation électronique industrielle, réparation boîtier électronique tracteur, réparation calculateur, réparation ECU tracteur, ECU, calculateur agricole, dépannage électronique agricole, dépannage carte électronique, dépanner boîtier agricole, diagnostic électronique, banc de test électronique, remise en état électronique, reconditionnement, remanufacturé, réparation sans schéma, réparation composants électroniques, réparation carte de puissance, échange standard, boîtier de commande, carte électronique agricole, boîtier électronique agricole, circuit imprimé, électronique embarquée, matériel obsolète, pièce introuvable, plus fabriqué, SAV électronique, service après-vente électronique, SAV matériel agricole, SAV boîtier électronique, SAV électronique Claas, SAV pompe à chaleur, capteur de vitesse GPS, capteur de vitesse GPS universel, capteur de vitesse tracteur, radar de vitesse tracteur, remplacement radar de vitesse, capteur de vitesse d'avancement, antenne GPS intégrée, capteur DPA, capteur DPA GPS, capteur de vitesse semoir, capteur de vitesse pulvérisateur, rachat boîtier électronique, rachat DE10, rachat calculateur, reprise de boîtiers électroniques, réparation moteur volet roulant, volets roulants, moteur de volet roulant, commande de volet roulant, pompe à chaleur, PAC, réparation pompe à chaleur, dépannage pompe à chaleur, réparation carte électronique pompe à chaleur, boîtier de commande de pompe à chaleur, carte électronique pompe à chaleur, carte de régulation chauffage, régulation de pompe à chaleur, carte de puissance, Bretagne, Ille-et-Vilaine, Châteaubourg, Rennes, Vitré, réparation électronique agricole Bretagne, dépannage électronique Ille-et-Vilaine, machinisme agricole, matériel agricole, engin agricole, tracteur, moissonneuse, moissonneuse-batteuse, batteuse, moisson, ensileuse, pulvérisateur, pulvérisation, régulation de pulvérisateur, coupure de tronçons, semoir, semis, boîtier de semoir, épandeur, épandage, épandeur d'engrais, distributeur d'engrais, presse à balles, pressage, round baller, presse enrubanneuse, enrubanneuse, enrubannage, pailleuse, paillage, mélangeuse, pesée embarquée, irrigation, enrouleur, relevage, transmission, boîte de vitesses, tableau de bord, compteur d'hectares, compte-tours, joystick, poignée de commande, vérin électrique, travaux publics, engins de chantier, chariot télescopique, pelleteuse" />
+  <link rel="canonical" href="https://depaneoelectronics.fr/" />
+  <meta name="theme-color" content="#83bd1d" />
+<title>Réparation carte électronique agricole, TP & industrie — Depaneo Electronics</title>
+<meta name="description" content="Réparation de cartes électroniques et calculateurs agricoles sans schéma : tracteurs, moissonneuses, pulvérisateurs. SAV électronique Claas. Devis gratuit 48h, garantie 1 an." />
+<script src="vendor/tailwind.js"></script>
+<link href="fonts/fonts.css" rel="stylesheet">
+<link rel="preload" as="image" href="images/hero-slider/moissonneuse.jpg">
+<link rel="preload" as="image" href="images/hero-slider/boitier-gestion.jpg">
+<link rel="preload" as="image" href="images/hero-slider/pulverisateur.jpg">
+<script src="vendor/gsap.min.js"></script>
+<script src="vendor/ScrollTrigger.min.js"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Inter', 'sans-serif'],
+          display: ['Space Grotesk', 'sans-serif'],
+          mono: ['JetBrains Mono', 'monospace'],
+        },
+        colors: {
+          brand: {
+            50:'#f4f9e8',100:'#e5f2c8',200:'#cde496',300:'#b0d363',400:'#98c53d',
+            500:'#83bd1d',600:'#699917',700:'#527811',800:'#3f5c0f',900:'#334c10',
+          },
+          paper: '#fafaf7',
+          inkl: {
+            950:'#101408', 800:'#232a1c', 600:'#3f4839', 500:'#5b6455', 400:'#6b7563',
+          }
+        }
+      }
+    }
+  }
+</script>
+<style>
+  :root { --brand:#83bd1d; }
+  html { scroll-behavior: smooth; }
+  body { background:#fafaf7; color:#101408; }
+  ::selection { background:#83bd1d; color:#101408; }
+  ::-webkit-scrollbar { width:10px; }
+  ::-webkit-scrollbar-track { background:#f1f2ec; }
+  ::-webkit-scrollbar-thumb { background:#d6dbc9; border-radius:99px; }
+  ::-webkit-scrollbar-thumb:hover { background:#b0d363; }
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+    outline:2px solid #527811; outline-offset:3px; border-radius:4px;
+  }
+
+  .font-display { letter-spacing:-0.035em; }
+
+  /* ——— Grain très léger ——— */
+  .noise::after {
+    content:""; position:fixed; inset:0; z-index:60; pointer-events:none; opacity:.025;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
+  }
+
+  /* ——— Titres : lignes masquées ——— */
+  .line-mask { display:block; overflow:hidden; }
+  .line-mask > span { display:block; transform:translateY(115%); }
+
+  .tech-label { font-family:'JetBrains Mono',monospace; font-size:.72rem; letter-spacing:.14em; color:#6b7563; }
+
+  .card {
+    background:#ffffff; border:1px solid #e9ecdf;
+    box-shadow:0 1px 2px rgba(20,26,12,.03), 0 20px 60px -24px rgba(20,26,12,.10);
+  }
+  .card-hover { transition:border-color .5s, box-shadow .5s, transform .5s cubic-bezier(.16,1,.3,1); }
+  .card-hover:hover { border-color:#b0d363; box-shadow:0 2px 4px rgba(20,26,12,.04), 0 30px 80px -24px rgba(94,140,28,.22); transform:translateY(-4px); }
+
+  .glass-chip {
+    background:rgba(255,255,255,.8); border:1px solid rgba(255,255,255,.95);
+    backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+    box-shadow:0 8px 30px -12px rgba(20,26,12,.2);
+  }
+
+  /* ——— Bande de photos du hero ——— */
+  .strip-img { will-change:transform; }
+  /* ——— Filigrane emblème Dépanéo ——— */
+  .btn-liquid {
+    color:#fff; text-shadow:0 1px 2px rgba(0,0,0,.35);
+    background:linear-gradient(120deg, rgba(255,255,255,.28), rgba(255,255,255,.08) 55%, rgba(255,255,255,.18));
+    border:1px solid rgba(255,255,255,.7);
+    backdrop-filter:url(#dep-glass) blur(1.5px) saturate(1.8) brightness(1.08);
+    -webkit-backdrop-filter:blur(7px) saturate(1.6);
+    box-shadow:inset 0 1px 1px rgba(255,255,255,.65), inset 0 -8px 14px rgba(255,255,255,.10),
+               inset 0 0 0 .5px rgba(255,255,255,.18), 0 10px 26px -10px rgba(0,0,0,.5);
+    transition:box-shadow .3s, background .3s, transform .3s;
+  }
+  .btn-liquid:hover {
+    background:linear-gradient(120deg, rgba(255,255,255,.38), rgba(255,255,255,.14) 55%, rgba(255,255,255,.26));
+    box-shadow:inset 0 1px 1px rgba(255,255,255,.8), inset 0 -8px 16px rgba(255,255,255,.16),
+               inset 0 0 0 .5px rgba(255,255,255,.28), 0 14px 32px -10px rgba(0,0,0,.55);
+    transform:translateY(-1px);
+  }
+  .dep-glass-plate {
+    background:linear-gradient(120deg, rgba(255,255,255,.88), rgba(255,255,255,.64) 55%, rgba(255,255,255,.78));
+    border:1px solid rgba(255,255,255,.78);
+    backdrop-filter:url(#dep-glass) blur(2px) saturate(1.5);
+    -webkit-backdrop-filter:blur(7px) saturate(1.5);
+    box-shadow:inset 0 1px 1px rgba(255,255,255,.9), 0 8px 24px -10px rgba(0,0,0,.35);
+  }
+  .glass-dark-block {
+    background:linear-gradient(135deg, rgba(16,20,8,.94), rgba(24,30,14,.88) 60%, rgba(16,20,8,.93)) !important;
+    border:1px solid rgba(255,255,255,.10);
+    box-shadow:inset 0 1px 1px rgba(255,255,255,.14), inset 0 0 0 .5px rgba(255,255,255,.05), 0 30px 80px -30px rgba(0,0,0,.5);
+  }
+  .dep-watermark { pointer-events:none; user-select:none; }
+
+  /* ——— Marquee ——— */
+  @keyframes marqueeX { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+  .marquee-track { display:flex; width:max-content; animation:marqueeX 38s linear infinite; }
+  .marquee-track:hover { animation-play-state:paused; }
+  @keyframes marqueeBrands { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+  .brands-track { display:flex; width:max-content; gap:1.25rem; animation:marqueeBrands 66s linear infinite; }
+  .brands-track:hover { animation-play-state:paused; }
+  .fade-edges { -webkit-mask-image:linear-gradient(to right,transparent,black 12%,black 88%,transparent); mask-image:linear-gradient(to right,transparent,black 12%,black 88%,transparent); }
+
+  /* ——— Cartes catégories (photos) ——— */
+  .cat-card { position:relative; display:block; border-radius:1.5rem; overflow:hidden; isolation:isolate; box-shadow:0 1px 2px rgba(20,26,12,.05), 0 18px 50px -18px rgba(20,26,12,.18); }
+  .cat-card img.bg { transition:transform 1.4s cubic-bezier(.16,1,.3,1), filter 1.4s cubic-bezier(.16,1,.3,1); filter:saturate(.9); }
+  .cat-card:hover img.bg { transform:scale(1.05); filter:saturate(1.08); }
+  .cat-card::after { content:""; position:absolute; inset:0; border-radius:1.5rem; border:1px solid rgba(255,255,255,.14); transition:border-color .5s; pointer-events:none; }
+  .cat-card:hover::after { border-color:rgba(131,189,29,.7); }
+  .cat-card .cat-arrow { opacity:0; transform:translate(-8px,8px); transition:all .5s cubic-bezier(.16,1,.3,1); }
+  .cat-card:hover .cat-arrow { opacity:1; transform:none; }
+
+  .btn-primary { color:#101408; will-change:transform;
+    background:linear-gradient(135deg, rgba(143,197,42,.94), rgba(131,189,29,.78) 55%, rgba(112,166,22,.88));
+    border:1px solid rgba(255,255,255,.45);
+    backdrop-filter:url(#dep-glass) blur(2px) saturate(1.5);
+    -webkit-backdrop-filter:blur(6px) saturate(1.5);
+    box-shadow:inset 0 1px 1px rgba(255,255,255,.55), inset 0 -6px 12px rgba(255,255,255,.10), 0 10px 26px -10px rgba(105,153,23,.55);
+    transition:box-shadow .3s, background .3s; }
+  .btn-primary:hover { background:linear-gradient(135deg, rgba(163,208,74,.98), rgba(142,200,40,.85) 55%, rgba(131,189,29,.94));
+    box-shadow:inset 0 1px 1px rgba(255,255,255,.7), inset 0 -6px 14px rgba(255,255,255,.14), 0 14px 34px -10px rgba(105,153,23,.65); }
+  .btn-ghost { color:#101408;
+    background:linear-gradient(135deg, rgba(255,255,255,.55), rgba(255,255,255,.3) 60%, rgba(255,255,255,.45));
+    border:1px solid rgba(255,255,255,.8);
+    backdrop-filter:url(#dep-glass) blur(2px) saturate(1.4);
+    -webkit-backdrop-filter:blur(6px) saturate(1.4);
+    box-shadow:inset 0 1px 1px rgba(255,255,255,.8), 0 8px 22px -10px rgba(20,26,12,.25);
+    transition:box-shadow .3s, background .3s; }
+  .btn-ghost:hover { background:linear-gradient(135deg, rgba(255,255,255,.7), rgba(244,249,232,.45) 60%, rgba(255,255,255,.6)); }
+  .btn-ghost-dark { color:#fff; text-shadow:0 1px 2px rgba(0,0,0,.3);
+    background:linear-gradient(135deg, rgba(255,255,255,.20), rgba(255,255,255,.06) 55%, rgba(255,255,255,.14));
+    border:1px solid rgba(255,255,255,.45);
+    backdrop-filter:url(#dep-glass) blur(2px) saturate(1.5);
+    -webkit-backdrop-filter:blur(6px) saturate(1.5);
+    box-shadow:inset 0 1px 1px rgba(255,255,255,.5), inset 0 -6px 12px rgba(255,255,255,.08), 0 8px 24px -10px rgba(0,0,0,.4);
+    transition:box-shadow .3s, background .3s; }
+  .btn-ghost-dark:hover { background:linear-gradient(135deg, rgba(255,255,255,.3), rgba(255,255,255,.12) 55%, rgba(255,255,255,.22));
+    border-color:rgba(255,255,255,.65); }
+
+  [data-reveal] { opacity:0; transform:translateY(34px); }
+
+  .sf-photo { border-radius:1.5rem; border:1px solid #e9ecdf; box-shadow:0 28px 70px -26px rgba(20,26,12,.28); }
+
+  .no3d #gps-mini { display:none !important; }
+  .no3d .gps-mini-fallback { display:block !important; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track, .brands-track { animation:none; }
+    html { scroll-behavior:auto; }
+    #hero-img { transform:none; }
+  }
+  /* ── verre sur couche séparée : textes nets ── */
+  .btn-primary, .btn-ghost, .btn-ghost-dark, .btn-liquid, .dep-glass-plate, .dep-search-btn, .nav-glass {
+    position:relative; isolation:isolate;
+    background:none !important;
+    backdrop-filter:none !important; -webkit-backdrop-filter:none !important;
+    text-shadow:none !important;
+  }
+  .btn-primary::before, .btn-ghost::before, .btn-ghost-dark::before, .btn-liquid::before,
+  .dep-glass-plate::before, .dep-search-btn::before, .nav-glass::before {
+    content:""; position:absolute; inset:0; border-radius:inherit; z-index:-1;
+    backdrop-filter:url(#dep-glass) blur(2px) saturate(1.5);
+    -webkit-backdrop-filter:blur(6px) saturate(1.5);
+    transition:background .3s;
+  }
+  .btn-primary::before { background:linear-gradient(135deg, rgba(143,197,42,.94), rgba(131,189,29,.78) 55%, rgba(112,166,22,.88)); }
+  .btn-primary:hover::before { background:linear-gradient(135deg, rgba(163,208,74,.98), rgba(142,200,40,.85) 55%, rgba(131,189,29,.94)); }
+  .btn-ghost::before { background:linear-gradient(135deg, rgba(255,255,255,.55), rgba(255,255,255,.3) 60%, rgba(255,255,255,.45)); }
+  .btn-ghost:hover::before { background:linear-gradient(135deg, rgba(255,255,255,.7), rgba(244,249,232,.45) 60%, rgba(255,255,255,.6)); }
+  .btn-ghost-dark::before { background:linear-gradient(135deg, rgba(255,255,255,.20), rgba(255,255,255,.06) 55%, rgba(255,255,255,.14)); }
+  .btn-ghost-dark:hover::before { background:linear-gradient(135deg, rgba(255,255,255,.3), rgba(255,255,255,.12) 55%, rgba(255,255,255,.22)); }
+  .btn-liquid::before { background:linear-gradient(120deg, rgba(255,255,255,.28), rgba(255,255,255,.10) 55%, rgba(255,255,255,.18)); }
+  .btn-liquid:hover::before { background:linear-gradient(120deg, rgba(255,255,255,.38), rgba(255,255,255,.14) 55%, rgba(255,255,255,.26)); }
+  .dep-glass-plate::before { background:linear-gradient(120deg, rgba(255,255,255,.88), rgba(255,255,255,.64) 55%, rgba(255,255,255,.78)); }
+  .dep-search-btn::before { background:rgba(255,255,255,.38); backdrop-filter:url(#dep-glass) blur(1.5px) saturate(1.4); -webkit-backdrop-filter:blur(5px) saturate(1.4); }
+  .dep-search-btn:hover::before { background:rgba(255,255,255,.72); }
+  .nav-glass { border:1px solid rgba(255,255,255,.18); box-shadow:inset 0 1px 1px rgba(255,255,255,.22), 0 8px 24px -12px rgba(0,0,0,.5); }
+  .nav-glass::before { background:linear-gradient(135deg, rgba(16,20,8,.55), rgba(16,20,8,.38) 60%, rgba(16,20,8,.5)); backdrop-filter:url(#dep-glass) blur(2px) saturate(1.4); -webkit-backdrop-filter:blur(8px) saturate(1.4); }
+/* Safari iPhone/iPad ne supporte pas background-attachment:fixed → repli défilant sur mobile/tablette (desktop intact) */
+@media (max-width: 1023px) {
+  /* iOS : backdrop-filter sur un bandeau sticky casse l'empilement (le contenu défile par-dessus) ; le fond étant opaque sur mobile, le flou est inutile */
+  #site-header { background-attachment: scroll !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; transform: translateZ(0); }
+  /* la photo est recadrée sous la ligne d'horizon (30 % haut = ciel blanc) */
+  #hero-wrap { background: linear-gradient(to bottom, rgba(250,250,247,0) 500px, #fafaf7 680px), linear-gradient(rgba(16,20,8,.58), rgba(16,20,8,.58)), url('images/bandeau-ble-hd.jpg') center -370px / auto 1050px no-repeat scroll #fafaf7 !important; }
+  #realisations { background: linear-gradient(rgba(16,20,8,.62), rgba(16,20,8,.66)), url('images/bandeau-ble-hd.jpg') center 97% / auto 145% no-repeat scroll !important; }
+}
+</style>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "LocalBusiness",
+ "name": "Dépanéo Electronics",
+ "description": "Réparation de cartes électroniques et calculateurs pour le machinisme agricole, les travaux publics et l'industrie. Réparation sans schéma, garantie 1 an, devis gratuit sous 48h. SAV électronique européen Claas.",
+ "url": "https://depaneoelectronics.fr/",
+ "telephone": "+33299008500",
+ "email": "technique@depaneo.eu",
+ "address": {
+  "@type": "PostalAddress",
+  "streetAddress": "14 rue Joliot Curie, ZAC de la Goulgatière",
+  "addressLocality": "Châteaubourg",
+  "postalCode": "35220",
+  "addressRegion": "Bretagne",
+  "addressCountry": "FR"
+ },
+ "areaServed": [
+  "Bretagne",
+  "France",
+  "Europe"
+ ],
+ "parentOrganization": {
+  "@type": "Organization",
+  "name": "AMC CONCEPT INDUSTRIE",
+  "url": "https://amcconceptindustrie.com"
+ },
+ "knowsAbout": [
+  "réparation carte électronique",
+  "réparation électronique agricole",
+  "réparation calculateur tracteur",
+  "réparation boîtier électronique",
+  "dépannage sans schéma",
+  "échange standard",
+  "moissonneuse-batteuse",
+  "pulvérisateur",
+  "semoir",
+  "épandeur",
+  "presse à balles",
+  "travaux publics",
+  "capteur de vitesse GPS",
+  "rachat de boîtiers électroniques",
+  "réparation moteur de volet roulant",
+  "réparation carte électronique de pompe à chaleur",
+  "pompe à chaleur",
+  "boîtier de commande de pompe à chaleur",
+  "SAV électronique",
+  "capteur de vitesse GPS universel"
+ ],
+ "makesOffer": [
+  {
+   "@type": "Offer",
+   "itemOffered": {
+    "@type": "Service",
+    "name": "Réparation de cartes électroniques agricoles",
+    "description": "Diagnostic sur banc de test et réparation sans schéma, garantie 1 an, devis gratuit sous 48h."
+   }
+  },
+  {
+   "@type": "Offer",
+   "itemOffered": {
+    "@type": "Service",
+    "name": "Réparation de cartes électroniques de pompes à chaleur",
+    "description": "Réparation des cartes de régulation et de puissance de pompes à chaleur, différentes marques et différents modèles."
+   }
+  },
+ {
+   "@type": "Offer",
+   "itemOffered": {
+    "@type": "Service",
+    "name": "Rachat de boîtiers électroniques",
+    "description": "Reprise de boîtiers et calculateurs agricoles, fonctionnels ou en panne, notamment les boîtiers moteur DE10."
+   }
+  },
+  {
+   "@type": "Offer",
+   "itemOffered": {
+    "@type": "Product",
+    "name": "Capteur de vitesse GPS universel",
+    "description": "Capteur de vitesse GPS conçu et fabriqué en Bretagne, compatible tous boîtiers agricoles."
+   }
+  }
+ ]
+}
+</script>
+</head>
+<body class="font-sans text-inkl-950 antialiased noise overflow-x-hidden">
+
+  <!-- Emblème Dépanéo (cercle + sinusoïde du logo), réutilisé en filigrane -->
+  <svg style="display:none" aria-hidden="true">
+    <filter id="dep-glass" x="0%" y="0%" width="100%" height="100%">
+      <feImage href="images/glass-map.png" preserveAspectRatio="none" result="map"/>
+      <feDisplacementMap in="SourceGraphic" in2="map" scale="140" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <symbol id="dep-mark" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="37" fill="none" stroke="currentColor" stroke-width="5.5"/>
+      <path d="M6 50 C 20 50, 24 27, 35 27 C 47 27, 45 73, 57 73 C 68 73, 68 50, 94 50"
+            fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round"/>
+    </symbol>
+  </svg>
+
+  <!-- Bandeau info -->
+  <div class="relative z-40 text-inkl-950" style="background:#83bd1d">
+    <div class="max-w-7xl mx-auto px-6 py-1.5 flex items-center justify-center sm:justify-between gap-3">
+      <p class="hidden sm:flex items-center gap-2 text-xs font-semibold">
+        <span class="inline-block w-2 h-2 rounded-full bg-inkl-950 animate-pulse"></span>
+        Étiquettes prépayées — expédition gratuite de vos boîtiers vers nos ateliers
+      </p>
+      <div class="flex items-center gap-3">
+        <button type="button" class="dep-search-btn flex items-center gap-2 rounded-full border border-black/25 bg-white/35 hover:bg-white/70 transition px-4 py-1.5 text-[13px] font-semibold text-inkl-950" aria-label="Rechercher sur le site" title="Rechercher (Ctrl+K)">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Recherche<span class="opacity-60">…</span>
+        </button>
+        <a href="https://www.facebook.com/depannageelectronique" target="_blank" rel="noopener" aria-label="Page Facebook Dépanéo Electronics (nouvel onglet)"
+           class="w-8 h-8 rounded-full bg-[#1877F2] hidden md:flex items-center justify-center text-white hover:bg-[#0e63cf] hover:scale-105 transition"><svg viewBox="0 0 24 24" fill="currentColor" class="w-[18px] h-[18px] translate-y-[1px]" aria-hidden="true"><path d="M13.4 21v-7.2h2.42l.36-2.81h-2.78V9.2c0-.81.23-1.37 1.39-1.37h1.49V5.32c-.26-.03-1.14-.11-2.16-.11-2.14 0-3.6 1.3-3.6 3.7v2.08H8.1v2.81h2.42V21h2.88z"/></svg></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header id="site-header" class="sticky top-0 z-50 backdrop-blur-md border-b border-white/10" style="background:linear-gradient(rgba(16,20,8,.58),rgba(16,20,8,.58)), url('images/bandeau-ble.jpg') center/cover fixed">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#" class="flex items-center shrink-0 dep-glass-plate rounded-2xl px-4 py-2">
+        <img src="images/logo-tr.png" alt="Depaneo Electronics" class="h-[3.25rem] sm:h-16 w-auto shrink-0" style="max-width:none" />
+      </a>
+      <nav class="hidden md:flex items-center gap-0.5 text-[15px] font-semibold text-white rounded-full px-1.5 py-1.5 mx-2 nav-glass">
+        <div class="relative group">
+          <a href="#services" class="px-3.5 py-2 rounded-full hover:text-white hover:bg-white/10 transition whitespace-nowrap inline-flex items-center gap-1.5">Domaines
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <div class="absolute left-0 top-full pt-2 hidden group-hover:block z-50">
+            <div class="rounded-2xl py-2 min-w-[15rem] shadow-2xl border border-white/10" style="background:rgba(16,20,8,.97)">
+              <a href="#services" class="block px-5 py-2.5 text-[14px] text-[#dde3d2] hover:bg-white/10 hover:text-white transition">Tous nos domaines</a>
+              <a href="capteur-vitesse-gps.html" class="block px-5 py-2.5 text-[14px] text-[#dde3d2] hover:bg-white/10 hover:text-white transition">Capteur de vitesse GPS</a>
+              <a href="#volets-roulants" class="block px-5 py-2.5 text-[14px] text-[#dde3d2] hover:bg-white/10 hover:text-white transition">Volets roulants</a>
+              <a href="pompes-a-chaleur.html" class="block px-5 py-2.5 text-[14px] text-[#dde3d2] hover:bg-white/10 hover:text-white transition">Pompes à chaleur</a>
+            </div>
+          </div>
+        </div>
+        <a href="#process" class="px-3.5 py-2 rounded-full hover:text-white hover:bg-white/10 transition whitespace-nowrap">Procédure</a>
+        <a href="rachat-boitiers.html" class="relative px-3.5 py-2 rounded-full btn-primary font-bold whitespace-nowrap">Rachat de boîtiers<span class="absolute -top-1.5 -right-2 text-[9px] font-bold text-white rounded px-1 py-0.5 leading-none" style="background:#e63946">NOUVEAU</span></a>
+        <a href="#apropos" class="px-3.5 py-2 rounded-full hover:text-white hover:bg-white/10 transition whitespace-nowrap">Qui sommes-nous</a>
+      </nav>
+      <div class="flex items-center gap-3">
+        <a href="#demande" data-magnetic class="hidden sm:inline-flex items-center btn-liquid font-semibold px-5 py-2.5 rounded-full text-sm whitespace-nowrap"> Demande de dépannage </a>
+        <a href="https://www.facebook.com/depannageelectronique" target="_blank" rel="noopener" aria-label="Page Facebook Dépanéo Electronics (nouvel onglet)" class="md:hidden w-9 h-9 rounded-full bg-[#1877F2] flex items-center justify-center text-white shrink-0"><svg viewBox="0 0 24 24" fill="currentColor" class="w-[19px] h-[19px] translate-y-[1px]" aria-hidden="true"><path d="M13.4 21v-7.2h2.42l.36-2.81h-2.78V9.2c0-.81.23-1.37 1.39-1.37h1.49V5.32c-.26-.03-1.14-.11-2.16-.11-2.14 0-3.6 1.3-3.6 3.7v2.08H8.1v2.81h2.42V21h2.88z"/></svg></a>
+        <button id="menu-btn" class="md:hidden w-10 h-10 flex items-center justify-center rounded-lg cursor-pointer text-white" aria-label="Menu"> <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg> </button>
+      </div>
+    </div>
+    <nav id="mobile-menu" class="hidden md:hidden border-t border-white/10 px-6 py-4 space-y-3 text-sm font-medium text-[#c9d0bd]" style="background:#101408">
+      <a href="#services" class="block">Domaines</a>
+      <a href="#process" class="block">Procédure</a>
+      <a href="capteur-vitesse-gps.html" class="block">Capteur GPS</a>
+      <a href="#volets-roulants" class="block">Volets roulants</a>
+      <a href="pompes-a-chaleur.html" class="block">Pompes à chaleur</a>
+      <a href="rachat-boitiers.html" class="block text-brand-400 font-semibold">Rachat de boîtiers</a>
+      <a href="#apropos" class="block">Qui sommes-nous</a>
+      <a href="#demande" class="block btn-primary font-semibold px-4 py-2.5 rounded-full text-center">Demande de dépannage</a>
+    </nav>
+  </header>
+
+  <!-- ═══════════ HERO ═══════════ -->
+  <div id="hero-wrap" class="relative z-10 overflow-hidden" style="background:linear-gradient(to bottom, rgba(250,250,247,0) 700px, #fafaf7 950px), linear-gradient(rgba(16,20,8,.58),rgba(16,20,8,.58)), url('images/bandeau-ble.jpg') center/cover fixed">
+    <svg class="dep-watermark absolute left-1/2 top-[4rem] -translate-x-1/2 w-[105vmin] h-[105vmin] text-brand-400" style="opacity:.10" aria-hidden="true"><use href="#dep-mark"/></svg>
+  <section id="hero" class="relative">
+
+    <div class="max-w-5xl mx-auto px-6 pt-8 sm:pt-12 pb-8 sm:pb-10 text-center relative">
+      <p id="hero-kicker" class="font-mono font-semibold text-[13px] sm:text-[16px] tracking-[.2em] text-[#e6ead9] mb-6" style="opacity:0"><span class="text-brand-400 font-bold">DÉPANÉO ELECTRONICS</span> — <a href="services.html#agricole" class="underline decoration-2 decoration-brand-400/70 underline-offset-4 hover:text-brand-300 transition">AGRICOLE</a> · <a href="services.html#tp" class="underline decoration-2 decoration-brand-400/70 underline-offset-4 hover:text-brand-300 transition">TP</a> · <a href="services.html#industrie" class="underline decoration-2 decoration-brand-400/70 underline-offset-4 hover:text-brand-300 transition">INDUSTRIE</a></p>
+      <h1 class="font-display font-bold leading-[1.06] text-[8.5vw] sm:text-5xl lg:text-[64px] text-white">
+        <span class="line-mask"><span class="sm:whitespace-nowrap">Réparer votre électronique,</span></span>
+        <span class="line-mask"><span class="sm:whitespace-nowrap">plutôt que de la remplacer<span class="text-brand-500">.</span></span></span>
+      </h1>
+      <div id="hero-ctas" class="flex flex-wrap justify-center gap-3 sm:gap-4 mt-9" style="opacity:0">
+        <a href="#demande" data-magnetic class="btn-primary font-semibold text-sm sm:text-base px-7 py-3.5 rounded-full">
+          Faire une demande de dépannage
+        </a>
+        <a href="#apropos" data-magnetic class="btn-ghost-dark font-semibold text-sm sm:text-base px-7 py-3.5 rounded-full">
+          Qui sommes-nous
+        </a>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ═══════════ DOMAINES ═══════════ -->
+  <section id="services" class="relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-4 sm:pt-6 pb-14 sm:pb-20">
+    <div class="max-w-3xl mx-auto text-center mb-7 sm:mb-9">
+      <svg class="w-9 h-9 mx-auto mb-4 text-brand-400" data-reveal aria-hidden="true"><use href="#dep-mark"/></svg>
+      <h2 class="font-mono font-bold text-lg sm:text-2xl tracking-[.18em] text-white" data-reveal>DOMAINES D'INTERVENTION</h2>
+    </div>
+
+    <div class="grid grid-cols-2 lg:grid-cols-6 gap-3 sm:gap-4">
+      <a href="boitiers-de-gestion.html" class="cat-card col-span-1 h-40 sm:col-span-2 sm:h-[24rem] lg:col-span-4" data-reveal>
+        <img src="images/hero-slider/boitier-gestion.jpg" alt="Tracteur avec boîtier de gestion" class="bg absolute inset-0 w-full h-full object-cover" loading="lazy" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-5 sm:p-7 flex items-end justify-between gap-4">
+          <div>
+            <p class="tech-label !text-white/70 mb-2 hidden sm:block">[ 15 MARQUES ]</p>
+            <h3 class="font-display text-base sm:text-3xl font-bold text-white">Boîtiers de gestion</h3>
+            <p class="text-white/75 text-xs sm:text-sm mt-1 hidden sm:block">Claas, Deutz-Fahr, Fendt, John Deere, Manitou, New Holland, Renault…</p>
+          </div>
+          <span class="cat-arrow shrink-0 w-10 h-10 rounded-full bg-brand-500 text-inkl-950 hidden sm:flex items-center justify-center font-bold">↗</span>
+        </div>
+      </a>
+      <a href="moissonneuses.html" class="cat-card col-span-1 h-40 sm:col-span-2 sm:h-[24rem] lg:col-span-2" data-reveal>
+        <img src="images/hero-slider/moissonneuse.jpg" alt="Moissonneuse-batteuse" class="bg absolute inset-0 w-full h-full object-cover" loading="lazy" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-5 sm:p-6 flex items-end justify-between gap-4">
+          <div>
+            <h3 class="font-display text-base sm:text-2xl font-bold text-white">Moissonneuses</h3>
+            <p class="text-white/75 text-xs sm:text-sm mt-1 hidden sm:block">Case IH, Claas, Fendt, John Deere, Laverda…</p>
+          </div>
+          <span class="cat-arrow shrink-0 w-9 h-9 rounded-full bg-brand-500 text-inkl-950 hidden sm:flex items-center justify-center font-bold">↗</span>
+        </div>
+      </a>
+      <a href="presses.html" class="cat-card col-span-1 h-40 sm:h-64 lg:col-span-2" data-reveal>
+        <img src="images/hero-slider/presse.jpg" alt="Presse à balles rondes" class="bg absolute inset-0 w-full h-full object-cover" loading="lazy" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-4 sm:p-5 flex items-end justify-between gap-3">
+          <div class="min-w-0">
+            <h3 class="font-display text-base sm:text-xl font-bold text-white">Presses</h3>
+            <p class="text-white/75 text-xs mt-1 hidden sm:block">Case IH, Claas, Krone, Vicon…</p>
+          </div>
+          <span class="cat-arrow shrink-0 w-8 h-8 rounded-full bg-brand-500 text-inkl-950 hidden sm:flex items-center justify-center font-bold text-sm">↗</span>
+        </div>
+      </a>
+      <a href="pulverisateurs.html" class="cat-card col-span-1 h-40 sm:h-64 lg:col-span-2" data-reveal>
+        <img src="images/hero-slider/pulverisateur.jpg" alt="Pulvérisateur agricole" class="bg absolute inset-0 w-full h-full object-cover" loading="lazy" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-4 sm:p-5 flex items-end justify-between gap-3">
+          <div class="min-w-0">
+            <h3 class="font-display text-base sm:text-xl font-bold text-white">Pulvérisateurs</h3>
+            <p class="text-white/75 text-xs mt-1 hidden sm:block">Amazone, Berthoud, Hardi, Kuhn…</p>
+          </div>
+          <span class="cat-arrow shrink-0 w-8 h-8 rounded-full bg-brand-500 text-inkl-950 hidden sm:flex items-center justify-center font-bold text-sm">↗</span>
+        </div>
+      </a>
+      <a href="semoirs.html" class="cat-card col-span-1 h-40 sm:h-64 lg:col-span-2" data-reveal>
+        <img src="images/hero-slider/semoir.jpg" alt="Semoir agricole" class="bg absolute inset-0 w-full h-full object-cover" loading="lazy" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-4 sm:p-5 flex items-end justify-between gap-3">
+          <div class="min-w-0">
+            <h3 class="font-display text-base sm:text-xl font-bold text-white">Semoirs</h3>
+            <p class="text-white/75 text-xs mt-1 hidden sm:block">Accord, Amazone, Kuhn, Väderstad…</p>
+          </div>
+          <span class="cat-arrow shrink-0 w-8 h-8 rounded-full bg-brand-500 text-inkl-950 hidden sm:flex items-center justify-center font-bold text-sm">↗</span>
+        </div>
+      </a>
+      <a href="epandeurs.html" class="cat-card col-span-1 h-40 sm:h-64 lg:col-span-2" data-reveal>
+        <img src="images/hero-slider/epandeur.jpg" alt="Épandeur agricole" class="bg absolute inset-0 w-full h-full object-cover" loading="lazy" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-4 sm:p-5 flex items-end justify-between gap-3">
+          <div class="min-w-0">
+            <h3 class="font-display text-base sm:text-xl font-bold text-white">Épandeurs</h3>
+          </div>
+          <span class="cat-arrow shrink-0 w-8 h-8 rounded-full bg-brand-500 text-inkl-950 hidden sm:flex items-center justify-center font-bold text-sm">↗</span>
+        </div>
+      </a>
+      <a href="enrubanneuses.html" class="cat-card col-span-1 h-40 sm:h-64 lg:col-span-2" data-reveal>
+        <img src="images/hero-slider/enrubanneuse.jpg" alt="Enrubanneuse agricole" class="bg absolute inset-0 w-full h-full object-cover" loading="lazy" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-4 sm:p-5 flex items-end justify-between gap-3">
+          <div class="min-w-0">
+            <h3 class="font-display text-base sm:text-xl font-bold text-white">Enrubanneuses</h3>
+          </div>
+          <span class="cat-arrow shrink-0 w-8 h-8 rounded-full bg-brand-500 text-inkl-950 hidden sm:flex items-center justify-center font-bold text-sm">↗</span>
+        </div>
+      </a>
+      <a href="travaux-publics.html" class="cat-card col-span-1 h-40 sm:h-64 lg:col-span-2" data-reveal>
+        <img src="images/hero-slider/travaux-publics.jpg" alt="Engin de travaux publics" class="bg absolute inset-0 w-full h-full object-cover" loading="lazy" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-4 sm:p-5 flex items-end justify-between gap-3">
+          <div class="min-w-0">
+            <h3 class="font-display text-base sm:text-xl font-bold text-white">Travaux publics</h3>
+            <p class="text-white/75 text-xs mt-1 hidden sm:block">JCB, Manitou…</p>
+          </div>
+          <span class="cat-arrow shrink-0 w-8 h-8 rounded-full bg-brand-500 text-inkl-950 hidden sm:flex items-center justify-center font-bold text-sm">↗</span>
+        </div>
+      </a>
+      <a href="services.html" class="card card-hover rounded-3xl col-span-2 lg:col-span-6 p-6 sm:p-7 flex items-center justify-between gap-4" data-reveal>
+        <div>
+          <h3 class="font-display text-lg sm:text-2xl font-bold">Voir toutes nos catégories</h3>
+          <p class="text-inkl-500 text-xs sm:text-sm mt-1">Tableaux de bord, boîtiers de pesée et de relevage, compteurs, irrigation, pailleuses, vérins, joysticks, capteurs GPS…</p>
+        </div>
+        <span class="shrink-0 w-11 h-11 rounded-full bg-brand-500 text-inkl-950 flex items-center justify-center font-bold">↗</span>
+      </a>
+    </div>
+
+    <!-- Chiffres clés -->
+    <div id="hero-stats" class="max-w-5xl mx-auto px-6 mt-12 sm:mt-16 relative z-10" style="opacity:0">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+        <div class="glass-chip rounded-2xl px-5 py-4 text-center">
+          <p class="font-display text-2xl sm:text-3xl font-bold"><span data-count="30">0</span><span class="text-brand-600">+</span></p>
+          <p class="text-inkl-500 text-xs mt-0.5">Ans d'expérience</p>
+        </div>
+        <div class="glass-chip rounded-2xl px-5 py-4 text-center">
+          <p class="font-display text-2xl sm:text-3xl font-bold"><span data-count="15">0</span><span class="text-brand-600">+</span></p>
+          <p class="text-inkl-500 text-xs mt-0.5">Familles d'équipements</p>
+        </div>
+        <div class="glass-chip rounded-2xl px-5 py-4 text-center">
+          <p class="font-display text-2xl sm:text-3xl font-bold"><span data-count="60">0</span><span class="text-brand-600">+</span></p>
+          <p class="text-inkl-500 text-xs mt-0.5">Marques dépannées</p>
+        </div>
+        <div class="glass-chip rounded-2xl px-5 py-4 text-center">
+          <p class="font-display text-2xl sm:text-3xl font-bold"><span data-count="48">0</span><span class="text-brand-600">h</span></p>
+          <p class="text-inkl-500 text-xs mt-0.5">Devis gratuit</p>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+  </div>
+
+  <!-- ═══════════ PROCÉDURE ═══════════ -->
+  <section id="process" class="relative z-10 " style="background:linear-gradient(rgba(16,20,8,.66),rgba(16,20,8,.72)), url('images/bandeau-ble.jpg') center/cover">
+    <div class="absolute top-0 inset-x-0 h-64 pointer-events-none" style="background:linear-gradient(to bottom, #fafaf7 0%, rgba(250,250,247,.92) 18%, rgba(250,250,247,.72) 38%, rgba(250,250,247,.45) 58%, rgba(250,250,247,.2) 78%, rgba(250,250,247,.06) 92%, transparent 100%)"></div>
+    <div class="absolute bottom-0 inset-x-0 h-64 pointer-events-none" style="background:linear-gradient(to top, #fafaf7 0%, rgba(250,250,247,.92) 18%, rgba(250,250,247,.72) 38%, rgba(250,250,247,.45) 58%, rgba(250,250,247,.2) 78%, rgba(250,250,247,.06) 92%, transparent 100%)"></div>
+    <div class="max-w-7xl mx-auto px-6 py-14 sm:py-20">
+      <div class="max-w-3xl mx-auto text-center mb-10 sm:mb-12">
+        <svg class="w-9 h-9 mx-auto mb-5 text-brand-500" data-reveal aria-hidden="true"><use href="#dep-mark"/></svg>
+        <p class="font-mono font-semibold text-[.8rem] tracking-[.16em] text-white mb-5" data-reveal>NOTRE PROCÉDURE</p>
+        <h2 class="font-display font-bold text-3xl sm:text-5xl leading-tight text-white" data-reveal>De la panne à la réparation.<br/><span class="text-brand-400">En 4 étapes.</span></h2>
+        <p class="font-display font-bold text-xl sm:text-2xl mt-6 text-white" data-reveal>Garantie <span class="text-brand-400">1 an</span> sur toutes nos réparations.</p>
+      </div>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+        <div class="rounded-2xl sm:rounded-3xl p-4 sm:p-7 border border-white/20 bg-[#101408]/45 backdrop-blur-md transition hover:border-brand-400/60 hover:bg-[#101408]/60 hover:-translate-y-1 duration-300" data-reveal>
+          <p class="font-mono text-brand-400 text-xs sm:text-sm">01</p>
+          <h3 class="font-display font-semibold text-sm sm:text-lg mt-2 sm:mt-5 mb-1 sm:mb-2 text-white">Réception du produit</h3>
+          <p class="text-[#b9c0ac] text-[11px] sm:text-sm leading-relaxed">Vous nous envoyez votre boîtier ou carte électronique, avec nos étiquettes prépayées si besoin.</p>
+        </div>
+        <div class="rounded-2xl sm:rounded-3xl p-4 sm:p-7 border border-white/20 bg-[#101408]/45 backdrop-blur-md transition hover:border-brand-400/60 hover:bg-[#101408]/60 hover:-translate-y-1 duration-300" data-reveal>
+          <p class="font-mono text-brand-400 text-xs sm:text-sm">02</p>
+          <h3 class="font-display font-semibold text-sm sm:text-lg mt-2 sm:mt-5 mb-1 sm:mb-2 text-white">Diagnostic &amp; devis gratuit</h3>
+          <p class="text-[#b9c0ac] text-[11px] sm:text-sm leading-relaxed">Diagnostic complet sur banc de test, puis devis gratuit envoyé par mail sous 48h.</p>
+        </div>
+        <div class="rounded-2xl sm:rounded-3xl p-4 sm:p-7 border border-white/20 bg-[#101408]/45 backdrop-blur-md transition hover:border-brand-400/60 hover:bg-[#101408]/60 hover:-translate-y-1 duration-300" data-reveal>
+          <p class="font-mono text-brand-400 text-xs sm:text-sm">03</p>
+          <h3 class="font-display font-semibold text-sm sm:text-lg mt-2 sm:mt-5 mb-1 sm:mb-2 text-white">Réparation &amp; test</h3>
+          <p class="text-[#b9c0ac] text-[11px] sm:text-sm leading-relaxed">Après votre accord sur le devis, réparation du boîtier puis test complet de fonctionnement.</p>
+        </div>
+        <div class="rounded-2xl sm:rounded-3xl p-4 sm:p-7 border border-white/20 bg-[#101408]/45 backdrop-blur-md transition hover:border-brand-400/60 hover:bg-[#101408]/60 hover:-translate-y-1 duration-300" data-reveal>
+          <p class="font-mono text-brand-400 text-xs sm:text-sm">04</p>
+          <h3 class="font-display font-semibold text-sm sm:text-lg mt-2 sm:mt-5 mb-1 sm:mb-2 text-white">Retour transporteur</h3>
+          <p class="text-[#b9c0ac] text-[11px] sm:text-sm leading-relaxed">Votre équipement réparé et testé vous est retourné rapidement par transporteur.</p>
+        </div>
+      </div>
+      <div class="mt-10 sm:mt-12 grid lg:grid-cols-2 gap-8 lg:gap-14 items-center rounded-2xl sm:rounded-[2rem] bg-[#101408]/45 sm:bg-white backdrop-blur-md sm:backdrop-blur-none border border-white/20 sm:border-[#e9ecdf] p-4 sm:p-10 shadow-[0_18px_50px_-18px_rgba(20,26,12,.14)]" data-reveal>
+        <figure class="min-w-0">
+          <div id="metadiag-slider" class="relative rounded-2xl overflow-hidden border border-[#e9ecdf] shadow-lg" style="aspect-ratio:1422/966">
+            <img src="images/metadiag.jpg" alt="Logiciel de banc de test MetaDiag — synoptique moteur d'un tracteur Claas Axion"
+                 data-caption="[ METADIAG — SYNOPTIQUE MOTEUR CLAAS AXION ]"
+                 class="absolute inset-0 w-full h-full object-cover transition-opacity duration-700" style="opacity:1" />
+            <img src="images/metadiag-pedale.jpg" alt="MetaDiag — synoptique moteur DE10 ERGOS : test virtuel avec position de pédale, courbe de couple et erreurs actives" loading="lazy"
+                 data-caption="[ SYNOPTIQUE DE10 — TEST PÉDALE &amp; COUPLE ]"
+                 class="absolute inset-0 w-full h-full object-contain bg-black transition-opacity duration-700" style="opacity:0" />
+            <button type="button" class="slider-prev absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/40 hover:bg-black/60 text-white flex items-center justify-center transition z-10" aria-label="Photo précédente" style="backdrop-filter:blur(4px)">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <button type="button" class="slider-next absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/40 hover:bg-black/60 text-white flex items-center justify-center transition z-10" aria-label="Photo suivante" style="backdrop-filter:blur(4px)">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+          <figcaption id="metadiag-caption" class="tech-label !text-[#b9c0ac] sm:!text-[#6b7563] mt-3">[ METADIAG — SYNOPTIQUE MOTEUR CLAAS AXION ]</figcaption>
+        </figure>
+        <div class="min-w-0">
+          <p class="tech-label !text-[#b9c0ac] sm:!text-[#6b7563] mb-4">NOS BANCS DE TEST</p>
+          <h3 class="font-display font-bold text-2xl sm:text-3xl leading-tight text-white sm:text-inkl-950">Des bancs de tests avec logiciel applicatif dédié.</h3>
+          <p class="text-[#c9d0bd] sm:text-inkl-500 mt-5 leading-relaxed">Chaque boîtier réparé est validé sur banc avant de repartir. Pour les tracteurs
+          <strong class="text-white sm:text-inkl-950">Claas</strong>, nous utilisons notamment <strong class="text-white sm:text-inkl-950">MetaDiag</strong>, un logiciel
+          de diagnostic dédié&nbsp;: synoptiques moteur, tests fonction par fonction, simulation en conditions réelles.</p>
+          <ul class="mt-6 space-y-2.5 text-sm text-[#c9d0bd] sm:text-inkl-600">
+            <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-brand-500 shrink-0"></span>Diagnostic complet sur banc, fonction par fonction</li>
+            <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-brand-500 shrink-0"></span>Validation finale en charge avant expédition</li>
+            <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-brand-500 shrink-0"></span>Outillage constructeur — contrat SAV européen Claas</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ MARQUEE ═══════════ -->
+  <section class="relative z-10 py-10 sm:py-14 border-b border-[#e9ecdf] overflow-hidden bg-white/60">
+    <div class="marquee-track font-display font-bold text-4xl sm:text-6xl whitespace-nowrap text-[#e4e8d6]" aria-hidden="true">
+      <span class="pr-10">DÉPANÉO ELECTRONICS <span class="text-brand-400">✱</span> DIAGNOSTIC <span class="text-brand-400">✱</span> RÉPARATION <span class="text-brand-400">✱</span> RE-CONCEPTION <span class="text-brand-400">✱</span> FABRICATION <span class="text-brand-400">✱</span>&nbsp;</span>
+      <span class="pr-10">DÉPANÉO ELECTRONICS <span class="text-brand-400">✱</span> DIAGNOSTIC <span class="text-brand-400">✱</span> RÉPARATION <span class="text-brand-400">✱</span> RE-CONCEPTION <span class="text-brand-400">✱</span> FABRICATION <span class="text-brand-400">✱</span>&nbsp;</span>
+    </div>
+  </section>
+
+  <!-- ═══════════ TEASER CAPTEUR GPS ═══════════ -->
+  <section id="capteur-gps" class="relative z-10 max-w-7xl mx-auto px-6 py-16 sm:py-24 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+    <div>
+      <p class="tech-label mb-5" data-reveal>NOTRE PRODUIT</p>
+      <h2 class="font-display font-bold text-3xl sm:text-5xl leading-tight mb-7" data-reveal>Capteur de vitesse <span class="text-brand-600">GPS.</span></h2>
+      <p class="text-inkl-500 leading-relaxed mb-8" data-reveal>
+        Nous ne faisons pas que réparer : nous concevons aussi. Notre capteur de vitesse GPS universel
+        équipe déjà plus de 50 machines — antenne intégrée, compatible avec tous les boîtiers agricoles,
+        même les plus anciens.
+      </p>
+      <div class="space-y-4 mb-10" data-reveal>
+        <div class="flex items-start gap-3">
+          <svg class="w-5 h-5 text-brand-600 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <p class="text-sm text-inkl-600">Antenne GPS intégrée — rien à installer sur le toit</p>
+        </div>
+        <div class="flex items-start gap-3">
+          <svg class="w-5 h-5 text-brand-600 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <p class="text-sm text-inkl-600">Signal universel : semoir, pulvérisateur, épandeur…</p>
+        </div>
+        <div class="flex items-start gap-3">
+          <svg class="w-5 h-5 text-brand-600 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <p class="text-sm text-inkl-600">Conçu, fabriqué et testé à Châteaubourg par <a href="https://amcconceptindustrie.com" target="_blank" rel="noopener" class="text-brand-700 font-semibold hover:underline">AMC CONCEPT INDUSTRIE</a></p>
+        </div>
+      </div>
+      <div class="flex flex-wrap gap-3" data-reveal>
+        <a href="capteur-vitesse-gps.html" data-magnetic class="btn-primary font-semibold px-7 py-3.5 rounded-full inline-flex items-center gap-2">
+          Découvrir le capteur GPS <span>↗</span>
+        </a>
+      </div>
+    </div>
+    <div data-reveal>
+      <div class="card rounded-3xl overflow-hidden relative aspect-[4/3]">
+        <canvas id="gps-mini" class="absolute inset-0 w-full h-full"></canvas>
+        <img src="images/produit-gps-face.jpg" alt="Capteur de vitesse GPS Dépanéo" class="gps-mini-fallback hidden absolute inset-0 w-full h-full object-cover" />
+        <p class="tech-label absolute bottom-4 left-5">[ APERÇU 3D — DÉMONTAGE COMPLET SUR LA PAGE PRODUIT ]</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ VOLETS ROULANTS ═══════════ -->
+  <section id="volets-roulants" class="relative z-10 border-t border-[#e9ecdf] overflow-hidden">
+    <div class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true"><svg class="dep-watermark absolute left-1/2 top-1/2 w-[52rem] h-[52rem] text-brand-600" style="opacity:.10;transform:translate(-50%,-50%)" aria-hidden="true"><use href="#dep-mark"/></svg></div>
+    <div class="max-w-7xl mx-auto px-6 py-16 sm:py-24 relative">
+      <div class="max-w-3xl mx-auto text-center mb-14">
+        <svg class="w-9 h-9 mx-auto mb-5 text-brand-500" data-reveal aria-hidden="true"><use href="#dep-mark"/></svg>
+        <p class="tech-label mb-5" data-reveal>AUSSI POUR L'HABITAT</p>
+        <h2 class="font-display font-bold text-3xl sm:text-5xl leading-tight" data-reveal>Nous réparons aussi<br/>vos volets roulants.</h2>
+        <p class="text-inkl-500 sm:text-lg mt-6 leading-relaxed" data-reveal>
+          Moteurs et boîtiers électroniques de volets roulants, toutes marques : diagnostic sur un banc de test
+          développé dans nos ateliers, réparation, test complet, puis retour par transporteur. Une centaine de
+          moteurs repart de Châteaubourg chaque mois, testés et garantis.
+        </p>
+      </div>
+      <figure class="sm:hidden">
+        <div id="volets-slider" class="sf-photo relative w-full overflow-hidden" style="aspect-ratio:4/3">
+          <img src="images/volet-banc-de-test.jpg" alt="Mesure du couple d'un moteur de volet roulant sur banc de test"
+               data-caption="[ MESURE DU COUPLE SUR BANC ]"
+               class="absolute inset-0 w-full h-full object-cover transition-opacity duration-700" style="opacity:1" loading="lazy" />
+          <img src="images/volet-diagnostic-carte.jpg" alt="Diagnostic au multimètre d'une carte électronique de moteur de volet roulant"
+               data-caption="[ DIAGNOSTIC DE LA CARTE ]"
+               class="absolute inset-0 w-full h-full object-cover transition-opacity duration-700" style="opacity:0" loading="lazy" />
+          <img src="images/volet-banc-complet.jpg" alt="Banc de test complet de moteurs de volets roulants conçu dans les ateliers Dépanéo"
+               data-caption="[ LE BANC DE TEST COMPLET ]"
+               class="absolute inset-0 w-full h-full object-cover transition-opacity duration-700" style="opacity:0" loading="lazy" />
+          <button type="button" class="slider-prev absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/40 hover:bg-black/60 text-white flex items-center justify-center transition z-10" aria-label="Photo précédente" style="backdrop-filter:blur(4px)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button type="button" class="slider-next absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/40 hover:bg-black/60 text-white flex items-center justify-center transition z-10" aria-label="Photo suivante" style="backdrop-filter:blur(4px)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <figcaption id="volets-caption" class="tech-label mt-3">[ MESURE DU COUPLE SUR BANC ]</figcaption>
+      </figure>
+      <div class="hidden sm:grid sm:grid-cols-3 gap-4 sm:gap-6 items-start">
+        <figure data-reveal>
+          <img src="images/volet-banc-de-test.jpg" alt="Mesure du couple d'un moteur de volet roulant sur banc de test" class="sf-photo w-full aspect-[4/3] object-cover" loading="lazy" />
+          <figcaption class="tech-label mt-3">[ MESURE DU COUPLE SUR BANC ]</figcaption>
+        </figure>
+        <figure class="sm:mt-12" data-reveal>
+          <img src="images/volet-diagnostic-carte.jpg" alt="Diagnostic au multimètre d'une carte électronique de moteur de volet roulant" class="sf-photo w-full aspect-[4/3] object-cover" loading="lazy" />
+          <figcaption class="tech-label mt-3">[ DIAGNOSTIC DE LA CARTE ]</figcaption>
+        </figure>
+        <figure class="sm:mt-24" data-reveal>
+          <img src="images/volet-banc-complet.jpg" alt="Banc de test complet de moteurs de volets roulants conçu dans les ateliers Dépanéo" class="sf-photo w-full aspect-[4/3] object-cover" loading="lazy" />
+          <figcaption class="tech-label mt-3">[ LE BANC DE TEST COMPLET ]</figcaption>
+        </figure>
+      </div>
+      <div class="max-w-4xl mx-auto mt-16 grid sm:grid-cols-3 gap-6 text-center">
+        <div class="card rounded-2xl px-6 py-5" data-reveal>
+          <p class="font-display font-semibold">100 moteurs / mois</p>
+          <p class="text-inkl-500 text-sm mt-1">réparés dans nos ateliers</p>
+        </div>
+        <div class="card rounded-2xl px-6 py-5" data-reveal>
+          <p class="font-display font-semibold">Banc de test dédié</p>
+          <p class="text-inkl-500 text-sm mt-1">développé à Châteaubourg<br/>par <a href="https://amcconceptindustrie.com" target="_blank" rel="noopener" class="text-brand-700 font-semibold hover:underline">AMC CONCEPT INDUSTRIE</a></p>
+        </div>
+        <div class="card rounded-2xl px-6 py-5" data-reveal>
+          <p class="font-display font-semibold">Testé &amp; garanti</p>
+          <p class="text-inkl-500 text-sm mt-1">avant chaque retour</p>
+        </div>
+      </div>
+      <div class="text-center mt-12" data-reveal>
+        <a href="#demande" data-magnetic class="btn-primary font-semibold px-8 py-4 rounded-full inline-flex">Envoyer mon moteur en réparation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ MARQUES ═══════════ -->
+  <section id="realisations" class="relative z-10 py-14 sm:py-20 overflow-hidden" style="background:linear-gradient(rgba(16,20,8,.62),rgba(16,20,8,.66)), url('images/bandeau-ble.jpg') center/cover fixed">
+    <div class="absolute top-0 inset-x-0 h-32 pointer-events-none z-10" style="background:linear-gradient(to bottom, #fafaf7 0%, rgba(250,250,247,.92) 18%, rgba(250,250,247,.72) 38%, rgba(250,250,247,.45) 58%, rgba(250,250,247,.2) 78%, rgba(250,250,247,.06) 92%, transparent 100%)"></div>
+    <div class="absolute bottom-0 inset-x-0 h-32 pointer-events-none z-10" style="background:linear-gradient(to top, #fafaf7 0%, rgba(250,250,247,.92) 18%, rgba(250,250,247,.72) 38%, rgba(250,250,247,.45) 58%, rgba(250,250,247,.2) 78%, rgba(250,250,247,.06) 92%, transparent 100%)"></div>
+    <div class="max-w-3xl mx-auto px-6 text-center mb-12">
+      <p class="font-mono font-semibold text-[.8rem] tracking-[.16em] text-white mb-5" data-reveal>ILS NOUS FONT CONFIANCE</p>
+      <h2 class="font-display font-bold text-3xl sm:text-5xl text-white" data-reveal>Des dizaines de marques dépannées.</h2>
+    </div>
+    <div class="fade-edges" data-reveal>
+      <div class="brands-track">
+        <div class="flex gap-5 shrink-0 pr-5">
+          <div class="min-w-[170px] h-20 rounded-2xl bg-white border border-[#e9ecdf] flex items-center justify-center shrink-0 px-6"><img src="images/brands/john-deere.png" alt="John Deere" class="max-w-full max-h-full object-contain" loading="lazy" /></div>
+          <div class="min-w-[170px] h-20 rounded-2xl bg-white border border-[#e9ecdf] flex items-center justify-center shrink-0 px-6"><img src="images/brands/claas.png" alt="Claas" class="max-w-full max-h-full object-contain" loading="lazy" /></div>
+          <div class="min-w-[170px] h-20 rounded-2xl bg-white border border-[#e9ecdf] flex items-center justify-center shrink-0 px-6"><img src="images/brands/tecnoma.png" alt="Tecnoma" class="max-w-full max-h-full object-contain" loading="lazy" /></div>
+          <div class="min-w-[170px] h-20 rounded-2xl bg-white border border-[#e9ecdf] flex items-center justify-center shrink-0 px-6"><img src="images/brands/fendt.png" alt="Fendt" class="max-w-full max-h-full object-contain" loading="lazy" /></div>
+          <div class="min-w-[170px] h-20 rounded-2xl bg-white border border-[#e9ecdf] flex items-center justify-center shrink-0 px-6"><img src="images/brands/berthoud.png" alt="Berthoud" class="max-w-full max-h-full object-contain" loading="lazy" /></div>
+          <div class="min-w-[170px] h-20 rounded-2xl bg-white border border-[#e9ecdf] flex items-center justify-center shrink-0 px-6"><img src="images/brands/case-ih.png" alt="Case IH" class="max-w-full max-h-full object-contain" loading="lazy" /></div>
+          <div class="min-w-[170px] h-20 rounded-2xl bg-white border border-[#e9ecdf] flex items-center justify-center shrink-0 px-6"><img src="images/brands/kuhn.png" alt="Kuhn" class="max-w-full max-h-full object-contain" loading="lazy" /></div>
+          <div class="min-w-[170px] h-20 rounded-2xl bg-white border border-[#e9ecdf] flex items-center justify-center shrink-0 px-6"><img src="images/brands/new-holland.png" alt="New Holland" class="max-w-full max-h-full object-contain" loading="lazy" /></div>
+          <div class="min-w-[170px] h-20 rounded-2xl bg-white border border-[#e9ecdf] flex items-center justify-center shrink-0 px-6"><img src="images/brands/amazone.png" alt="Amazone" class="max-w-full max-h-full object-contain" loading="lazy" /></div>
+          <div class="min-w-[170px] h-20 rounded-2xl bg-white border border-[#e9ecdf] flex items-center justify-center shrink-0 px-6"><img src="images/brands/massey-ferguson.png" alt="Massey Ferguson" class="max-w-full max-h-full object-contain" loading="lazy" /></div>
+          <div class="min-w-[170px] h-20 rounded-2xl bg-white border border-[#e9ecdf] flex items-center justify-center shrink-0 px-6"><img src="images/brands/rauch.png" alt="Rauch" class="max-w-full max-h-full object-contain" loading="lazy" /></div>
+          <div class="min-w-[170px] h-20 rounded-2xl bg-white border border-[#e9ecdf] flex items-center justify-center shrink-0 px-6"><img src="images/brands/jcb.png" alt="JCB" class="max-w-full max-h-full object-contain" loading="lazy" /></div>
+          <div class="min-w-[170px] h-20 rounded-2xl bg-white border border-[#e9ecdf] flex items-center justify-center shrink-0 px-6"><img src="images/brands/kverneland.png" alt="Kverneland" class="max-w-full max-h-full object-contain" loading="lazy" /></div>
+          <div class="min-w-[170px] h-20 rounded-2xl bg-white border border-[#e9ecdf] flex items-center justify-center shrink-0 px-6"><img src="images/brands/manitou.png" alt="Manitou" class="max-w-full max-h-full object-contain" loading="lazy" /></div>
+          <div class="min-w-[170px] h-20 rounded-2xl bg-white border border-[#e9ecdf] flex items-center justify-center shrink-0 px-6"><img src="images/brands/vicon.png" alt="Vicon" class="max-w-full max-h-full object-contain" loading="lazy" /></div>
+          <div class="min-w-[170px] h-20 rounded-2xl bg-white border border-[#e9ecdf] flex items-center justify-center shrink-0 px-6"><img src="images/brands/deutz-fahr.png" alt="Deutz-Fahr" class="max-w-full max-h-full object-contain" loading="lazy" /></div>
+          <div class="min-w-[170px] h-20 rounded-2xl bg-white border border-[#e9ecdf] flex items-center justify-center shrink-0 px-6"><img src="images/brands/sulky.png" alt="Sulky" class="max-w-full max-h-full object-contain" loading="lazy" /></div>
+          <div class="min-w-[170px] h-20 rounded-2xl bg-white border border-[#e9ecdf] flex items-center justify-center shrink-0 px-6"><img src="images/brands/krone.png" alt="Krone" class="max-w-full max-h-full object-contain" loading="lazy" /></div>
+          <div class="min-w-[170px] h-20 rounded-2xl bg-white border border-[#e9ecdf] flex items-center justify-center shrink-0 px-6"><img src="images/brands/maschio-gaspardo.png" alt="Maschio Gaspardo" class="max-w-full max-h-full object-contain" loading="lazy" /></div>
+          <div class="min-w-[170px] h-20 rounded-2xl bg-white border border-[#e9ecdf] flex items-center justify-center shrink-0 px-6"><img src="images/brands/mchale.png" alt="McHale" class="max-w-full max-h-full object-contain" loading="lazy" /></div>
+          <div class="min-w-[170px] h-20 rounded-2xl bg-white border border-[#e9ecdf] flex items-center justify-center shrink-0 px-6"><img src="images/brands/rds.png" alt="RDS" class="max-w-full max-h-full object-contain" loading="lazy" /></div>
+          <div class="min-w-[170px] h-20 rounded-2xl bg-white border border-[#e9ecdf] flex items-center justify-center shrink-0 px-6"><img src="images/brands/vaderstad.png" alt="Väderstad" class="max-w-full max-h-full object-contain" loading="lazy" /></div>
+          <div class="min-w-[170px] h-20 rounded-2xl bg-white border border-[#e9ecdf] flex items-center justify-center shrink-0 px-6"><img src="images/brands/caruelle.png" alt="Caruelle" class="max-w-full max-h-full object-contain" loading="lazy" /></div>
+          <div class="min-w-[170px] h-20 rounded-2xl bg-white border border-[#e9ecdf] flex items-center justify-center shrink-0 px-6"><img src="images/brands/trimble.png" alt="Trimble" class="max-w-full max-h-full object-contain" loading="lazy" /></div>
+          <div class="min-w-[170px] h-20 rounded-2xl bg-white border border-[#e9ecdf] flex items-center justify-center shrink-0 px-6"><img src="images/brands/evrard.png" alt="Evrard" class="max-w-full max-h-full object-contain" loading="lazy" /></div>
+          <div class="min-w-[170px] h-20 rounded-2xl bg-white border border-[#e9ecdf] flex items-center justify-center shrink-0 px-6"><img src="images/brands/bogballe.png" alt="Bogballe" class="max-w-full max-h-full object-contain" loading="lazy" /></div>
+          <div class="min-w-[170px] h-20 rounded-2xl flex items-center justify-center shrink-0 px-6" style="background:#101408"><img src="images/brands/dickey-john.png" alt="Dickey-John" class="max-w-full max-h-full object-contain" loading="lazy" /></div>
+        </div>
+        <div class="flex gap-5 shrink-0 pr-5" aria-hidden="true">
+          <div class="min-w-[170px] h-20 rounded-2xl bg-white border border-[#e9ecdf] flex items-center justify-center shrink-0 px-6"><img src="images/brands/john-deere.png" alt="" class="max-w-full max-h-full object-contain" loading="lazy" /></div>
+          <div class="min-w-[170px] h-20 rounded-2xl bg-white border border-[#e9ecdf] flex items-center justify-center shrink-0 px-6"><img src="images/brands/claas.png" alt="" class="max-w-full max-h-full object-contain" loading="lazy" /></div>
+          <div class="min-w-[170px] h-20 rounded-2xl bg-white border border-[#e9ecdf] flex items-center justify-center shrink-0 px-6"><img src="images/brands/tecnoma.png" alt="" class="max-w-full max-h-full object-contain" loading="lazy" /></div>
+          <div class="min-w-[170px] h-20 rounded-2xl bg-white border border-[#e9ecdf] flex items-center justify-center shrink-0 px-6"><img src="images/brands/fendt.png" alt="" class="max-w-full max-h-full object-contain" loading="lazy" /></div>
+          <div class="min-w-[170px] h-20 rounded-2xl bg-white border border-[#e9ecdf] flex items-center justify-center shrink-0 px-6"><img src="images/brands/berthoud.png" alt="" class="max-w-full max-h-full object-contain" loading="lazy" /></div>
+          <div class="min-w-[170px] h-20 rounded-2xl bg-white border border-[#e9ecdf] flex items-center justify-center shrink-0 px-6"><img src="images/brands/case-ih.png" alt="" class="max-w-full max-h-full object-contain" loading="lazy" /></div>
+          <div class="min-w-[170px] h-20 rounded-2xl bg-white border border-[#e9ecdf] flex items-center justify-center shrink-0 px-6"><img src="images/brands/kuhn.png" alt="" class="max-w-full max-h-full object-contain" loading="lazy" /></div>
+          <div class="min-w-[170px] h-20 rounded-2xl bg-white border border-[#e9ecdf] flex items-center justify-center shrink-0 px-6"><img src="images/brands/new-holland.png" alt="" class="max-w-full max-h-full object-contain" loading="lazy" /></div>
+          <div class="min-w-[170px] h-20 rounded-2xl bg-white border border-[#e9ecdf] flex items-center justify-center shrink-0 px-6"><img src="images/brands/amazone.png" alt="" class="max-w-full max-h-full object-contain" loading="lazy" /></div>
+          <div class="min-w-[170px] h-20 rounded-2xl bg-white border border-[#e9ecdf] flex items-center justify-center shrink-0 px-6"><img src="images/brands/massey-ferguson.png" alt="" class="max-w-full max-h-full object-contain" loading="lazy" /></div>
+          <div class="min-w-[170px] h-20 rounded-2xl bg-white border border-[#e9ecdf] flex items-center justify-center shrink-0 px-6"><img src="images/brands/rauch.png" alt="" class="max-w-full max-h-full object-contain" loading="lazy" /></div>
+          <div class="min-w-[170px] h-20 rounded-2xl bg-white border border-[#e9ecdf] flex items-center justify-center shrink-0 px-6"><img src="images/brands/jcb.png" alt="" class="max-w-full max-h-full object-contain" loading="lazy" /></div>
+          <div class="min-w-[170px] h-20 rounded-2xl bg-white border border-[#e9ecdf] flex items-center justify-center shrink-0 px-6"><img src="images/brands/kverneland.png" alt="" class="max-w-full max-h-full object-contain" loading="lazy" /></div>
+          <div class="min-w-[170px] h-20 rounded-2xl bg-white border border-[#e9ecdf] flex items-center justify-center shrink-0 px-6"><img src="images/brands/manitou.png" alt="" class="max-w-full max-h-full object-contain" loading="lazy" /></div>
+          <div class="min-w-[170px] h-20 rounded-2xl bg-white border border-[#e9ecdf] flex items-center justify-center shrink-0 px-6"><img src="images/brands/vicon.png" alt="" class="max-w-full max-h-full object-contain" loading="lazy" /></div>
+          <div class="min-w-[170px] h-20 rounded-2xl bg-white border border-[#e9ecdf] flex items-center justify-center shrink-0 px-6"><img src="images/brands/deutz-fahr.png" alt="" class="max-w-full max-h-full object-contain" loading="lazy" /></div>
+          <div class="min-w-[170px] h-20 rounded-2xl bg-white border border-[#e9ecdf] flex items-center justify-center shrink-0 px-6"><img src="images/brands/sulky.png" alt="" class="max-w-full max-h-full object-contain" loading="lazy" /></div>
+          <div class="min-w-[170px] h-20 rounded-2xl bg-white border border-[#e9ecdf] flex items-center justify-center shrink-0 px-6"><img src="images/brands/krone.png" alt="" class="max-w-full max-h-full object-contain" loading="lazy" /></div>
+          <div class="min-w-[170px] h-20 rounded-2xl bg-white border border-[#e9ecdf] flex items-center justify-center shrink-0 px-6"><img src="images/brands/maschio-gaspardo.png" alt="" class="max-w-full max-h-full object-contain" loading="lazy" /></div>
+          <div class="min-w-[170px] h-20 rounded-2xl bg-white border border-[#e9ecdf] flex items-center justify-center shrink-0 px-6"><img src="images/brands/mchale.png" alt="" class="max-w-full max-h-full object-contain" loading="lazy" /></div>
+          <div class="min-w-[170px] h-20 rounded-2xl bg-white border border-[#e9ecdf] flex items-center justify-center shrink-0 px-6"><img src="images/brands/rds.png" alt="" class="max-w-full max-h-full object-contain" loading="lazy" /></div>
+          <div class="min-w-[170px] h-20 rounded-2xl bg-white border border-[#e9ecdf] flex items-center justify-center shrink-0 px-6"><img src="images/brands/vaderstad.png" alt="" class="max-w-full max-h-full object-contain" loading="lazy" /></div>
+          <div class="min-w-[170px] h-20 rounded-2xl bg-white border border-[#e9ecdf] flex items-center justify-center shrink-0 px-6"><img src="images/brands/caruelle.png" alt="" class="max-w-full max-h-full object-contain" loading="lazy" /></div>
+          <div class="min-w-[170px] h-20 rounded-2xl bg-white border border-[#e9ecdf] flex items-center justify-center shrink-0 px-6"><img src="images/brands/trimble.png" alt="" class="max-w-full max-h-full object-contain" loading="lazy" /></div>
+          <div class="min-w-[170px] h-20 rounded-2xl bg-white border border-[#e9ecdf] flex items-center justify-center shrink-0 px-6"><img src="images/brands/evrard.png" alt="" class="max-w-full max-h-full object-contain" loading="lazy" /></div>
+          <div class="min-w-[170px] h-20 rounded-2xl bg-white border border-[#e9ecdf] flex items-center justify-center shrink-0 px-6"><img src="images/brands/bogballe.png" alt="" class="max-w-full max-h-full object-contain" loading="lazy" /></div>
+          <div class="min-w-[170px] h-20 rounded-2xl flex items-center justify-center shrink-0 px-6" style="background:#101408"><img src="images/brands/dickey-john.png" alt="" class="max-w-full max-h-full object-contain" loading="lazy" /></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ QUI SOMMES-NOUS ═══════════ -->
+  <section id="apropos" class="relative z-10 scroll-mt-24">
+    <div class="max-w-7xl mx-auto px-6 py-16 sm:py-24 grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <div>
+        <p class="sm:hidden font-mono font-bold text-xl tracking-[.16em] text-brand-600 mb-4" data-reveal>QUI SOMMES-NOUS&nbsp;?</p>
+        <p class="hidden sm:block tech-label mb-5" data-reveal>QUI SOMMES-NOUS</p>
+        <h2 class="font-display font-bold text-3xl sm:text-5xl leading-tight mb-7" data-reveal>Des professionnels de l'électronique à votre service.</h2>
+        <button id="apropos-toggle" type="button" class="sm:hidden btn-ghost font-semibold text-sm px-6 py-3 rounded-full mb-6">En savoir plus ↓</button>
+        <p class="apropos-more hidden sm:block text-inkl-500 leading-relaxed mb-4" data-reveal>
+          Forts de plus de 30 ans d'expérience dans le monde industriel et le test électronique, DEPANEO Electronics
+          (marque de la société <a href="https://amcconceptindustrie.com" target="_blank" rel="noopener" class="text-brand-700 font-semibold hover:underline">AMC CONCEPT INDUSTRIE</a>) répare vos équipements électroniques embarqués : ensileuses,
+          épareuses, moissonneuses, tracteurs, pulvérisateurs, roundballers, semoirs, tableaux de bord, boîtiers de
+          relevage et de transmission, radars, boîtiers balance, boîtiers de gestion, poignées de commande, joysticks…
+        </p>
+        <p class="apropos-more hidden sm:block text-inkl-500 leading-relaxed mb-4" data-reveal>Toutes cartes électroniques sans schéma, y compris la re-conception de cartes obsolètes.</p>
+        <p class="apropos-more hidden sm:block text-inkl-500 leading-relaxed mb-9" data-reveal>Cette expertise nous vaut la confiance des plus grands constructeurs&nbsp;: nous assurons,
+        <strong class="text-inkl-950">sous contrat européen, le SAV électronique de Claas</strong>.</p>
+        <div class="apropos-more hidden sm:grid grid-cols-1 sm:grid-cols-2 gap-4" data-reveal>
+          <div class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-brand-600 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <p class="text-sm text-inkl-600">Diagnostic sur banc de test professionnel</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-brand-600 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <p class="text-sm text-inkl-600">Devis gratuit avant toute intervention</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-brand-600 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <p class="text-sm text-inkl-600">Re-conception de cartes obsolètes</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-brand-600 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <p class="text-sm text-inkl-600">Étiquettes prépayées, expédition gratuite</p>
+          </div>
+        </div>
+      </div>
+      <div class="apropos-more hidden sm:block card rounded-3xl p-8 sm:p-10" data-reveal>
+        <img src="images/logo.png" alt="Depaneo Electronics" class="h-10 w-auto mb-8" />
+        <dl class="space-y-5 text-sm">
+          <div class="flex justify-between gap-6 border-b border-[#eef0e6] pb-4">
+            <dt class="text-inkl-400">Société</dt>
+            <dd class="text-right font-medium"><a href="https://amcconceptindustrie.com" target="_blank" rel="noopener" class="text-brand-700 hover:underline">AMC CONCEPT INDUSTRIE</a></dd>
+          </div>
+          <div class="flex justify-between gap-6 border-b border-[#eef0e6] pb-4">
+            <dt class="text-inkl-400">Adresse</dt>
+            <dd class="text-right font-medium">14 rue Joliot Curie<br/>ZAC de la Goulgatière<br/>35220 Châteaubourg</dd>
+          </div>
+          <div class="flex justify-between gap-6 border-b border-[#eef0e6] pb-4">
+            <dt class="text-inkl-400">Téléphone</dt>
+            <dd class="font-medium">02 99 00 85 00</dd>
+          </div>
+          <div class="flex justify-between gap-6 border-b border-[#eef0e6] pb-4">
+            <dt class="text-inkl-400">SIRET</dt>
+            <dd class="font-medium">531 527 257 00012</dd>
+          </div>
+          <div class="flex justify-between gap-6">
+            <dt class="text-inkl-400">Contact technique</dt>
+            <dd class="font-medium"><a class="dep-em hover:text-brand-700 transition" data-u="technique" data-d="depaneo.eu" href="#">technique [arobase] depaneo.eu</a></dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ CTA (bloc sombre contrasté) ═══════════ -->
+  <section id="demande" class="relative z-10 px-4 sm:px-6 pb-16 sm:pb-24">
+    <div class="max-w-7xl mx-auto rounded-[2.5rem] overflow-hidden relative glass-dark-block">
+      <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse 60% 80% at 50% 100%, rgba(131,189,29,.22) 0%, transparent 70%)"></div>
+      <div class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true"><svg class="dep-watermark absolute right-0 bottom-0 w-[34rem] h-[34rem] text-brand-500" style="opacity:.15;transform:translate(6rem,8rem)" aria-hidden="true"><use href="#dep-mark"/></svg></div>
+      <div class="max-w-4xl mx-auto px-6 py-16 sm:py-24 text-center relative text-white">
+        <p class="tech-label !text-[#9aa68e] mb-5" data-reveal>DEVIS GRATUIT SOUS 48H</p>
+        <h2 class="font-display font-bold text-4xl sm:text-6xl leading-[1.02]" data-reveal>Une panne électronique<br/><span class="text-brand-400">à traiter ?</span></h2>
+        <p class="text-[#b9c0ac] sm:text-lg mt-7 max-w-xl mx-auto leading-relaxed" data-reveal>Envoyez-nous votre équipement, nous vous établissons un devis gratuit sous 48h. Étiquettes prépayées disponibles sur simple demande.</p>
+        <div class="flex flex-wrap justify-center gap-4 mt-10" data-reveal>
+          <a href="tel:0299008500" data-magnetic class="btn-primary font-semibold px-8 py-4 rounded-full">Appeler le 02 99 00 85 00</a>
+          <a href="#contact" data-magnetic class="btn-ghost-dark font-semibold px-8 py-4 rounded-full">Nous écrire</a>
+        </div>
+        <a href="documents/bordereau-de-depannage.pdf" target="_blank"
+           class="mt-8 mx-auto max-w-lg flex items-center gap-4 sm:gap-5 rounded-2xl border border-white/15 bg-white/[.06] hover:bg-white/[.1] hover:border-brand-400/60 transition p-4 text-left group">
+          <img src="images/bordereau-apercu.jpg?v=2" alt="Aperçu du bordereau de dépannage (PDF, 1 page)"
+               class="w-16 sm:w-20 shrink-0 rounded-md border border-white/25 shadow-xl group-hover:scale-[1.06] transition-transform duration-300" />
+          <span class="min-w-0">
+            <span class="block font-semibold text-white text-sm sm:text-base">Bordereau de dépannage <span class="text-[#9aa68e] font-normal">(PDF, 1 page)</span></span>
+            <span class="block text-[#b9c0ac] text-xs sm:text-sm mt-1 leading-relaxed">Vous nous envoyez un colis&nbsp;? Imprimez-le, remplissez-le et glissez-le directement dans le colis avec votre matériel.</span>
+            <span class="inline-flex items-center gap-1.5 text-brand-400 font-semibold text-xs sm:text-sm mt-2">Voir et télécharger <span aria-hidden="true">↓</span></span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ CONTACT ═══════════ -->
+  <section id="contact" class="relative z-10 max-w-7xl mx-auto px-6 pb-16 sm:pb-24 grid lg:grid-cols-2 gap-12 lg:gap-20">
+    <div>
+      <p class="tech-label mb-5" data-reveal>CONTACT</p>
+      <h2 class="font-display font-bold text-3xl sm:text-5xl mb-10" data-reveal>Parlons de votre équipement.</h2>
+      <div class="space-y-7">
+        <div class="flex gap-4" data-reveal>
+          <div class="w-11 h-11 rounded-2xl card flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 text-brand-600" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-5.1-7-11a7 7 0 1114 0c0 5.9-7 11-7 11z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.6" stroke="currentColor" stroke-width="1.8"/></svg>
+          </div>
+          <div>
+            <p class="font-semibold">Adresse</p>
+            <p class="text-inkl-500 text-sm mt-0.5">14 rue Joliot Curie, ZAC de la Goulgatière — 35220 Châteaubourg (entre Rennes et Vitré)</p>
+          </div>
+        </div>
+        <div class="flex gap-4" data-reveal>
+          <div class="w-11 h-11 rounded-2xl card flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 text-brand-600" viewBox="0 0 24 24" fill="none"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+          </div>
+          <div>
+            <p class="font-semibold">Téléphone</p>
+            <p class="text-inkl-500 text-sm mt-0.5">02 99 00 85 00</p>
+          </div>
+        </div>
+        <div class="flex gap-4" data-reveal>
+          <div class="w-11 h-11 rounded-2xl card flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 text-brand-600" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M3 7l9 6 9-6" stroke="currentColor" stroke-width="1.8"/></svg>
+          </div>
+          <div>
+            <p class="font-semibold">Email</p>
+            <p class="text-inkl-500 text-sm mt-0.5"><a class="dep-em hover:text-brand-700 transition" data-u="technique" data-d="depaneo.eu" href="#">technique [arobase] depaneo.eu</a></p>
+          </div>
+        </div>
+      </div>
+      <a href="https://www.google.com/maps/dir/?api=1&destination=48.10128,-1.41675"
+         target="_blank" rel="noopener"
+         class="group relative block mt-10 rounded-3xl overflow-hidden border border-[#e9ecdf] shadow-[0_18px_50px_-18px_rgba(20,26,12,.18)]" data-reveal
+         aria-label="Ouvrir l'itinéraire vers Dépanéo Electronics dans Google Maps (nouvel onglet)">
+        <img src="images/carte-chateaubourg.jpg?v=3" alt="Carte : Dépanéo Electronics, ZAC de la Goulgatière, Châteaubourg, près de la N157"
+             class="w-full h-56 sm:h-64 object-cover transition-transform duration-700 group-hover:scale-[1.04]" loading="lazy" />
+        <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent pt-12 pb-4 px-5 flex items-end justify-between gap-3">
+          <p class="text-white text-sm font-medium leading-snug">ZAC de la Goulgatière — Châteaubourg<br/><span class="text-white/70 text-xs">Sortie N157, entre Rennes et Vitré</span></p>
+          <span class="btn-primary shrink-0 font-semibold text-xs sm:text-sm px-4 py-2 rounded-full">Itinéraire ↗</span>
+        </div>
+      </a>
+    </div>
+    <form class="card rounded-3xl p-7 sm:p-9 space-y-4" data-reveal>
+      <div>
+        <label for="f-nom" class="text-sm font-medium text-inkl-600">Nom</label>
+        <input id="f-nom" type="text" autocomplete="name" class="mt-1.5 w-full rounded-xl border border-[#dfe4d2] bg-white px-4 py-3 text-sm placeholder-[#a8b09b] focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent" placeholder="Votre nom" />
+      </div>
+      <div>
+        <label for="f-email" class="text-sm font-medium text-inkl-600">Email</label>
+        <input id="f-email" type="email" autocomplete="email" class="mt-1.5 w-full rounded-xl border border-[#dfe4d2] bg-white px-4 py-3 text-sm placeholder-[#a8b09b] focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent" placeholder="vous@exemple.com" />
+      </div>
+      <div>
+        <label for="f-equip" class="text-sm font-medium text-inkl-600">Équipement concerné</label>
+        <input id="f-equip" type="text" class="mt-1.5 w-full rounded-xl border border-[#dfe4d2] bg-white px-4 py-3 text-sm placeholder-[#a8b09b] focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent" placeholder="Ex : boîtier de gestion Fendt" />
+      </div>
+      <div>
+        <label for="f-msg" class="text-sm font-medium text-inkl-600">Message</label>
+        <textarea id="f-msg" rows="4" class="mt-1.5 w-full rounded-xl border border-[#dfe4d2] bg-white px-4 py-3 text-sm placeholder-[#a8b09b] focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent" placeholder="Décrivez la panne rencontrée"></textarea>
+      </div>
+      <button type="submit" class="w-full btn-primary font-semibold px-6 py-3.5 rounded-full cursor-pointer">Envoyer ma demande</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer class="relative z-10 border-t border-[#e9ecdf] bg-white/70 text-inkl-500 text-sm">
+    <div class="max-w-7xl mx-auto px-6 py-10 flex flex-wrap items-center justify-between gap-4">
+      <div class="flex items-center gap-4">
+        <img src="images/logo.png" alt="Depaneo Electronics" class="h-8 w-auto" />
+        <p>© 2026 DEPANEO Electronics — AMC CONCEPT INDUSTRIE.</p>
+      </div>
+            <a href="https://www.facebook.com/depannageelectronique" target="_blank" rel="noopener" aria-label="Page Facebook Dépanéo Electronics (nouvel onglet)"
+         class="w-9 h-9 rounded-full bg-[#1877F2] flex items-center justify-center text-white hover:bg-[#0e63cf] hover:scale-105 transition shrink-0"><svg viewBox="0 0 24 24" fill="currentColor" class="w-[21px] h-[21px] translate-y-[1px]" aria-hidden="true"><path d="M13.4 21v-7.2h2.42l.36-2.81h-2.78V9.2c0-.81.23-1.37 1.39-1.37h1.49V5.32c-.26-.03-1.14-.11-2.16-.11-2.14 0-3.6 1.3-3.6 3.7v2.08H8.1v2.81h2.42V21h2.88z"/></svg></a>
+      <p class="text-xs"><a href="mentions-legales.html" class="hover:text-brand-700 underline-offset-2 hover:underline">Mentions légales</a><span class="mx-2">·</span><a href="confidentialite.html" class="hover:text-brand-700 underline-offset-2 hover:underline">Confidentialité</a><span class="mx-2">·</span><span class="font-mono">SIRET 531 527 257 00012</span></p>
+    </div>
+    <div class="max-w-7xl mx-auto px-6 pb-4 text-right">
+      <p class="text-[10px] text-[#a8b09b]">Photos : Wikimedia Commons (CC BY-SA / CC BY / CC0 / domaine public) &amp; Dépanéo Electronics</p>
+    </div>
+  </footer>
+
+  <!-- ═══════════ SCRIPTS UI (GSAP) ═══════════ -->
+  <script>
+    var REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Menu mobile
+    document.getElementById('menu-btn').addEventListener('click', function(){
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+
+    // Boutons magnétiques
+    if (!REDUCED && matchMedia('(pointer:fine)').matches) {
+      document.querySelectorAll('[data-magnetic]').forEach(function(el){
+        el.addEventListener('mousemove', function(e){
+          var r = el.getBoundingClientRect();
+          gsap.to(el, { x:(e.clientX-r.left-r.width/2)*.06, y:(e.clientY-r.top-r.height/2)*.08, duration:.5, ease:'power2.out' });
+        });
+        el.addEventListener('mouseleave', function(){ gsap.to(el, { x:0, y:0, duration:.5, ease:'power2.out' }); });
+      });
+    }
+
+    // Reveals au scroll
+    gsap.utils.toArray('[data-reveal]').forEach(function(el, i){
+      var MOB_R = window.matchMedia('(max-width: 1023px)').matches;
+      gsap.to(el, {
+        opacity:1, y:0, duration: REDUCED ? 0 : (MOB_R ? .5 : 1), ease:'power3.out',
+        scrollTrigger:{ trigger:el, start: MOB_R ? 'top 98%' : 'top 88%' },
+        delay: (REDUCED || MOB_R) ? 0 : (i % 4) * 0.07
+      });
+    });
+
+    // Intro du hero (sans préloader, façon Apple : immédiat et doux)
+    window.addEventListener('DOMContentLoaded', function(){
+      var tl = gsap.timeline();
+      tl.to('.line-mask > span', { y:0, duration: REDUCED ? 0 : 1.1, ease:'expo.out', stagger:.1 }, .1)
+        .to('#hero-kicker', { opacity:1, duration:.8 }, '-=0.8')
+        .to('#hero-sub', { opacity:1, duration:.8 }, '-=0.7')
+        .to('#hero-ctas', { opacity:1, duration:.8 }, '-=0.6')
+        .to('#hero-stats', { opacity:1, duration:.9, onStart:runCounters }, '-=0.6');
+    });
+
+    // Parallaxe légère de la bande de photos (vitesses différenciées)
+    if (!REDUCED){
+      gsap.utils.toArray('.strip-img').forEach(function(el, i){
+        gsap.fromTo(el, { yPercent: i === 1 ? -5 : -2 }, {
+          yPercent: i === 1 ? 5 : 2, ease:'none',
+          scrollTrigger:{ trigger:'#hero-strip', start:'top 95%', end:'bottom top', scrub:true }
+        });
+      });
+    }
+
+    // Compteurs de stats
+    var countersDone = false;
+    function runCounters(){
+      if (countersDone) return; countersDone = true;
+      document.querySelectorAll('[data-count]').forEach(function(el){
+        var target = parseInt(el.dataset.count, 10), obj = { v:0 };
+        gsap.to(obj, { v:target, duration: REDUCED ? 0 : 1.6, ease:'power3.out',
+          onUpdate:function(){ el.textContent = Math.round(obj.v); } });
+      });
+    }
+  </script>
+
+  <!-- ═══════════ Aperçu 3D du capteur GPS (teaser) ═══════════ -->
+  <script type="importmap">
+  { "imports": {
+      "three": "./vendor/three.module.js",
+      "three/addons/": "./vendor/three-addons/"
+  } }
+  </script>
+  <script type="module">
+  import * as THREE from 'three';
+  import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+  import { buildGpsSensor } from './scripts/gps-sensor.js';
+
+  const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const miniCanvas = document.getElementById('gps-mini');
+
+  try {
+    const mini = new THREE.WebGLRenderer({ canvas:miniCanvas, antialias:true, alpha:true });
+    mini.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+    mini.toneMapping = THREE.ACESFilmicToneMapping;
+    const miniScene = new THREE.Scene();
+    const pmrem = new THREE.PMREMGenerator(mini);
+    miniScene.environment = pmrem.fromScene(new RoomEnvironment(), .04).texture;
+    const miniCam = new THREE.PerspectiveCamera(35, 4/3, .1, 50);
+    miniCam.position.set(0, .1, 8.8);
+    miniScene.add(new THREE.HemisphereLight(0xffffff, 0x9aa38a, .55));
+    const mKey = new THREE.DirectionalLight(0xfff8ec, 1.6); mKey.position.set(4,6,7); miniScene.add(mKey);
+    const mRim = new THREE.DirectionalLight(0xdfffb0, .8); mRim.position.set(-6,2,-6); miniScene.add(mRim);
+    const { group: sensor } = buildGpsSensor({ animateLCD:true });
+    sensor.scale.setScalar(.82); sensor.position.y = .2;
+    miniScene.add(sensor);
+
+    function sizeMini(){
+      const r = miniCanvas.parentElement.getBoundingClientRect();
+      mini.setSize(r.width, r.height, false);
+      miniCam.aspect = r.width / r.height;
+      miniCam.updateProjectionMatrix();
+    }
+    sizeMini();
+    window.addEventListener('resize', sizeMini);
+
+    let miniVisible = false, miniRaf = null;
+    const miniClock = new THREE.Clock();
+    function miniTick(){
+      if (!miniVisible) { miniRaf = null; return; }
+      const mt = miniClock.elapsedTime;
+      miniClock.getDelta();
+      sensor.rotation.y = REDUCED ? -.5 : (-.5 + mt*.35);
+      sensor.rotation.x = .12 + Math.sin(mt*.6)*.05;
+      sensor.position.y = .2 + (REDUCED ? 0 : Math.sin(mt*.9)*.06);
+      mini.render(miniScene, miniCam);
+      miniRaf = requestAnimationFrame(miniTick);
+    }
+    new IntersectionObserver(function(entries){
+      miniVisible = entries[0].isIntersecting;
+      if (miniVisible && !miniRaf) miniTick();
+    }, { threshold:.1 }).observe(miniCanvas);
+
+  } catch (err) {
+    console.error('WebGL indisponible :', err);
+    document.body.classList.add('no3d');
+  }
+  </script>
+  <script>
+    document.querySelectorAll('.dep-em').forEach(function(a){
+      var m = a.getAttribute('data-u') + '@' + a.getAttribute('data-d');
+      a.textContent = m; a.setAttribute('href', 'mailto:' + m);
+    });
+  </script>
+  <script src="scripts/search-index.js" defer></script>
+  <script src="scripts/search.js?v=16" defer></script>
+  <script>
+    function depInitSlider(boxId, capId){
+      var box = document.getElementById(boxId); if (!box) return;
+      var imgs = box.querySelectorAll('img'); if (imgs.length < 2) return;
+      var cap = document.getElementById(capId), i = 0, timer;
+      function show(n){
+        imgs[i].style.opacity = 0;
+        i = (n + imgs.length) % imgs.length;
+        imgs[i].style.opacity = 1;
+        if (cap && imgs[i].dataset.caption) cap.textContent = imgs[i].dataset.caption;
+      }
+      function arm(){ clearInterval(timer); timer = setInterval(function(){ show(i + 1); }, 3800); }
+      var p = box.querySelector('.slider-prev'), nx = box.querySelector('.slider-next');
+      if (p) p.addEventListener('click', function(){ show(i - 1); arm(); });
+      if (nx) nx.addEventListener('click', function(){ show(i + 1); arm(); });
+      arm();
+    }
+  </script>
+  <script>depInitSlider('metadiag-slider','metadiag-caption');depInitSlider('volets-slider','volets-caption');</script>
+  <script>
+    (function(){
+      var btn = document.getElementById('apropos-toggle');
+      if (!btn) return;
+      var open = false;
+      btn.addEventListener('click', function(){
+        open = !open;
+        document.querySelectorAll('.apropos-more').forEach(function(el){
+          el.classList.toggle('hidden', !open);
+        });
+        btn.textContent = open ? 'Réduire ↑' : 'En savoir plus ↓';
+      });
+    })();
+  </script>
+</body>
+</html>
