@@ -55,9 +55,9 @@
   body { background:#fafaf7; color:#101408; }
 
   /* ——— Fondu entre les pages ——— */
-  #page-fade { position:fixed; inset:0; z-index:9999; background:#fafaf7; pointer-events:none; opacity:1; animation:pageFadeOut .42s ease forwards; }
+  #page-fade { position:fixed; inset:0; z-index:9999; background:#fafaf7; pointer-events:none; opacity:.4; animation:pageFadeOut .38s ease forwards; }
   @keyframes pageFadeOut { to { opacity:0 } }
-  #page-fade.leaving { animation:none; opacity:1; transition:opacity .22s ease; }
+  #page-fade.leaving { animation:none; transition:opacity .2s ease; }
   @media (prefers-reduced-motion: reduce) { #page-fade { display:none !important; } }
   ::selection { background:#83bd1d; color:#101408; }
   ::-webkit-scrollbar { width:10px; }
@@ -488,8 +488,8 @@
     c.style.opacity = '0';
     void c.offsetWidth;
     c.classList.add('leaving');
-    c.style.opacity = '1';
-    setTimeout(function () { location.href = a.href; }, 240);
+    c.style.opacity = '.4';
+    setTimeout(function () { location.href = a.href; }, 220);
   });
 
   window.addEventListener('pageshow', function (ev) {
