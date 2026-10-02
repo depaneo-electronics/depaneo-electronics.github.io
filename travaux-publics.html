@@ -199,9 +199,9 @@
       </a>
       <nav class="hidden md:flex items-center gap-0.5 text-[15px] font-semibold text-white rounded-full px-1.5 py-1.5 mx-2 nav-glass">
         <div class="relative group">
-          <a href="index.html#services" class="px-3.5 py-2 rounded-full hover:text-white hover:bg-white/10 transition whitespace-nowrap inline-flex items-center gap-1.5">Domaines
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-          <div class="absolute left-0 top-full pt-2 hidden group-hover:block z-50">
+          <button type="button" data-dropdown aria-haspopup="true" aria-expanded="false" style="font:inherit;color:inherit;background:none;border:0;cursor:pointer" class="px-3.5 py-2 rounded-full hover:text-white hover:bg-white/10 transition whitespace-nowrap inline-flex items-center gap-1.5">Domaines
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div data-dropdown-menu class="absolute left-0 top-full pt-2 hidden group-hover:block z-50">
             <div class="rounded-2xl py-2 min-w-[15rem] shadow-2xl border border-white/10" style="background:rgba(16,20,8,.97)">
               <a href="services.html" class="block px-5 py-2.5 text-[14px] text-[#dde3d2] hover:bg-white/10 hover:text-white transition">Tous nos domaines</a>
               <a href="capteur-vitesse-gps.html" class="block px-5 py-2.5 text-[14px] text-[#dde3d2] hover:bg-white/10 hover:text-white transition">Capteur de vitesse GPS</a>
@@ -436,5 +436,24 @@
       if (reset) reset.addEventListener('click', function(){ clearFilter(); scrollToGrid(grid); });
     })();
   </script>
+<script>
+/* Menu « Domaines » : le survol ouvre le volet (CSS) et le clic l'ouvre ou le ferme,
+   sans renvoyer vers la section « Domaines d'intervention ». */
+(function () {
+  var btn = document.querySelector('[data-dropdown]');
+  if (!btn) return;
+  var wrap = btn.parentElement, menu = wrap.querySelector('[data-dropdown-menu]');
+  if (!menu) return;
+  function fermer() { menu.style.display = ''; btn.setAttribute('aria-expanded', 'false'); }
+  function ouvrir() { menu.style.display = 'block'; btn.setAttribute('aria-expanded', 'true'); }
+  btn.addEventListener('click', function (e) {
+    e.preventDefault();
+    if (menu.style.display === 'block') { fermer(); } else { ouvrir(); }
+  });
+  wrap.addEventListener('mouseleave', fermer);
+  document.addEventListener('click', function (e) { if (!wrap.contains(e.target)) fermer(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') fermer(); });
+})();
+</script>
 </body>
 </html>
