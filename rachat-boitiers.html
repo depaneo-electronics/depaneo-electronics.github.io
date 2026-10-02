@@ -53,6 +53,12 @@
 <style>
   html { scroll-behavior: smooth; }
   body { background:#fafaf7; color:#101408; }
+
+  /* ——— Fondu entre les pages ——— */
+  #page-fade { position:fixed; inset:0; z-index:9999; background:#fafaf7; pointer-events:none; opacity:1; animation:pageFadeOut .42s ease forwards; }
+  @keyframes pageFadeOut { to { opacity:0 } }
+  #page-fade.leaving { animation:none; opacity:1; transition:opacity .22s ease; }
+  @media (prefers-reduced-motion: reduce) { #page-fade { display:none !important; } }
   ::selection { background:#83bd1d; color:#101408; }
   ::-webkit-scrollbar { width:10px; }
   ::-webkit-scrollbar-track { background:#f1f2ec; }
@@ -158,6 +164,7 @@
 </script>
 </head>
 <body class="font-sans text-inkl-950 antialiased overflow-x-hidden">
+  <div id="page-fade" aria-hidden="true"></div>
 
   <!-- Emblème Dépanéo (cercle + sinusoïde du logo), réutilisé en filigrane -->
   <svg style="display:none" aria-hidden="true">
@@ -425,6 +432,43 @@
   wrap.addEventListener('mouseleave', fermer);
   document.addEventListener('click', function (e) { if (!wrap.contains(e.target)) fermer(); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') fermer(); });
+})();
+</script>
+<script>
+/* Fondu entre les pages : le rideau s'efface a l'arrivee et revient au depart.
+   Securite : il disparait de toute facon au bout de 800 ms. */
+(function () {
+  var c = document.getElementById('page-fade');
+  if (!c) return;
+  function cacher() { c.style.display = 'none'; c.style.opacity = ''; c.style.animation = ''; }
+  setTimeout(cacher, 800);
+
+  document.addEventListener('click', function (e) {
+    if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    var a = e.target.closest ? e.target.closest('a[href]') : null;
+    if (!a) return;
+    if (a.target && a.target !== '_self') return;
+    if (a.hasAttribute('download')) return;
+    var href = a.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#') return;
+    if (/^(mailto:|tel:|javascript:)/i.test(href)) return;
+    if (/\.pdf($|[?#])/i.test(href)) return;
+    if (a.origin !== location.origin) return;
+    if (a.pathname === location.pathname && a.search === location.search) return;
+    e.preventDefault();
+    /* on repart de 0 et on force un recalcul, sinon la transition ne demarre pas */
+    c.style.display = '';
+    c.style.animation = 'none';
+    c.style.opacity = '0';
+    void c.offsetWidth;
+    c.classList.add('leaving');
+    c.style.opacity = '1';
+    setTimeout(function () { location.href = a.href; }, 240);
+  });
+
+  window.addEventListener('pageshow', function (ev) {
+    if (ev.persisted) { c.classList.remove('leaving'); cacher(); }
+  });
 })();
 </script>
 </body>
