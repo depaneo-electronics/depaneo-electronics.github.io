@@ -55,6 +55,8 @@
 <style>
   :root { --brand:#83bd1d; }
   html { scroll-behavior: smooth; }
+  /* L'en-tete reste colle en haut : les ancres s'arretent juste en dessous. */
+  section[id] { scroll-margin-top: 7.5rem; }
 
   /* ——— Fondu entre les pages ——— */
   #page-fade { position:fixed; inset:0; z-index:9999; background:#fafaf7; pointer-events:none; opacity:.4; animation:pageFadeOut .38s ease forwards; }
